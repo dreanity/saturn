@@ -6,4 +6,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-RUN curl https://get.ignite.com/cli! | bash
+RUN curl https://get.ignite.com/cli@v0.22.2! | bash
