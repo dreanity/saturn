@@ -7,7 +7,21 @@ option go_package = "saturn/x/randomness/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc ProveRandomness(MsgProveRandomness) returns (MsgProveRandomnessResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgProveRandomness {
+  string creator = 1;
+  uint64 round = 2;
+  uint64 time = 3;
+  string randomness = 4;
+  string signature = 5;
+  string previousSignature = 6;
+}
+
+message MsgProveRandomnessResponse {
+  bool proven = 1;
 }
 
 // this line is used by starport scaffolding # proto/tx/message

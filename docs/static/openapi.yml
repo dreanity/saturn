@@ -51966,6 +51966,11 @@ definitions:
         format: uint64
       hash:
         type: string
+  saturn.randomness.MsgProveRandomnessResponse:
+    type: object
+    properties:
+      proven:
+        type: boolean
   saturn.randomness.Params:
     type: object
     description: Params defines the parameters for the module.
