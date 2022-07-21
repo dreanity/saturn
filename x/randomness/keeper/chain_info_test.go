@@ -21,18 +21,9 @@ func createTestChainInfo(keeper *keeper.Keeper, ctx sdk.Context) types.ChainInfo
 func TestChainInfoGet(t *testing.T) {
 	keeper, ctx := keepertest.RandomnessKeeper(t)
 	item := createTestChainInfo(keeper, ctx)
-	rst, found := keeper.GetChainInfo(ctx)
-	require.True(t, found)
+	rst := keeper.GetChainInfo(ctx)
 	require.Equal(t,
 		nullify.Fill(&item),
 		nullify.Fill(&rst),
 	)
-}
-
-func TestChainInfoRemove(t *testing.T) {
-	keeper, ctx := keepertest.RandomnessKeeper(t)
-	createTestChainInfo(keeper, ctx)
-	keeper.RemoveChainInfo(ctx)
-	_, found := keeper.GetChainInfo(ctx)
-	require.False(t, found)
 }

@@ -28,12 +28,9 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 	genesis.Params = k.GetParams(ctx)
+	chainInfo := k.GetChainInfo(ctx)
 
-	// Get all chainInfo
-	chainInfo, found := k.GetChainInfo(ctx)
-	if found {
-		genesis.ChainInfo = chainInfo
-	}
+	genesis.ChainInfo = chainInfo
 	genesis.UnprovenRendomnessList = k.GetAllUnprovenRendomness(ctx)
 	genesis.ProvenRandomnessList = k.GetAllProvenRandomness(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
