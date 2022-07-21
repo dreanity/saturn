@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "randomness/params.proto";
+import "randomness/chain_info.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "saturn/x/randomness/types";
@@ -15,7 +16,11 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/saturn/randomness/params";
   }
-  // this line is used by starport scaffolding # 2
+  // Queries a ChainInfo by index.
+	rpc ChainInfo(QueryGetChainInfoRequest) returns (QueryGetChainInfoResponse) {
+		option (google.api.http).get = "/saturn/randomness/chain_info";
+	}
+// this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -27,4 +32,9 @@ message QueryParamsResponse {
   Params params = 1 [(gogoproto.nullable) = false];
 }
 
+message QueryGetChainInfoRequest {}
+
+message QueryGetChainInfoResponse {
+	ChainInfo ChainInfo = 1 [(gogoproto.nullable) = false];
+}
 // this line is used by starport scaffolding # 3

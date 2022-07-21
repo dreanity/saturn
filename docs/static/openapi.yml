@@ -29809,6 +29809,49 @@ paths:
           format: uint64
       tags:
         - Query
+  /saturn/randomness/chain_info:
+    get:
+      summary: Queries a ChainInfo by index.
+      operationId: SaturnRandomnessChainInfo
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              ChainInfo:
+                type: object
+                properties:
+                  publicKey:
+                    type: string
+                  period:
+                    type: string
+                    format: uint64
+                  genesisTime:
+                    type: string
+                    format: uint64
+                  hash:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
   /saturn/randomness/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -51552,9 +51595,38 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  saturn.randomness.ChainInfo:
+    type: object
+    properties:
+      publicKey:
+        type: string
+      period:
+        type: string
+        format: uint64
+      genesisTime:
+        type: string
+        format: uint64
+      hash:
+        type: string
   saturn.randomness.Params:
     type: object
     description: Params defines the parameters for the module.
+  saturn.randomness.QueryGetChainInfoResponse:
+    type: object
+    properties:
+      ChainInfo:
+        type: object
+        properties:
+          publicKey:
+            type: string
+          period:
+            type: string
+            format: uint64
+          genesisTime:
+            type: string
+            format: uint64
+          hash:
+            type: string
   saturn.randomness.QueryParamsResponse:
     type: object
     properties:

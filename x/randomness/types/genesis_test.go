@@ -19,9 +19,15 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
+				ChainInfo: &types.ChainInfo{
+					PublicKey:   "6",
+					Period:      25,
+					GenesisTime: 42,
+					Hash:        "22",
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package saturn.randomness;
+
+option go_package = "saturn/x/randomness/types";
+
+message ChainInfo {
+  string publicKey = 1; 
+  uint64 period = 2; 
+  uint64 genesisTime = 3; 
+  string hash = 4; 
+  
+}

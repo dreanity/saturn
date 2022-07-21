@@ -18,7 +18,8 @@
 			"settings": {},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"zxh404.vscode-proto3"
+				"zxh404.vscode-proto3",
+				"golang.go"
 			]
 		}
 	},

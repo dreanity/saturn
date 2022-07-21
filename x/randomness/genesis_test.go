@@ -14,6 +14,12 @@ func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
+		ChainInfo: &types.ChainInfo{
+			PublicKey:   "99",
+			Period:      49,
+			GenesisTime: 3,
+			Hash:        "91",
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -25,5 +31,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(&genesisState)
 	nullify.Fill(got)
 
+	require.Equal(t, genesisState.ChainInfo, got.ChainInfo)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
