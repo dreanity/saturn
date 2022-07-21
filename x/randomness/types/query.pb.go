@@ -193,22 +193,22 @@ func (m *QueryGetChainInfoResponse) GetChainInfo() ChainInfo {
 	return ChainInfo{}
 }
 
-type QueryGetUnprovenRendomnessRequest struct {
+type QueryGetUnprovenRandomnessRequest struct {
 	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
 }
 
-func (m *QueryGetUnprovenRendomnessRequest) Reset()         { *m = QueryGetUnprovenRendomnessRequest{} }
-func (m *QueryGetUnprovenRendomnessRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetUnprovenRendomnessRequest) ProtoMessage()    {}
-func (*QueryGetUnprovenRendomnessRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetUnprovenRandomnessRequest) Reset()         { *m = QueryGetUnprovenRandomnessRequest{} }
+func (m *QueryGetUnprovenRandomnessRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetUnprovenRandomnessRequest) ProtoMessage()    {}
+func (*QueryGetUnprovenRandomnessRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_65353470ad278880, []int{4}
 }
-func (m *QueryGetUnprovenRendomnessRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetUnprovenRandomnessRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetUnprovenRendomnessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetUnprovenRandomnessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetUnprovenRendomnessRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetUnprovenRandomnessRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -218,41 +218,41 @@ func (m *QueryGetUnprovenRendomnessRequest) XXX_Marshal(b []byte, deterministic 
 		return b[:n], nil
 	}
 }
-func (m *QueryGetUnprovenRendomnessRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetUnprovenRendomnessRequest.Merge(m, src)
+func (m *QueryGetUnprovenRandomnessRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetUnprovenRandomnessRequest.Merge(m, src)
 }
-func (m *QueryGetUnprovenRendomnessRequest) XXX_Size() int {
+func (m *QueryGetUnprovenRandomnessRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetUnprovenRendomnessRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetUnprovenRendomnessRequest.DiscardUnknown(m)
+func (m *QueryGetUnprovenRandomnessRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetUnprovenRandomnessRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetUnprovenRendomnessRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetUnprovenRandomnessRequest proto.InternalMessageInfo
 
-func (m *QueryGetUnprovenRendomnessRequest) GetIndex() string {
+func (m *QueryGetUnprovenRandomnessRequest) GetIndex() string {
 	if m != nil {
 		return m.Index
 	}
 	return ""
 }
 
-type QueryGetUnprovenRendomnessResponse struct {
-	UnprovenRendomness UnprovenRendomness `protobuf:"bytes,1,opt,name=unprovenRendomness,proto3" json:"unprovenRendomness"`
+type QueryGetUnprovenRandomnessResponse struct {
+	UnprovenRandomness UnprovenRandomness `protobuf:"bytes,1,opt,name=unprovenRandomness,proto3" json:"unprovenRandomness"`
 }
 
-func (m *QueryGetUnprovenRendomnessResponse) Reset()         { *m = QueryGetUnprovenRendomnessResponse{} }
-func (m *QueryGetUnprovenRendomnessResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetUnprovenRendomnessResponse) ProtoMessage()    {}
-func (*QueryGetUnprovenRendomnessResponse) Descriptor() ([]byte, []int) {
+func (m *QueryGetUnprovenRandomnessResponse) Reset()         { *m = QueryGetUnprovenRandomnessResponse{} }
+func (m *QueryGetUnprovenRandomnessResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetUnprovenRandomnessResponse) ProtoMessage()    {}
+func (*QueryGetUnprovenRandomnessResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_65353470ad278880, []int{5}
 }
-func (m *QueryGetUnprovenRendomnessResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetUnprovenRandomnessResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetUnprovenRendomnessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetUnprovenRandomnessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetUnprovenRendomnessResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetUnprovenRandomnessResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -262,41 +262,41 @@ func (m *QueryGetUnprovenRendomnessResponse) XXX_Marshal(b []byte, deterministic
 		return b[:n], nil
 	}
 }
-func (m *QueryGetUnprovenRendomnessResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetUnprovenRendomnessResponse.Merge(m, src)
+func (m *QueryGetUnprovenRandomnessResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetUnprovenRandomnessResponse.Merge(m, src)
 }
-func (m *QueryGetUnprovenRendomnessResponse) XXX_Size() int {
+func (m *QueryGetUnprovenRandomnessResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetUnprovenRendomnessResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetUnprovenRendomnessResponse.DiscardUnknown(m)
+func (m *QueryGetUnprovenRandomnessResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetUnprovenRandomnessResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetUnprovenRendomnessResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetUnprovenRandomnessResponse proto.InternalMessageInfo
 
-func (m *QueryGetUnprovenRendomnessResponse) GetUnprovenRendomness() UnprovenRendomness {
+func (m *QueryGetUnprovenRandomnessResponse) GetUnprovenRandomness() UnprovenRandomness {
 	if m != nil {
-		return m.UnprovenRendomness
+		return m.UnprovenRandomness
 	}
-	return UnprovenRendomness{}
+	return UnprovenRandomness{}
 }
 
-type QueryAllUnprovenRendomnessRequest struct {
+type QueryAllUnprovenRandomnessRequest struct {
 	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllUnprovenRendomnessRequest) Reset()         { *m = QueryAllUnprovenRendomnessRequest{} }
-func (m *QueryAllUnprovenRendomnessRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllUnprovenRendomnessRequest) ProtoMessage()    {}
-func (*QueryAllUnprovenRendomnessRequest) Descriptor() ([]byte, []int) {
+func (m *QueryAllUnprovenRandomnessRequest) Reset()         { *m = QueryAllUnprovenRandomnessRequest{} }
+func (m *QueryAllUnprovenRandomnessRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllUnprovenRandomnessRequest) ProtoMessage()    {}
+func (*QueryAllUnprovenRandomnessRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_65353470ad278880, []int{6}
 }
-func (m *QueryAllUnprovenRendomnessRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllUnprovenRandomnessRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllUnprovenRendomnessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllUnprovenRandomnessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllUnprovenRendomnessRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllUnprovenRandomnessRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -306,42 +306,42 @@ func (m *QueryAllUnprovenRendomnessRequest) XXX_Marshal(b []byte, deterministic 
 		return b[:n], nil
 	}
 }
-func (m *QueryAllUnprovenRendomnessRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllUnprovenRendomnessRequest.Merge(m, src)
+func (m *QueryAllUnprovenRandomnessRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllUnprovenRandomnessRequest.Merge(m, src)
 }
-func (m *QueryAllUnprovenRendomnessRequest) XXX_Size() int {
+func (m *QueryAllUnprovenRandomnessRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllUnprovenRendomnessRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllUnprovenRendomnessRequest.DiscardUnknown(m)
+func (m *QueryAllUnprovenRandomnessRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllUnprovenRandomnessRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllUnprovenRendomnessRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllUnprovenRandomnessRequest proto.InternalMessageInfo
 
-func (m *QueryAllUnprovenRendomnessRequest) GetPagination() *query.PageRequest {
+func (m *QueryAllUnprovenRandomnessRequest) GetPagination() *query.PageRequest {
 	if m != nil {
 		return m.Pagination
 	}
 	return nil
 }
 
-type QueryAllUnprovenRendomnessResponse struct {
-	UnprovenRendomness []UnprovenRendomness `protobuf:"bytes,1,rep,name=unprovenRendomness,proto3" json:"unprovenRendomness"`
+type QueryAllUnprovenRandomnessResponse struct {
+	UnprovenRandomness []UnprovenRandomness `protobuf:"bytes,1,rep,name=unprovenRandomness,proto3" json:"unprovenRandomness"`
 	Pagination         *query.PageResponse  `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) Reset()         { *m = QueryAllUnprovenRendomnessResponse{} }
-func (m *QueryAllUnprovenRendomnessResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllUnprovenRendomnessResponse) ProtoMessage()    {}
-func (*QueryAllUnprovenRendomnessResponse) Descriptor() ([]byte, []int) {
+func (m *QueryAllUnprovenRandomnessResponse) Reset()         { *m = QueryAllUnprovenRandomnessResponse{} }
+func (m *QueryAllUnprovenRandomnessResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllUnprovenRandomnessResponse) ProtoMessage()    {}
+func (*QueryAllUnprovenRandomnessResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_65353470ad278880, []int{7}
 }
-func (m *QueryAllUnprovenRendomnessResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllUnprovenRandomnessResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllUnprovenRendomnessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllUnprovenRandomnessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllUnprovenRendomnessResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllUnprovenRandomnessResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -351,26 +351,26 @@ func (m *QueryAllUnprovenRendomnessResponse) XXX_Marshal(b []byte, deterministic
 		return b[:n], nil
 	}
 }
-func (m *QueryAllUnprovenRendomnessResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllUnprovenRendomnessResponse.Merge(m, src)
+func (m *QueryAllUnprovenRandomnessResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllUnprovenRandomnessResponse.Merge(m, src)
 }
-func (m *QueryAllUnprovenRendomnessResponse) XXX_Size() int {
+func (m *QueryAllUnprovenRandomnessResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllUnprovenRendomnessResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllUnprovenRendomnessResponse.DiscardUnknown(m)
+func (m *QueryAllUnprovenRandomnessResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllUnprovenRandomnessResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllUnprovenRendomnessResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllUnprovenRandomnessResponse proto.InternalMessageInfo
 
-func (m *QueryAllUnprovenRendomnessResponse) GetUnprovenRendomness() []UnprovenRendomness {
+func (m *QueryAllUnprovenRandomnessResponse) GetUnprovenRandomness() []UnprovenRandomness {
 	if m != nil {
-		return m.UnprovenRendomness
+		return m.UnprovenRandomness
 	}
 	return nil
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) GetPagination() *query.PageResponse {
+func (m *QueryAllUnprovenRandomnessResponse) GetPagination() *query.PageResponse {
 	if m != nil {
 		return m.Pagination
 	}
@@ -566,10 +566,10 @@ func init() {
 	proto.RegisterType((*QueryParamsResponse)(nil), "saturn.randomness.QueryParamsResponse")
 	proto.RegisterType((*QueryGetChainInfoRequest)(nil), "saturn.randomness.QueryGetChainInfoRequest")
 	proto.RegisterType((*QueryGetChainInfoResponse)(nil), "saturn.randomness.QueryGetChainInfoResponse")
-	proto.RegisterType((*QueryGetUnprovenRendomnessRequest)(nil), "saturn.randomness.QueryGetUnprovenRendomnessRequest")
-	proto.RegisterType((*QueryGetUnprovenRendomnessResponse)(nil), "saturn.randomness.QueryGetUnprovenRendomnessResponse")
-	proto.RegisterType((*QueryAllUnprovenRendomnessRequest)(nil), "saturn.randomness.QueryAllUnprovenRendomnessRequest")
-	proto.RegisterType((*QueryAllUnprovenRendomnessResponse)(nil), "saturn.randomness.QueryAllUnprovenRendomnessResponse")
+	proto.RegisterType((*QueryGetUnprovenRandomnessRequest)(nil), "saturn.randomness.QueryGetUnprovenRandomnessRequest")
+	proto.RegisterType((*QueryGetUnprovenRandomnessResponse)(nil), "saturn.randomness.QueryGetUnprovenRandomnessResponse")
+	proto.RegisterType((*QueryAllUnprovenRandomnessRequest)(nil), "saturn.randomness.QueryAllUnprovenRandomnessRequest")
+	proto.RegisterType((*QueryAllUnprovenRandomnessResponse)(nil), "saturn.randomness.QueryAllUnprovenRandomnessResponse")
 	proto.RegisterType((*QueryGetProvenRandomnessRequest)(nil), "saturn.randomness.QueryGetProvenRandomnessRequest")
 	proto.RegisterType((*QueryGetProvenRandomnessResponse)(nil), "saturn.randomness.QueryGetProvenRandomnessResponse")
 	proto.RegisterType((*QueryAllProvenRandomnessRequest)(nil), "saturn.randomness.QueryAllProvenRandomnessRequest")
@@ -579,52 +579,51 @@ func init() {
 func init() { proto.RegisterFile("randomness/query.proto", fileDescriptor_65353470ad278880) }
 
 var fileDescriptor_65353470ad278880 = []byte{
-	// 706 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0x3f, 0x4f, 0x14, 0x4f,
-	0x18, 0xc7, 0x6f, 0xe0, 0x07, 0xbf, 0x30, 0x36, 0x38, 0xa0, 0x72, 0x0b, 0x1e, 0x30, 0xc2, 0x49,
-	0x94, 0xec, 0xca, 0x81, 0x12, 0x3b, 0xc1, 0x44, 0x62, 0x63, 0xf0, 0x12, 0x1a, 0x8d, 0x21, 0x03,
-	0x0c, 0xe7, 0xc6, 0x65, 0x66, 0xd9, 0xdd, 0x23, 0xa0, 0xb1, 0xd0, 0xde, 0xc4, 0xc4, 0xb7, 0x61,
-	0x63, 0x62, 0x63, 0x6b, 0x45, 0xac, 0x48, 0x6c, 0xac, 0x8c, 0x01, 0x1b, 0xdf, 0x85, 0xb9, 0x99,
-	0x67, 0xef, 0xf6, 0x6e, 0x67, 0x97, 0x23, 0xd2, 0xc1, 0x3e, 0x7f, 0xbe, 0x9f, 0xe7, 0x99, 0x67,
-	0x9e, 0x39, 0x7c, 0x39, 0x60, 0x62, 0x4b, 0xee, 0x08, 0x1e, 0x86, 0xce, 0x6e, 0x9d, 0x07, 0x07,
-	0xb6, 0x1f, 0xc8, 0x48, 0x92, 0x8b, 0x21, 0x8b, 0xea, 0x81, 0xb0, 0x5b, 0x66, 0x6b, 0xb8, 0x26,
-	0x6b, 0x52, 0x59, 0x9d, 0xc6, 0x5f, 0xda, 0xd1, 0x1a, 0xab, 0x49, 0x59, 0xf3, 0xb8, 0xc3, 0x7c,
-	0xd7, 0x61, 0x42, 0xc8, 0x88, 0x45, 0xae, 0x14, 0x21, 0x58, 0x6f, 0x6c, 0xca, 0x70, 0x47, 0x86,
-	0xce, 0x06, 0x0b, 0xb9, 0xce, 0xef, 0xec, 0xcd, 0x6d, 0xf0, 0x88, 0xcd, 0x39, 0x3e, 0xab, 0xb9,
-	0x42, 0x39, 0x83, 0xef, 0x95, 0x04, 0x8a, 0xcf, 0x02, 0xb6, 0x13, 0x27, 0x19, 0x4d, 0x18, 0x36,
-	0x9f, 0x33, 0x57, 0xac, 0xbb, 0x62, 0x3b, 0xd6, 0x9f, 0x4a, 0x18, 0xeb, 0xc2, 0x0f, 0xe4, 0x1e,
-	0x17, 0xeb, 0x01, 0x8f, 0xbf, 0x81, 0x17, 0x4d, 0xe6, 0x06, 0x1f, 0xd6, 0xee, 0x43, 0x87, 0x31,
-	0x79, 0xdc, 0x20, 0x5c, 0x55, 0xda, 0x55, 0xbe, 0x5b, 0xe7, 0x61, 0x44, 0x1f, 0xe1, 0xa1, 0xb6,
-	0xaf, 0xa1, 0x2f, 0x45, 0xc8, 0xc9, 0x22, 0xee, 0xd7, 0x8c, 0x23, 0x68, 0x02, 0xcd, 0x5c, 0xa8,
-	0x14, 0xed, 0x54, 0xc3, 0x6c, 0x1d, 0xb2, 0xfc, 0xdf, 0xe1, 0xcf, 0xf1, 0x42, 0x15, 0xdc, 0xa9,
-	0x85, 0x47, 0x54, 0xbe, 0x15, 0x1e, 0xdd, 0x6f, 0xd4, 0xf2, 0x50, 0x6c, 0xcb, 0x58, 0xeb, 0x19,
-	0x2e, 0x1a, 0x6c, 0xa0, 0x78, 0x0f, 0x0f, 0x34, 0x3f, 0x82, 0xe8, 0x98, 0x41, 0xb4, 0xe9, 0x03,
-	0xba, 0xad, 0x20, 0x7a, 0x17, 0x4f, 0xc6, 0xe9, 0xd7, 0xa0, 0x53, 0xd5, 0x66, 0xa3, 0x80, 0x81,
-	0x0c, 0xe3, 0x3e, 0x57, 0x6c, 0xf1, 0x7d, 0x25, 0x31, 0x50, 0xd5, 0xff, 0xd0, 0x37, 0x08, 0xd3,
-	0xbc, 0x58, 0x60, 0x7c, 0x8a, 0x49, 0x3d, 0x65, 0x05, 0xd8, 0x69, 0x03, 0x6c, 0x3a, 0x15, 0x50,
-	0x1b, 0xd2, 0xd0, 0x17, 0x80, 0xbf, 0xe4, 0x79, 0xd9, 0xf8, 0x0f, 0x30, 0x6e, 0x0d, 0x16, 0x28,
-	0x97, 0x6d, 0x3d, 0x85, 0x76, 0x63, 0x0a, 0x6d, 0x3d, 0xe5, 0x30, 0x85, 0xf6, 0x2a, 0xab, 0x71,
-	0x88, 0xad, 0x26, 0x22, 0xe9, 0xb7, 0xb8, 0xe0, 0x0c, 0xb5, 0x53, 0x0a, 0xee, 0x3d, 0x87, 0x82,
-	0xc9, 0x4a, 0x5b, 0x2d, 0x3d, 0xaa, 0x96, 0xeb, 0xa7, 0xd6, 0xa2, 0xc9, 0xda, 0x8a, 0x59, 0xc4,
-	0xe3, 0xf1, 0xe1, 0xad, 0x6a, 0x11, 0xd6, 0xdd, 0xb1, 0x1f, 0xe0, 0x89, 0xec, 0x40, 0x68, 0xc1,
-	0x1a, 0x1e, 0xf4, 0x3b, 0x6c, 0xd0, 0xf7, 0x6b, 0xa6, 0x3b, 0xd1, 0xe1, 0x0a, 0xe5, 0xa7, 0x52,
-	0x50, 0x17, 0x98, 0x97, 0x3c, 0x2f, 0x8b, 0xf9, 0xbc, 0xce, 0xfa, 0x2b, 0x82, 0x32, 0x8d, 0x5a,
-	0xb9, 0x65, 0xf6, 0xfe, 0x63, 0x99, 0xe7, 0x76, 0xc6, 0x95, 0x3f, 0xff, 0xe3, 0x3e, 0x55, 0x04,
-	0x79, 0x89, 0xfb, 0xf5, 0xe6, 0x21, 0xa6, 0x09, 0x4c, 0xaf, 0x38, 0xab, 0x7c, 0x9a, 0x9b, 0x96,
-	0xa3, 0x93, 0x6f, 0xbf, 0xff, 0xfe, 0xd0, 0x33, 0x4a, 0x8a, 0x8e, 0xf6, 0x77, 0x52, 0x0b, 0x9b,
-	0xbc, 0x43, 0x89, 0x2d, 0x45, 0x6e, 0x66, 0x25, 0x36, 0x2c, 0x3f, 0x6b, 0xb6, 0x3b, 0x67, 0x60,
-	0x99, 0x56, 0x2c, 0xe3, 0xe4, 0xaa, 0x81, 0xa5, 0xf5, 0x46, 0x90, 0x2f, 0x08, 0x93, 0xf4, 0x9d,
-	0x23, 0x0b, 0x39, 0x5a, 0x99, 0xbb, 0xc5, 0xba, 0x7d, 0xc6, 0x28, 0x40, 0xbd, 0xa3, 0x50, 0x6f,
-	0x11, 0xdb, 0x80, 0x6a, 0x78, 0xb1, 0x9c, 0x57, 0xea, 0xee, 0xbd, 0x26, 0x9f, 0x11, 0xbe, 0x94,
-	0x4e, 0xbb, 0xe4, 0x79, 0xd9, 0xf8, 0x79, 0xab, 0x31, 0x1b, 0x3f, 0x77, 0xc5, 0x51, 0x5b, 0xe1,
-	0xcf, 0x90, 0x72, 0x77, 0xf8, 0xe4, 0x13, 0xc2, 0x83, 0x9d, 0xe3, 0x4f, 0x2a, 0x39, 0xad, 0xcb,
-	0xb8, 0xde, 0xd6, 0xfc, 0x99, 0x62, 0x80, 0x76, 0x41, 0xd1, 0xda, 0x64, 0xd6, 0x34, 0xa3, 0x9d,
-	0x0f, 0x7f, 0xb3, 0xd5, 0x1f, 0x11, 0x1e, 0xea, 0x4c, 0xd9, 0x68, 0x74, 0x25, 0xa7, 0x65, 0x67,
-	0xc6, 0xce, 0xd9, 0x2e, 0x74, 0x56, 0x61, 0x97, 0xc9, 0x54, 0x37, 0xd8, 0xcb, 0xf3, 0x87, 0xc7,
-	0x25, 0x74, 0x74, 0x5c, 0x42, 0xbf, 0x8e, 0x4b, 0xe8, 0xfd, 0x49, 0xa9, 0x70, 0x74, 0x52, 0x2a,
-	0xfc, 0x38, 0x29, 0x15, 0x9e, 0x14, 0x21, 0x7c, 0x3f, 0x99, 0x20, 0x3a, 0xf0, 0x79, 0xb8, 0xd1,
-	0xaf, 0x7e, 0xe5, 0xcc, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x57, 0xed, 0xc9, 0xa1, 0xf2, 0x09,
-	0x00, 0x00,
+	// 692 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x96, 0x4f, 0x4f, 0x13, 0x4f,
+	0x18, 0xc7, 0x3b, 0xf0, 0x83, 0x5f, 0x18, 0x2f, 0x38, 0xa0, 0xd2, 0x05, 0x17, 0x18, 0xa1, 0x12,
+	0x25, 0xbb, 0x52, 0x50, 0xe2, 0xcd, 0x62, 0x22, 0xf1, 0x62, 0x6a, 0x13, 0x2e, 0x1a, 0x43, 0xa6,
+	0x30, 0xac, 0x1b, 0xb7, 0x33, 0xcb, 0xee, 0x96, 0x50, 0x8d, 0x07, 0xbd, 0x9b, 0x98, 0xf8, 0x36,
+	0xbc, 0x98, 0x78, 0xf1, 0xea, 0x89, 0x78, 0x22, 0xf1, 0xe2, 0xc9, 0x98, 0xd6, 0x8b, 0xef, 0xc2,
+	0x74, 0x76, 0xb6, 0xdd, 0xba, 0xb3, 0xdb, 0x36, 0xe2, 0x0d, 0xe6, 0xf9, 0xf7, 0xf9, 0x3e, 0xf3,
+	0xcc, 0xb3, 0x85, 0x17, 0x3d, 0xc2, 0xf6, 0x79, 0x8d, 0x51, 0xdf, 0x37, 0x0f, 0xeb, 0xd4, 0x6b,
+	0x18, 0xae, 0xc7, 0x03, 0x8e, 0xce, 0xfb, 0x24, 0xa8, 0x7b, 0xcc, 0xe8, 0x9a, 0xb5, 0x69, 0x8b,
+	0x5b, 0x5c, 0x58, 0xcd, 0xf6, 0x5f, 0xa1, 0xa3, 0x36, 0x67, 0x71, 0x6e, 0x39, 0xd4, 0x24, 0xae,
+	0x6d, 0x12, 0xc6, 0x78, 0x40, 0x02, 0x9b, 0x33, 0x5f, 0x5a, 0xaf, 0xed, 0x71, 0xbf, 0xc6, 0x7d,
+	0xb3, 0x4a, 0x7c, 0x1a, 0xe6, 0x37, 0x8f, 0xd6, 0xaa, 0x34, 0x20, 0x6b, 0xa6, 0x4b, 0x2c, 0x9b,
+	0x09, 0x67, 0xe9, 0x7b, 0x29, 0x86, 0xe2, 0x12, 0x8f, 0xd4, 0xa2, 0x24, 0xb3, 0x31, 0xc3, 0xde,
+	0x53, 0x62, 0xb3, 0x5d, 0x9b, 0x1d, 0x44, 0xf5, 0x97, 0x62, 0xc6, 0x3a, 0x73, 0x3d, 0x7e, 0x44,
+	0xd9, 0x6e, 0xf7, 0x4c, 0x7a, 0xe1, 0x78, 0x6e, 0xb5, 0x0f, 0x9e, 0x86, 0xe8, 0x61, 0x9b, 0xb0,
+	0x2c, 0x6a, 0x57, 0xe8, 0x61, 0x9d, 0xfa, 0x01, 0x7e, 0x00, 0xa7, 0x7a, 0x4e, 0x7d, 0x97, 0x33,
+	0x9f, 0xa2, 0x4d, 0x38, 0x1e, 0x32, 0xce, 0x80, 0x05, 0xb0, 0x72, 0xae, 0x98, 0x37, 0x12, 0x0d,
+	0x33, 0xc2, 0x90, 0xad, 0xff, 0x4e, 0xbe, 0xcf, 0xe7, 0x2a, 0xd2, 0x1d, 0x6b, 0x70, 0x46, 0xe4,
+	0xdb, 0xa6, 0xc1, 0xdd, 0xb6, 0x96, 0xfb, 0xec, 0x80, 0x47, 0xb5, 0x9e, 0xc0, 0xbc, 0xc2, 0x26,
+	0x2b, 0xde, 0x81, 0x13, 0x9d, 0x43, 0x59, 0x74, 0x4e, 0x51, 0xb4, 0xe3, 0x23, 0xeb, 0x76, 0x83,
+	0xf0, 0x6d, 0xb8, 0x18, 0xa5, 0xdf, 0x91, 0x9d, 0xaa, 0x74, 0x02, 0x25, 0x03, 0x9a, 0x86, 0x63,
+	0x36, 0xdb, 0xa7, 0xc7, 0xa2, 0xc4, 0x44, 0x25, 0xfc, 0x07, 0xbf, 0x02, 0x10, 0x67, 0xc5, 0x4a,
+	0xc6, 0xc7, 0x10, 0xd5, 0x13, 0x56, 0x09, 0xbb, 0xac, 0x80, 0x4d, 0xa6, 0x92, 0xd4, 0x8a, 0x34,
+	0xf8, 0x99, 0xc4, 0x2f, 0x39, 0x4e, 0x3a, 0xfe, 0x3d, 0x08, 0xbb, 0x83, 0x25, 0x2b, 0x17, 0x8c,
+	0x70, 0x0a, 0x8d, 0xf6, 0x14, 0x1a, 0xe1, 0x94, 0xcb, 0x29, 0x34, 0xca, 0xc4, 0xa2, 0x32, 0xb6,
+	0x12, 0x8b, 0xc4, 0x5f, 0x22, 0xc1, 0x29, 0xd5, 0xfa, 0x08, 0x1e, 0x3d, 0x03, 0xc1, 0x68, 0xbb,
+	0x47, 0xcb, 0x88, 0xd0, 0x72, 0xb5, 0xaf, 0x96, 0x90, 0xac, 0x47, 0xcc, 0x26, 0x9c, 0x8f, 0x2e,
+	0xaf, 0x3c, 0xd4, 0xb5, 0x37, 0xe0, 0x42, 0x7a, 0xa0, 0x6c, 0xc1, 0x0e, 0x9c, 0x4c, 0xb9, 0xf1,
+	0x2b, 0xaa, 0x37, 0xa1, 0x96, 0x9f, 0x48, 0x81, 0x6d, 0xc9, 0x5c, 0x72, 0x9c, 0xf2, 0x3f, 0xbe,
+	0xeb, 0xcf, 0x40, 0xca, 0x54, 0xd6, 0xca, 0x94, 0x39, 0xfa, 0x97, 0x32, 0xcf, 0xec, 0x8e, 0x8b,
+	0xbf, 0xfe, 0x87, 0x63, 0x42, 0x04, 0x7a, 0x0e, 0xc7, 0xc3, 0xcd, 0x83, 0x54, 0x13, 0x98, 0x5c,
+	0x71, 0x5a, 0xa1, 0x9f, 0x5b, 0x58, 0x0e, 0x2f, 0xbe, 0xfe, 0xfa, 0xf3, 0xdd, 0xc8, 0x2c, 0xca,
+	0x9b, 0xa1, 0xbf, 0x99, 0x58, 0xd8, 0xe8, 0x0d, 0x88, 0x6d, 0x29, 0x74, 0x3d, 0x2d, 0xb1, 0x62,
+	0xf9, 0x69, 0xab, 0x83, 0x39, 0x4b, 0x96, 0x65, 0xc1, 0x32, 0x8f, 0x2e, 0x2b, 0x58, 0xba, 0xdf,
+	0x08, 0xf4, 0x09, 0x40, 0x94, 0x7c, 0x73, 0x68, 0x23, 0xa3, 0x56, 0xea, 0x6e, 0xd1, 0x6e, 0x0e,
+	0x19, 0x25, 0x51, 0x6f, 0x09, 0xd4, 0x1b, 0xc8, 0x50, 0xa0, 0x2a, 0xbe, 0x58, 0xe6, 0x0b, 0xf1,
+	0xf6, 0x5e, 0xa2, 0x8f, 0x00, 0x5e, 0x48, 0xa6, 0x2d, 0x39, 0x4e, 0x3a, 0x7e, 0xd6, 0x6a, 0x4c,
+	0xc7, 0xcf, 0x5c, 0x71, 0xd8, 0x10, 0xf8, 0x2b, 0xa8, 0x30, 0x18, 0x3e, 0xfa, 0x00, 0xe0, 0xe4,
+	0x9f, 0xe3, 0x8f, 0x8a, 0x19, 0xad, 0x4b, 0x79, 0xde, 0xda, 0xfa, 0x50, 0x31, 0x92, 0x76, 0x43,
+	0xd0, 0x1a, 0x68, 0x55, 0x35, 0xa3, 0xa9, 0xad, 0x7e, 0x0f, 0xe0, 0x54, 0x59, 0xd1, 0xe8, 0x62,
+	0x46, 0xcb, 0x86, 0xc6, 0xce, 0xd8, 0x2e, 0x78, 0x55, 0x60, 0x17, 0xd0, 0xd2, 0x20, 0xd8, 0x5b,
+	0xeb, 0x27, 0x4d, 0x1d, 0x9c, 0x36, 0x75, 0xf0, 0xa3, 0xa9, 0x83, 0xb7, 0x2d, 0x3d, 0x77, 0xda,
+	0xd2, 0x73, 0xdf, 0x5a, 0x7a, 0xee, 0x51, 0x5e, 0x86, 0x1f, 0xc7, 0x13, 0x04, 0x0d, 0x97, 0xfa,
+	0xd5, 0x71, 0xf1, 0x2b, 0x67, 0xfd, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff, 0x58, 0xa5, 0xe1, 0x17,
+	0xf2, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -643,10 +642,10 @@ type QueryClient interface {
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 	// Queries a ChainInfo by index.
 	ChainInfo(ctx context.Context, in *QueryGetChainInfoRequest, opts ...grpc.CallOption) (*QueryGetChainInfoResponse, error)
-	// Queries a UnprovenRendomness by index.
-	UnprovenRendomness(ctx context.Context, in *QueryGetUnprovenRendomnessRequest, opts ...grpc.CallOption) (*QueryGetUnprovenRendomnessResponse, error)
-	// Queries a list of UnprovenRendomness items.
-	UnprovenRendomnessAll(ctx context.Context, in *QueryAllUnprovenRendomnessRequest, opts ...grpc.CallOption) (*QueryAllUnprovenRendomnessResponse, error)
+	// Queries a UnprovenRandomness by index.
+	UnprovenRandomness(ctx context.Context, in *QueryGetUnprovenRandomnessRequest, opts ...grpc.CallOption) (*QueryGetUnprovenRandomnessResponse, error)
+	// Queries a list of UnprovenRandomness items.
+	UnprovenRandomnessAll(ctx context.Context, in *QueryAllUnprovenRandomnessRequest, opts ...grpc.CallOption) (*QueryAllUnprovenRandomnessResponse, error)
 	// Queries a ProvenRandomness by index.
 	ProvenRandomness(ctx context.Context, in *QueryGetProvenRandomnessRequest, opts ...grpc.CallOption) (*QueryGetProvenRandomnessResponse, error)
 	// Queries a list of ProvenRandomness items.
@@ -679,18 +678,18 @@ func (c *queryClient) ChainInfo(ctx context.Context, in *QueryGetChainInfoReques
 	return out, nil
 }
 
-func (c *queryClient) UnprovenRendomness(ctx context.Context, in *QueryGetUnprovenRendomnessRequest, opts ...grpc.CallOption) (*QueryGetUnprovenRendomnessResponse, error) {
-	out := new(QueryGetUnprovenRendomnessResponse)
-	err := c.cc.Invoke(ctx, "/saturn.randomness.Query/UnprovenRendomness", in, out, opts...)
+func (c *queryClient) UnprovenRandomness(ctx context.Context, in *QueryGetUnprovenRandomnessRequest, opts ...grpc.CallOption) (*QueryGetUnprovenRandomnessResponse, error) {
+	out := new(QueryGetUnprovenRandomnessResponse)
+	err := c.cc.Invoke(ctx, "/saturn.randomness.Query/UnprovenRandomness", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) UnprovenRendomnessAll(ctx context.Context, in *QueryAllUnprovenRendomnessRequest, opts ...grpc.CallOption) (*QueryAllUnprovenRendomnessResponse, error) {
-	out := new(QueryAllUnprovenRendomnessResponse)
-	err := c.cc.Invoke(ctx, "/saturn.randomness.Query/UnprovenRendomnessAll", in, out, opts...)
+func (c *queryClient) UnprovenRandomnessAll(ctx context.Context, in *QueryAllUnprovenRandomnessRequest, opts ...grpc.CallOption) (*QueryAllUnprovenRandomnessResponse, error) {
+	out := new(QueryAllUnprovenRandomnessResponse)
+	err := c.cc.Invoke(ctx, "/saturn.randomness.Query/UnprovenRandomnessAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -721,10 +720,10 @@ type QueryServer interface {
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 	// Queries a ChainInfo by index.
 	ChainInfo(context.Context, *QueryGetChainInfoRequest) (*QueryGetChainInfoResponse, error)
-	// Queries a UnprovenRendomness by index.
-	UnprovenRendomness(context.Context, *QueryGetUnprovenRendomnessRequest) (*QueryGetUnprovenRendomnessResponse, error)
-	// Queries a list of UnprovenRendomness items.
-	UnprovenRendomnessAll(context.Context, *QueryAllUnprovenRendomnessRequest) (*QueryAllUnprovenRendomnessResponse, error)
+	// Queries a UnprovenRandomness by index.
+	UnprovenRandomness(context.Context, *QueryGetUnprovenRandomnessRequest) (*QueryGetUnprovenRandomnessResponse, error)
+	// Queries a list of UnprovenRandomness items.
+	UnprovenRandomnessAll(context.Context, *QueryAllUnprovenRandomnessRequest) (*QueryAllUnprovenRandomnessResponse, error)
 	// Queries a ProvenRandomness by index.
 	ProvenRandomness(context.Context, *QueryGetProvenRandomnessRequest) (*QueryGetProvenRandomnessResponse, error)
 	// Queries a list of ProvenRandomness items.
@@ -741,11 +740,11 @@ func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsReq
 func (*UnimplementedQueryServer) ChainInfo(ctx context.Context, req *QueryGetChainInfoRequest) (*QueryGetChainInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChainInfo not implemented")
 }
-func (*UnimplementedQueryServer) UnprovenRendomness(ctx context.Context, req *QueryGetUnprovenRendomnessRequest) (*QueryGetUnprovenRendomnessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnprovenRendomness not implemented")
+func (*UnimplementedQueryServer) UnprovenRandomness(ctx context.Context, req *QueryGetUnprovenRandomnessRequest) (*QueryGetUnprovenRandomnessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnprovenRandomness not implemented")
 }
-func (*UnimplementedQueryServer) UnprovenRendomnessAll(ctx context.Context, req *QueryAllUnprovenRendomnessRequest) (*QueryAllUnprovenRendomnessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnprovenRendomnessAll not implemented")
+func (*UnimplementedQueryServer) UnprovenRandomnessAll(ctx context.Context, req *QueryAllUnprovenRandomnessRequest) (*QueryAllUnprovenRandomnessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnprovenRandomnessAll not implemented")
 }
 func (*UnimplementedQueryServer) ProvenRandomness(ctx context.Context, req *QueryGetProvenRandomnessRequest) (*QueryGetProvenRandomnessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProvenRandomness not implemented")
@@ -794,38 +793,38 @@ func _Query_ChainInfo_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_UnprovenRendomness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetUnprovenRendomnessRequest)
+func _Query_UnprovenRandomness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetUnprovenRandomnessRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).UnprovenRendomness(ctx, in)
+		return srv.(QueryServer).UnprovenRandomness(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/saturn.randomness.Query/UnprovenRendomness",
+		FullMethod: "/saturn.randomness.Query/UnprovenRandomness",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).UnprovenRendomness(ctx, req.(*QueryGetUnprovenRendomnessRequest))
+		return srv.(QueryServer).UnprovenRandomness(ctx, req.(*QueryGetUnprovenRandomnessRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_UnprovenRendomnessAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllUnprovenRendomnessRequest)
+func _Query_UnprovenRandomnessAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllUnprovenRandomnessRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).UnprovenRendomnessAll(ctx, in)
+		return srv.(QueryServer).UnprovenRandomnessAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/saturn.randomness.Query/UnprovenRendomnessAll",
+		FullMethod: "/saturn.randomness.Query/UnprovenRandomnessAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).UnprovenRendomnessAll(ctx, req.(*QueryAllUnprovenRendomnessRequest))
+		return srv.(QueryServer).UnprovenRandomnessAll(ctx, req.(*QueryAllUnprovenRandomnessRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -879,12 +878,12 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Query_ChainInfo_Handler,
 		},
 		{
-			MethodName: "UnprovenRendomness",
-			Handler:    _Query_UnprovenRendomness_Handler,
+			MethodName: "UnprovenRandomness",
+			Handler:    _Query_UnprovenRandomness_Handler,
 		},
 		{
-			MethodName: "UnprovenRendomnessAll",
-			Handler:    _Query_UnprovenRendomnessAll_Handler,
+			MethodName: "UnprovenRandomnessAll",
+			Handler:    _Query_UnprovenRandomnessAll_Handler,
 		},
 		{
 			MethodName: "ProvenRandomness",
@@ -1011,7 +1010,7 @@ func (m *QueryGetChainInfoResponse) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetUnprovenRendomnessRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetUnprovenRandomnessRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1021,12 +1020,12 @@ func (m *QueryGetUnprovenRendomnessRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetUnprovenRendomnessRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetUnprovenRandomnessRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetUnprovenRendomnessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetUnprovenRandomnessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1041,7 +1040,7 @@ func (m *QueryGetUnprovenRendomnessRequest) MarshalToSizedBuffer(dAtA []byte) (i
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetUnprovenRendomnessResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetUnprovenRandomnessResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1051,18 +1050,18 @@ func (m *QueryGetUnprovenRendomnessResponse) Marshal() (dAtA []byte, err error) 
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetUnprovenRendomnessResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetUnprovenRandomnessResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetUnprovenRendomnessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetUnprovenRandomnessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	{
-		size, err := m.UnprovenRendomness.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.UnprovenRandomness.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1074,7 +1073,7 @@ func (m *QueryGetUnprovenRendomnessResponse) MarshalToSizedBuffer(dAtA []byte) (
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllUnprovenRendomnessRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllUnprovenRandomnessRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1084,12 +1083,12 @@ func (m *QueryAllUnprovenRendomnessRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllUnprovenRendomnessRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllUnprovenRandomnessRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllUnprovenRendomnessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllUnprovenRandomnessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1109,7 +1108,7 @@ func (m *QueryAllUnprovenRendomnessRequest) MarshalToSizedBuffer(dAtA []byte) (i
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllUnprovenRandomnessResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1119,12 +1118,12 @@ func (m *QueryAllUnprovenRendomnessResponse) Marshal() (dAtA []byte, err error) 
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllUnprovenRandomnessResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllUnprovenRandomnessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1141,10 +1140,10 @@ func (m *QueryAllUnprovenRendomnessResponse) MarshalToSizedBuffer(dAtA []byte) (
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.UnprovenRendomness) > 0 {
-		for iNdEx := len(m.UnprovenRendomness) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.UnprovenRandomness) > 0 {
+		for iNdEx := len(m.UnprovenRandomness) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.UnprovenRendomness[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.UnprovenRandomness[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -1356,7 +1355,7 @@ func (m *QueryGetChainInfoResponse) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetUnprovenRendomnessRequest) Size() (n int) {
+func (m *QueryGetUnprovenRandomnessRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1369,18 +1368,18 @@ func (m *QueryGetUnprovenRendomnessRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetUnprovenRendomnessResponse) Size() (n int) {
+func (m *QueryGetUnprovenRandomnessResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = m.UnprovenRendomness.Size()
+	l = m.UnprovenRandomness.Size()
 	n += 1 + l + sovQuery(uint64(l))
 	return n
 }
 
-func (m *QueryAllUnprovenRendomnessRequest) Size() (n int) {
+func (m *QueryAllUnprovenRandomnessRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1393,14 +1392,14 @@ func (m *QueryAllUnprovenRendomnessRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryAllUnprovenRendomnessResponse) Size() (n int) {
+func (m *QueryAllUnprovenRandomnessResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.UnprovenRendomness) > 0 {
-		for _, e := range m.UnprovenRendomness {
+	if len(m.UnprovenRandomness) > 0 {
+		for _, e := range m.UnprovenRandomness {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1740,7 +1739,7 @@ func (m *QueryGetChainInfoResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetUnprovenRandomnessRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1763,10 +1762,10 @@ func (m *QueryGetUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetUnprovenRendomnessRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetUnprovenRandomnessRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetUnprovenRendomnessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetUnprovenRandomnessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1822,7 +1821,7 @@ func (m *QueryGetUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryGetUnprovenRandomnessResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1845,15 +1844,15 @@ func (m *QueryGetUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetUnprovenRendomnessResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetUnprovenRandomnessResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetUnprovenRendomnessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetUnprovenRandomnessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field UnprovenRendomness", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field UnprovenRandomness", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1880,7 +1879,7 @@ func (m *QueryGetUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.UnprovenRendomness.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.UnprovenRandomness.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1905,7 +1904,7 @@ func (m *QueryGetUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryAllUnprovenRandomnessRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1928,10 +1927,10 @@ func (m *QueryAllUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllUnprovenRendomnessRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllUnprovenRandomnessRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllUnprovenRendomnessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllUnprovenRandomnessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1991,7 +1990,7 @@ func (m *QueryAllUnprovenRendomnessRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryAllUnprovenRandomnessResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2014,15 +2013,15 @@ func (m *QueryAllUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllUnprovenRendomnessResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllUnprovenRandomnessResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllUnprovenRendomnessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllUnprovenRandomnessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field UnprovenRendomness", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field UnprovenRandomness", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -2049,8 +2048,8 @@ func (m *QueryAllUnprovenRendomnessResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.UnprovenRendomness = append(m.UnprovenRendomness, UnprovenRendomness{})
-			if err := m.UnprovenRendomness[len(m.UnprovenRendomness)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.UnprovenRandomness = append(m.UnprovenRandomness, UnprovenRandomness{})
+			if err := m.UnprovenRandomness[len(m.UnprovenRandomness)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

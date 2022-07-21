@@ -16,7 +16,7 @@ func DefaultGenesis() *GenesisState {
 			GenesisTime: 1595431050,
 			Hash:        "8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce",
 		},
-		UnprovenRendomnessList: []UnprovenRendomness{},
+		UnprovenRandomnessList: []UnprovenRandomness{},
 		ProvenRandomnessList:   []ProvenRandomness{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
@@ -26,15 +26,15 @@ func DefaultGenesis() *GenesisState {
 // Validate performs basic genesis state validation returning an error upon any
 // failure.
 func (gs GenesisState) Validate() error {
-	// Check for duplicated index in unprovenRendomness
-	unprovenRendomnessIndexMap := make(map[string]struct{})
+	// Check for duplicated index in unprovenRandomness
+	unprovenRandomnessIndexMap := make(map[string]struct{})
 
-	for _, elem := range gs.UnprovenRendomnessList {
-		index := string(UnprovenRendomnessKey(elem.Index))
-		if _, ok := unprovenRendomnessIndexMap[index]; ok {
-			return fmt.Errorf("duplicated index for unprovenRendomness")
+	for _, elem := range gs.UnprovenRandomnessList {
+		index := string(UnprovenRandomnessKey(elem.Index))
+		if _, ok := unprovenRandomnessIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for unprovenRandomness")
 		}
-		unprovenRendomnessIndexMap[index] = struct{}{}
+		unprovenRandomnessIndexMap[index] = struct{}{}
 	}
 	// Check for duplicated index in provenRandomness
 	provenRandomnessIndexMap := make(map[string]struct{})

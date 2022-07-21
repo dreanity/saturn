@@ -3,16 +3,17 @@ package cli
 import (
 	"context"
 
+	"saturn/x/randomness/types"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
-	"saturn/x/randomness/types"
 )
 
-func CmdListUnprovenRendomness() *cobra.Command {
+func CmdListUnprovenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-unproven-rendomness",
-		Short: "list all unproven_rendomness",
+		Use:   "list-unproven-randomness",
+		Short: "list all unproven_randomness",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
@@ -23,11 +24,11 @@ func CmdListUnprovenRendomness() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllUnprovenRendomnessRequest{
+			params := &types.QueryAllUnprovenRandomnessRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.UnprovenRendomnessAll(context.Background(), params)
+			res, err := queryClient.UnprovenRandomnessAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -42,10 +43,10 @@ func CmdListUnprovenRendomness() *cobra.Command {
 	return cmd
 }
 
-func CmdShowUnprovenRendomness() *cobra.Command {
+func CmdShowUnprovenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-unproven-rendomness [index]",
-		Short: "shows a unproven_rendomness",
+		Use:   "show-unproven-randomness [index]",
+		Short: "shows a unproven_randomness",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
@@ -54,11 +55,11 @@ func CmdShowUnprovenRendomness() *cobra.Command {
 
 			argIndex := args[0]
 
-			params := &types.QueryGetUnprovenRendomnessRequest{
+			params := &types.QueryGetUnprovenRandomnessRequest{
 				Index: argIndex,
 			}
 
-			res, err := queryClient.UnprovenRendomness(context.Background(), params)
+			res, err := queryClient.UnprovenRandomness(context.Background(), params)
 			if err != nil {
 				return err
 			}

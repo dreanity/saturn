@@ -30073,17 +30073,17 @@ paths:
           type: string
       tags:
         - Query
-  /saturn/randomness/unproven_rendomness:
+  /saturn/randomness/unproven_randomness:
     get:
-      summary: Queries a list of UnprovenRendomness items.
-      operationId: SaturnRandomnessUnprovenRendomnessAll
+      summary: Queries a list of UnprovenRandomness items.
+      operationId: SaturnRandomnessUnprovenRandomnessAll
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              unprovenRendomness:
+              unprovenRandomness:
                 type: array
                 items:
                   type: object
@@ -30200,17 +30200,17 @@ paths:
           type: boolean
       tags:
         - Query
-  '/saturn/randomness/unproven_rendomness/{index}':
+  '/saturn/randomness/unproven_randomness/{index}':
     get:
-      summary: Queries a UnprovenRendomness by index.
-      operationId: SaturnRandomnessUnprovenRendomness
+      summary: Queries a UnprovenRandomness by index.
+      operationId: SaturnRandomnessUnprovenRandomness
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              unprovenRendomness:
+              unprovenRandomness:
                 type: object
                 properties:
                   index:
@@ -52038,10 +52038,10 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  saturn.randomness.QueryAllUnprovenRendomnessResponse:
+  saturn.randomness.QueryAllUnprovenRandomnessResponse:
     type: object
     properties:
-      unprovenRendomness:
+      unprovenRandomness:
         type: array
         items:
           type: object
@@ -52115,10 +52115,10 @@ definitions:
             type: string
           previousSignature:
             type: string
-  saturn.randomness.QueryGetUnprovenRendomnessResponse:
+  saturn.randomness.QueryGetUnprovenRandomnessResponse:
     type: object
     properties:
-      unprovenRendomness:
+      unprovenRandomness:
         type: object
         properties:
           index:
@@ -52136,7 +52136,7 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
-  saturn.randomness.UnprovenRendomness:
+  saturn.randomness.UnprovenRandomness:
     type: object
     properties:
       index:

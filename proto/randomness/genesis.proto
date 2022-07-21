@@ -4,7 +4,7 @@ package saturn.randomness;
 import "gogoproto/gogo.proto";
 import "randomness/params.proto";
 import "randomness/chain_info.proto";
-import "randomness/unproven_rendomness.proto";
+import "randomness/unproven_randomness.proto";
 import "randomness/proven_randomness.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
@@ -14,7 +14,7 @@ option go_package = "saturn/x/randomness/types";
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   ChainInfo chainInfo = 2 [(gogoproto.nullable) = false];
-  repeated UnprovenRendomness unprovenRendomnessList = 3 [(gogoproto.nullable) = false];
+  repeated UnprovenRandomness unprovenRandomnessList = 3 [(gogoproto.nullable) = false];
   repeated ProvenRandomness provenRandomnessList = 4 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }

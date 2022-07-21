@@ -29,7 +29,7 @@ func TestGenesisState_Validate(t *testing.T) {
 					GenesisTime: 42,
 					Hash:        "22",
 				},
-				UnprovenRendomnessList: []types.UnprovenRendomness{
+				UnprovenRandomnessList: []types.UnprovenRandomness{
 					{
 						Index: "0",
 					},
@@ -50,9 +50,9 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid: true,
 		},
 		{
-			desc: "duplicated unprovenRendomness",
+			desc: "duplicated unprovenRandomness",
 			genState: &types.GenesisState{
-				UnprovenRendomnessList: []types.UnprovenRendomness{
+				UnprovenRandomnessList: []types.UnprovenRandomness{
 					{
 						Index: "0",
 					},

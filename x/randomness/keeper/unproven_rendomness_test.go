@@ -4,32 +4,33 @@ import (
 	"strconv"
 	"testing"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/stretchr/testify/require"
 	keepertest "saturn/testutil/keeper"
 	"saturn/testutil/nullify"
 	"saturn/x/randomness/keeper"
 	"saturn/x/randomness/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/stretchr/testify/require"
 )
 
 // Prevent strconv unused error
 var _ = strconv.IntSize
 
-func createNUnprovenRendomness(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.UnprovenRendomness {
-	items := make([]types.UnprovenRendomness, n)
+func createNUnprovenRandomness(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.UnprovenRandomness {
+	items := make([]types.UnprovenRandomness, n)
 	for i := range items {
 		items[i].Index = strconv.Itoa(i)
 
-		keeper.SetUnprovenRendomness(ctx, items[i])
+		keeper.SetUnprovenRandomness(ctx, items[i])
 	}
 	return items
 }
 
-func TestUnprovenRendomnessGet(t *testing.T) {
+func TestUnprovenRandomnessGet(t *testing.T) {
 	keeper, ctx := keepertest.RandomnessKeeper(t)
-	items := createNUnprovenRendomness(keeper, ctx, 10)
+	items := createNUnprovenRandomness(keeper, ctx, 10)
 	for _, item := range items {
-		rst, found := keeper.GetUnprovenRendomness(ctx,
+		rst, found := keeper.GetUnprovenRandomness(ctx,
 			item.Index,
 		)
 		require.True(t, found)
@@ -39,25 +40,25 @@ func TestUnprovenRendomnessGet(t *testing.T) {
 		)
 	}
 }
-func TestUnprovenRendomnessRemove(t *testing.T) {
+func TestUnprovenRandomnessRemove(t *testing.T) {
 	keeper, ctx := keepertest.RandomnessKeeper(t)
-	items := createNUnprovenRendomness(keeper, ctx, 10)
+	items := createNUnprovenRandomness(keeper, ctx, 10)
 	for _, item := range items {
-		keeper.RemoveUnprovenRendomness(ctx,
+		keeper.RemoveUnprovenRandomness(ctx,
 			item.Index,
 		)
-		_, found := keeper.GetUnprovenRendomness(ctx,
+		_, found := keeper.GetUnprovenRandomness(ctx,
 			item.Index,
 		)
 		require.False(t, found)
 	}
 }
 
-func TestUnprovenRendomnessGetAll(t *testing.T) {
+func TestUnprovenRandomnessGetAll(t *testing.T) {
 	keeper, ctx := keepertest.RandomnessKeeper(t)
-	items := createNUnprovenRendomness(keeper, ctx, 10)
+	items := createNUnprovenRandomness(keeper, ctx, 10)
 	require.ElementsMatch(t,
 		nullify.Fill(items),
-		nullify.Fill(keeper.GetAllUnprovenRendomness(ctx)),
+		nullify.Fill(keeper.GetAllUnprovenRandomness(ctx)),
 	)
 }

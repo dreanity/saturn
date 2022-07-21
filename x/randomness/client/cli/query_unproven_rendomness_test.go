@@ -21,27 +21,27 @@ import (
 // Prevent strconv unused error
 var _ = strconv.IntSize
 
-func networkWithUnprovenRendomnessObjects(t *testing.T, n int) (*network.Network, []types.UnprovenRendomness) {
+func networkWithUnprovenRandomnessObjects(t *testing.T, n int) (*network.Network, []types.UnprovenRandomness) {
 	t.Helper()
 	cfg := network.DefaultConfig()
 	state := types.GenesisState{}
 	require.NoError(t, cfg.Codec.UnmarshalJSON(cfg.GenesisState[types.ModuleName], &state))
 
 	for i := 0; i < n; i++ {
-		unprovenRendomness := types.UnprovenRendomness{
+		unprovenRandomness := types.UnprovenRandomness{
 			Index: strconv.Itoa(i),
 		}
-		nullify.Fill(&unprovenRendomness)
-		state.UnprovenRendomnessList = append(state.UnprovenRendomnessList, unprovenRendomness)
+		nullify.Fill(&unprovenRandomness)
+		state.UnprovenRandomnessList = append(state.UnprovenRandomnessList, unprovenRandomness)
 	}
 	buf, err := cfg.Codec.MarshalJSON(&state)
 	require.NoError(t, err)
 	cfg.GenesisState[types.ModuleName] = buf
-	return network.New(t, cfg), state.UnprovenRendomnessList
+	return network.New(t, cfg), state.UnprovenRandomnessList
 }
 
-func TestShowUnprovenRendomness(t *testing.T) {
-	net, objs := networkWithUnprovenRendomnessObjects(t, 2)
+func TestShowUnprovenRandomness(t *testing.T) {
+	net, objs := networkWithUnprovenRandomnessObjects(t, 2)
 
 	ctx := net.Validators[0].ClientCtx
 	common := []string{
@@ -53,7 +53,7 @@ func TestShowUnprovenRendomness(t *testing.T) {
 
 		args []string
 		err  error
-		obj  types.UnprovenRendomness
+		obj  types.UnprovenRandomness
 	}{
 		{
 			desc:    "found",
@@ -75,27 +75,27 @@ func TestShowUnprovenRendomness(t *testing.T) {
 				tc.idIndex,
 			}
 			args = append(args, tc.args...)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowUnprovenRendomness(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowUnprovenRandomness(), args)
 			if tc.err != nil {
 				stat, ok := status.FromError(tc.err)
 				require.True(t, ok)
 				require.ErrorIs(t, stat.Err(), tc.err)
 			} else {
 				require.NoError(t, err)
-				var resp types.QueryGetUnprovenRendomnessResponse
+				var resp types.QueryGetUnprovenRandomnessResponse
 				require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-				require.NotNil(t, resp.UnprovenRendomness)
+				require.NotNil(t, resp.UnprovenRandomness)
 				require.Equal(t,
 					nullify.Fill(&tc.obj),
-					nullify.Fill(&resp.UnprovenRendomness),
+					nullify.Fill(&resp.UnprovenRandomness),
 				)
 			}
 		})
 	}
 }
 
-func TestListUnprovenRendomness(t *testing.T) {
-	net, objs := networkWithUnprovenRendomnessObjects(t, 5)
+func TestListUnprovenRandomness(t *testing.T) {
+	net, objs := networkWithUnprovenRandomnessObjects(t, 5)
 
 	ctx := net.Validators[0].ClientCtx
 	request := func(next []byte, offset, limit uint64, total bool) []string {
@@ -117,14 +117,14 @@ func TestListUnprovenRendomness(t *testing.T) {
 		step := 2
 		for i := 0; i < len(objs); i += step {
 			args := request(nil, uint64(i), uint64(step), false)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRendomness(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRandomness(), args)
 			require.NoError(t, err)
-			var resp types.QueryAllUnprovenRendomnessResponse
+			var resp types.QueryAllUnprovenRandomnessResponse
 			require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-			require.LessOrEqual(t, len(resp.UnprovenRendomness), step)
+			require.LessOrEqual(t, len(resp.UnprovenRandomness), step)
 			require.Subset(t,
 				nullify.Fill(objs),
-				nullify.Fill(resp.UnprovenRendomness),
+				nullify.Fill(resp.UnprovenRandomness),
 			)
 		}
 	})
@@ -133,29 +133,29 @@ func TestListUnprovenRendomness(t *testing.T) {
 		var next []byte
 		for i := 0; i < len(objs); i += step {
 			args := request(next, 0, uint64(step), false)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRendomness(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRandomness(), args)
 			require.NoError(t, err)
-			var resp types.QueryAllUnprovenRendomnessResponse
+			var resp types.QueryAllUnprovenRandomnessResponse
 			require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-			require.LessOrEqual(t, len(resp.UnprovenRendomness), step)
+			require.LessOrEqual(t, len(resp.UnprovenRandomness), step)
 			require.Subset(t,
 				nullify.Fill(objs),
-				nullify.Fill(resp.UnprovenRendomness),
+				nullify.Fill(resp.UnprovenRandomness),
 			)
 			next = resp.Pagination.NextKey
 		}
 	})
 	t.Run("Total", func(t *testing.T) {
 		args := request(nil, 0, uint64(len(objs)), true)
-		out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRendomness(), args)
+		out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListUnprovenRandomness(), args)
 		require.NoError(t, err)
-		var resp types.QueryAllUnprovenRendomnessResponse
+		var resp types.QueryAllUnprovenRandomnessResponse
 		require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
 		require.NoError(t, err)
 		require.Equal(t, len(objs), int(resp.Pagination.Total))
 		require.ElementsMatch(t,
 			nullify.Fill(objs),
-			nullify.Fill(resp.UnprovenRendomness),
+			nullify.Fill(resp.UnprovenRandomness),
 		)
 	})
 }

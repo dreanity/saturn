@@ -5,12 +5,12 @@ import "encoding/binary"
 var _ binary.ByteOrder
 
 const (
-	// UnprovenRendomnessKeyPrefix is the prefix to retrieve all UnprovenRendomness
-	UnprovenRendomnessKeyPrefix = "UnprovenRendomness/value/"
+	// UnprovenRandomnessKeyPrefix is the prefix to retrieve all UnprovenRandomness
+	UnprovenRandomnessKeyPrefix = "UnprovenRandomness/value/"
 )
 
-// UnprovenRendomnessKey returns the store key to retrieve a UnprovenRendomness from the index fields
-func UnprovenRendomnessKey(
+// UnprovenRandomnessKey returns the store key to retrieve a UnprovenRandomness from the index fields
+func UnprovenRandomnessKey(
 	index string,
 ) []byte {
 	var key []byte

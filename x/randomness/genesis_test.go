@@ -21,7 +21,7 @@ func TestGenesis(t *testing.T) {
 			GenesisTime: 3,
 			Hash:        "91",
 		},
-		UnprovenRendomnessList: []types.UnprovenRendomness{
+		UnprovenRandomnessList: []types.UnprovenRandomness{
 			{
 				Index: "0",
 			},
@@ -49,7 +49,7 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.Equal(t, genesisState.ChainInfo, got.ChainInfo)
-	require.ElementsMatch(t, genesisState.UnprovenRendomnessList, got.UnprovenRendomnessList)
+	require.ElementsMatch(t, genesisState.UnprovenRandomnessList, got.UnprovenRandomnessList)
 	require.ElementsMatch(t, genesisState.ProvenRandomnessList, got.ProvenRandomnessList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
