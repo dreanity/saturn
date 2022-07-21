@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "randomness/params.proto";
 import "randomness/chain_info.proto";
+import "randomness/unproven_rendomness.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "saturn/x/randomness/types";
@@ -20,6 +21,16 @@ service Query {
 	rpc ChainInfo(QueryGetChainInfoRequest) returns (QueryGetChainInfoResponse) {
 		option (google.api.http).get = "/saturn/randomness/chain_info";
 	}
+// Queries a UnprovenRendomness by index.
+	rpc UnprovenRendomness(QueryGetUnprovenRendomnessRequest) returns (QueryGetUnprovenRendomnessResponse) {
+		option (google.api.http).get = "/saturn/randomness/unproven_rendomness/{index}";
+	}
+
+	// Queries a list of UnprovenRendomness items.
+	rpc UnprovenRendomnessAll(QueryAllUnprovenRendomnessRequest) returns (QueryAllUnprovenRendomnessResponse) {
+		option (google.api.http).get = "/saturn/randomness/unproven_rendomness";
+	}
+
 // this line is used by starport scaffolding # 2
 }
 
@@ -37,4 +48,22 @@ message QueryGetChainInfoRequest {}
 message QueryGetChainInfoResponse {
 	ChainInfo ChainInfo = 1 [(gogoproto.nullable) = false];
 }
+message QueryGetUnprovenRendomnessRequest {
+	  string index = 1;
+
+}
+
+message QueryGetUnprovenRendomnessResponse {
+	UnprovenRendomness unprovenRendomness = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllUnprovenRendomnessRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllUnprovenRendomnessResponse {
+	repeated UnprovenRendomness unprovenRendomness = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
 // this line is used by starport scaffolding # 3

@@ -23,11 +23,11 @@ func networkWithChainInfoObjects(t *testing.T) (*network.Network, types.ChainInf
 
 	chainInfo := &types.ChainInfo{}
 	nullify.Fill(&chainInfo)
-	state.ChainInfo = chainInfo
+	state.ChainInfo = *chainInfo
 	buf, err := cfg.Codec.MarshalJSON(&state)
 	require.NoError(t, err)
 	cfg.GenesisState[types.ModuleName] = buf
-	return network.New(t, cfg), *state.ChainInfo
+	return network.New(t, cfg), state.ChainInfo
 }
 
 func TestShowChainInfo(t *testing.T) {

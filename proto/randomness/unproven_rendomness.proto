@@ -1,0 +1,12 @@
+syntax = "proto3";
+package saturn.randomness;
+
+option go_package = "saturn/x/randomness/types";
+
+message UnprovenRendomness {
+  string index = 1; 
+  uint64 round = 2; 
+  uint64 time = 3; 
+  
+}
+

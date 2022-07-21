@@ -3,8 +3,9 @@ package types_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/require"
 	"saturn/x/randomness/types"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestGenesisState_Validate(t *testing.T) {
@@ -22,15 +23,37 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
-				ChainInfo: &types.ChainInfo{
+				ChainInfo: types.ChainInfo{
 					PublicKey:   "6",
 					Period:      25,
 					GenesisTime: 42,
 					Hash:        "22",
 				},
+				UnprovenRendomnessList: []types.UnprovenRendomness{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated unprovenRendomness",
+			genState: &types.GenesisState{
+				UnprovenRendomnessList: []types.UnprovenRendomness{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {

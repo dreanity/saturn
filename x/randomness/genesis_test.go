@@ -3,22 +3,31 @@ package randomness_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/require"
 	keepertest "saturn/testutil/keeper"
 	"saturn/testutil/nullify"
 	"saturn/x/randomness"
 	"saturn/x/randomness/types"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
-		ChainInfo: &types.ChainInfo{
+		ChainInfo: types.ChainInfo{
 			PublicKey:   "99",
 			Period:      49,
 			GenesisTime: 3,
 			Hash:        "91",
+		},
+		UnprovenRendomnessList: []types.UnprovenRendomness{
+			{
+				Index: "0",
+			},
+			{
+				Index: "1",
+			},
 		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
@@ -32,5 +41,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.Equal(t, genesisState.ChainInfo, got.ChainInfo)
+	require.ElementsMatch(t, genesisState.UnprovenRendomnessList, got.UnprovenRendomnessList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
