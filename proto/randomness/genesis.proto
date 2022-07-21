@@ -1,0 +1,14 @@
+syntax = "proto3";
+package saturn.randomness;
+
+import "gogoproto/gogo.proto";
+import "randomness/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "saturn/x/randomness/types";
+
+// GenesisState defines the randomness module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
