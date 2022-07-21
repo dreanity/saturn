@@ -7,4 +7,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 RUN curl https://get.ignite.com/cli@v0.22.2! | bash
-RUN sudo chown -R vscode /workspaces
+RUN sudo chown vscode /usr/local/bin/ignite
