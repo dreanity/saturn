@@ -16,6 +16,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	for _, elem := range genState.UnprovenRendomnessList {
 		k.SetUnprovenRendomness(ctx, elem)
 	}
+	// Set all the provenRandomness
+	for _, elem := range genState.ProvenRandomnessList {
+		k.SetProvenRandomness(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -31,6 +35,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 		genesis.ChainInfo = chainInfo
 	}
 	genesis.UnprovenRendomnessList = k.GetAllUnprovenRendomness(ctx)
+	genesis.ProvenRandomnessList = k.GetAllProvenRandomness(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

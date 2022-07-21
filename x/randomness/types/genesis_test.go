@@ -37,6 +37,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Index: "1",
 					},
 				},
+				ProvenRandomnessList: []types.ProvenRandomness{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -45,6 +53,20 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "duplicated unprovenRendomness",
 			genState: &types.GenesisState{
 				UnprovenRendomnessList: []types.UnprovenRendomness{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated provenRandomness",
+			genState: &types.GenesisState{
+				ProvenRandomnessList: []types.ProvenRandomness{
 					{
 						Index: "0",
 					},

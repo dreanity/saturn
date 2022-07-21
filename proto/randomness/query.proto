@@ -7,6 +7,7 @@ import "cosmos/base/query/v1beta1/pagination.proto";
 import "randomness/params.proto";
 import "randomness/chain_info.proto";
 import "randomness/unproven_rendomness.proto";
+import "randomness/proven_randomness.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "saturn/x/randomness/types";
@@ -29,6 +30,16 @@ service Query {
 	// Queries a list of UnprovenRendomness items.
 	rpc UnprovenRendomnessAll(QueryAllUnprovenRendomnessRequest) returns (QueryAllUnprovenRendomnessResponse) {
 		option (google.api.http).get = "/saturn/randomness/unproven_rendomness";
+	}
+
+// Queries a ProvenRandomness by index.
+	rpc ProvenRandomness(QueryGetProvenRandomnessRequest) returns (QueryGetProvenRandomnessResponse) {
+		option (google.api.http).get = "/saturn/randomness/proven_randomness/{index}";
+	}
+
+	// Queries a list of ProvenRandomness items.
+	rpc ProvenRandomnessAll(QueryAllProvenRandomnessRequest) returns (QueryAllProvenRandomnessResponse) {
+		option (google.api.http).get = "/saturn/randomness/proven_randomness";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -63,6 +74,24 @@ message QueryAllUnprovenRendomnessRequest {
 
 message QueryAllUnprovenRendomnessResponse {
 	repeated UnprovenRendomness unprovenRendomness = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetProvenRandomnessRequest {
+	  string index = 1;
+
+}
+
+message QueryGetProvenRandomnessResponse {
+	ProvenRandomness provenRandomness = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllProvenRandomnessRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllProvenRandomnessResponse {
+	repeated ProvenRandomness provenRandomness = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

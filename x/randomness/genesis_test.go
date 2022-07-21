@@ -29,6 +29,14 @@ func TestGenesis(t *testing.T) {
 				Index: "1",
 			},
 		},
+		ProvenRandomnessList: []types.ProvenRandomness{
+			{
+				Index: "0",
+			},
+			{
+				Index: "1",
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -42,5 +50,6 @@ func TestGenesis(t *testing.T) {
 
 	require.Equal(t, genesisState.ChainInfo, got.ChainInfo)
 	require.ElementsMatch(t, genesisState.UnprovenRendomnessList, got.UnprovenRendomnessList)
+	require.ElementsMatch(t, genesisState.ProvenRandomnessList, got.ProvenRandomnessList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
