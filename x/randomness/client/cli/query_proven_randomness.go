@@ -3,16 +3,18 @@ package cli
 import (
 	"context"
 
+	"saturn/x/randomness/types"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-	"saturn/x/randomness/types"
 )
 
 func CmdListProvenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-proven-randomness",
-		Short: "list all proven_randomness",
+		Use:   "list-proven-randomness-2",
+		Short: "list all ProvenRandomness",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
@@ -44,18 +46,21 @@ func CmdListProvenRandomness() *cobra.Command {
 
 func CmdShowProvenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-proven-randomness [index]",
-		Short: "shows a proven_randomness",
+		Use:   "show-proven-randomness-2 [round]",
+		Short: "shows a ProvenRandomness",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argIndex := args[0]
+			argRound, err := cast.ToUint64E(args[0])
+			if err != nil {
+				return err
+			}
 
 			params := &types.QueryGetProvenRandomnessRequest{
-				Index: argIndex,
+				Round: argRound,
 			}
 
 			res, err := queryClient.ProvenRandomness(context.Background(), params)

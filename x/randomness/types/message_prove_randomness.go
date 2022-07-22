@@ -13,7 +13,6 @@ func NewMsgProveRandomness(creator string, round uint64, time uint64, randomness
 	return &MsgProveRandomness{
 		Creator:           creator,
 		Round:             round,
-		Time:              time,
 		Randomness:        randomness,
 		Signature:         signature,
 		PreviousSignature: previousSignature,

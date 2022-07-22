@@ -4,8 +4,8 @@ package saturn.randomness;
 import "gogoproto/gogo.proto";
 import "randomness/params.proto";
 import "randomness/chain_info.proto";
-import "randomness/unproven_randomness.proto";
 import "randomness/proven_randomness.proto";
+import "randomness/unproven_randomness.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "saturn/x/randomness/types";

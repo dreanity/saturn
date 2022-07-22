@@ -1,9 +1,10 @@
 package keeper
 
 import (
+	"saturn/x/randomness/types"
+
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"saturn/x/randomness/types"
 )
 
 // SetProvenRandomness set a specific provenRandomness in the store from its index
@@ -11,20 +12,20 @@ func (k Keeper) SetProvenRandomness(ctx sdk.Context, provenRandomness types.Prov
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.ProvenRandomnessKeyPrefix))
 	b := k.cdc.MustMarshal(&provenRandomness)
 	store.Set(types.ProvenRandomnessKey(
-		provenRandomness.Index,
+		provenRandomness.Round,
 	), b)
 }
 
 // GetProvenRandomness returns a provenRandomness from its index
 func (k Keeper) GetProvenRandomness(
 	ctx sdk.Context,
-	index string,
+	round uint64,
 
 ) (val types.ProvenRandomness, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.ProvenRandomnessKeyPrefix))
 
 	b := store.Get(types.ProvenRandomnessKey(
-		index,
+		round,
 	))
 	if b == nil {
 		return val, false
@@ -37,12 +38,12 @@ func (k Keeper) GetProvenRandomness(
 // RemoveProvenRandomness removes a provenRandomness from the store
 func (k Keeper) RemoveProvenRandomness(
 	ctx sdk.Context,
-	index string,
+	round uint64,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.ProvenRandomnessKeyPrefix))
 	store.Delete(types.ProvenRandomnessKey(
-		index,
+		round,
 	))
 }
 

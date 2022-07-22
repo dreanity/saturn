@@ -22,24 +22,25 @@ service Query {
 	rpc ChainInfo(QueryGetChainInfoRequest) returns (QueryGetChainInfoResponse) {
 		option (google.api.http).get = "/saturn/randomness/chain_info";
 	}
+
 // Queries a UnprovenRandomness by index.
 	rpc UnprovenRandomness(QueryGetUnprovenRandomnessRequest) returns (QueryGetUnprovenRandomnessResponse) {
-		option (google.api.http).get = "/saturn/randomness/unproven_randomness/{index}";
+		option (google.api.http).get = "/saturn/randomness/unproven_randomness_2/{round}";
 	}
 
 	// Queries a list of UnprovenRandomness items.
 	rpc UnprovenRandomnessAll(QueryAllUnprovenRandomnessRequest) returns (QueryAllUnprovenRandomnessResponse) {
-		option (google.api.http).get = "/saturn/randomness/unproven_randomness";
+		option (google.api.http).get = "/saturn/randomness/unproven_randomness_2";
 	}
 
 // Queries a ProvenRandomness by index.
 	rpc ProvenRandomness(QueryGetProvenRandomnessRequest) returns (QueryGetProvenRandomnessResponse) {
-		option (google.api.http).get = "/saturn/randomness/proven_randomness/{index}";
+		option (google.api.http).get = "/saturn/randomness/proven_randomness_2/{round}";
 	}
 
 	// Queries a list of ProvenRandomness items.
 	rpc ProvenRandomnessAll(QueryAllProvenRandomnessRequest) returns (QueryAllProvenRandomnessResponse) {
-		option (google.api.http).get = "/saturn/randomness/proven_randomness";
+		option (google.api.http).get = "/saturn/randomness/proven_randomness_2";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -59,8 +60,9 @@ message QueryGetChainInfoRequest {}
 message QueryGetChainInfoResponse {
 	ChainInfo ChainInfo = 1 [(gogoproto.nullable) = false];
 }
+
 message QueryGetUnprovenRandomnessRequest {
-	  string index = 1;
+	  uint64 round = 1;
 
 }
 
@@ -78,7 +80,7 @@ message QueryAllUnprovenRandomnessResponse {
 }
 
 message QueryGetProvenRandomnessRequest {
-	  string index = 1;
+	  uint64 round = 1;
 
 }
 

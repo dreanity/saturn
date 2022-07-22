@@ -12,6 +12,7 @@ import (
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// Set if defined
 	k.SetChainInfo(ctx, genState.ChainInfo)
+
 	// Set all the unprovenRandomness
 	for _, elem := range genState.UnprovenRandomnessList {
 		k.SetUnprovenRandomness(ctx, elem)

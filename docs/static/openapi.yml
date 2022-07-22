@@ -29888,7 +29888,7 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
-  /saturn/randomness/proven_randomness:
+  /saturn/randomness/proven_randomness_2:
     get:
       summary: Queries a list of ProvenRandomness items.
       operationId: SaturnRandomnessProvenRandomnessAll
@@ -29903,12 +29903,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    index:
-                      type: string
                     round:
-                      type: string
-                      format: uint64
-                    time:
                       type: string
                       format: uint64
                     randomness:
@@ -30021,7 +30016,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/saturn/randomness/proven_randomness/{index}':
+  '/saturn/randomness/proven_randomness_2/{round}':
     get:
       summary: Queries a ProvenRandomness by index.
       operationId: SaturnRandomnessProvenRandomness
@@ -30034,12 +30029,7 @@ paths:
               provenRandomness:
                 type: object
                 properties:
-                  index:
-                    type: string
                   round:
-                    type: string
-                    format: uint64
-                  time:
                     type: string
                     format: uint64
                   randomness:
@@ -30067,13 +30057,14 @@ paths:
                       type: string
                   additionalProperties: {}
       parameters:
-        - name: index
+        - name: round
           in: path
           required: true
           type: string
+          format: uint64
       tags:
         - Query
-  /saturn/randomness/unproven_randomness:
+  /saturn/randomness/unproven_randomness_2:
     get:
       summary: Queries a list of UnprovenRandomness items.
       operationId: SaturnRandomnessUnprovenRandomnessAll
@@ -30088,12 +30079,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    index:
-                      type: string
                     round:
-                      type: string
-                      format: uint64
-                    time:
                       type: string
                       format: uint64
               pagination:
@@ -30200,7 +30186,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/saturn/randomness/unproven_randomness/{index}':
+  '/saturn/randomness/unproven_randomness_2/{round}':
     get:
       summary: Queries a UnprovenRandomness by index.
       operationId: SaturnRandomnessUnprovenRandomness
@@ -30213,12 +30199,7 @@ paths:
               unprovenRandomness:
                 type: object
                 properties:
-                  index:
-                    type: string
                   round:
-                    type: string
-                    format: uint64
-                  time:
                     type: string
                     format: uint64
         default:
@@ -30240,10 +30221,11 @@ paths:
                       type: string
                   additionalProperties: {}
       parameters:
-        - name: index
+        - name: round
           in: path
           required: true
           type: string
+          format: uint64
       tags:
         - Query
   /tendermint/spn/claim/airdrop_supply:
@@ -51977,12 +51959,7 @@ definitions:
   saturn.randomness.ProvenRandomness:
     type: object
     properties:
-      index:
-        type: string
       round:
-        type: string
-        format: uint64
-      time:
         type: string
         format: uint64
       randomness:
@@ -51999,12 +51976,7 @@ definitions:
         items:
           type: object
           properties:
-            index:
-              type: string
             round:
-              type: string
-              format: uint64
-            time:
               type: string
               format: uint64
             randomness:
@@ -52046,12 +52018,7 @@ definitions:
         items:
           type: object
           properties:
-            index:
-              type: string
             round:
-              type: string
-              format: uint64
-            time:
               type: string
               format: uint64
       pagination:
@@ -52101,12 +52068,7 @@ definitions:
       provenRandomness:
         type: object
         properties:
-          index:
-            type: string
           round:
-            type: string
-            format: uint64
-          time:
             type: string
             format: uint64
           randomness:
@@ -52121,12 +52083,7 @@ definitions:
       unprovenRandomness:
         type: object
         properties:
-          index:
-            type: string
           round:
-            type: string
-            format: uint64
-          time:
             type: string
             format: uint64
   saturn.randomness.QueryParamsResponse:
@@ -52139,12 +52096,7 @@ definitions:
   saturn.randomness.UnprovenRandomness:
     type: object
     properties:
-      index:
-        type: string
       round:
-        type: string
-        format: uint64
-      time:
         type: string
         format: uint64
   tendermint.spn.claim.ClaimRecord:

@@ -29,7 +29,7 @@ func networkWithUnprovenRandomnessObjects(t *testing.T, n int) (*network.Network
 
 	for i := 0; i < n; i++ {
 		unprovenRandomness := types.UnprovenRandomness{
-			Index: strconv.Itoa(i),
+			Round: uint64(i),
 		}
 		nullify.Fill(&unprovenRandomness)
 		state.UnprovenRandomnessList = append(state.UnprovenRandomnessList, unprovenRandomness)
@@ -49,7 +49,7 @@ func TestShowUnprovenRandomness(t *testing.T) {
 	}
 	for _, tc := range []struct {
 		desc    string
-		idIndex string
+		idRound uint64
 
 		args []string
 		err  error
@@ -57,14 +57,14 @@ func TestShowUnprovenRandomness(t *testing.T) {
 	}{
 		{
 			desc:    "found",
-			idIndex: objs[0].Index,
+			idRound: objs[0].Round,
 
 			args: common,
 			obj:  objs[0],
 		},
 		{
 			desc:    "not found",
-			idIndex: strconv.Itoa(100000),
+			idRound: 100000,
 
 			args: common,
 			err:  status.Error(codes.NotFound, "not found"),
@@ -72,7 +72,7 @@ func TestShowUnprovenRandomness(t *testing.T) {
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
 			args := []string{
-				tc.idIndex,
+				strconv.Itoa(int(tc.idRound)),
 			}
 			args = append(args, tc.args...)
 			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowUnprovenRandomness(), args)

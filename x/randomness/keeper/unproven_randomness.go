@@ -2,7 +2,6 @@ package keeper
 
 import (
 	"saturn/x/randomness/types"
-	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -23,9 +22,7 @@ func (k Keeper) SetUnprovenRandomnessForTime(ctx sdk.Context, time uint64) {
 	}
 
 	unprovenRandomness := types.UnprovenRandomness{
-		Index: strconv.FormatUint(time, 10),
 		Round: round,
-		Time:  time,
 	}
 
 	k.SetUnprovenRandomness(ctx, unprovenRandomness)
@@ -36,20 +33,20 @@ func (k Keeper) SetUnprovenRandomness(ctx sdk.Context, unprovenRandomness types.
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.UnprovenRandomnessKeyPrefix))
 	b := k.cdc.MustMarshal(&unprovenRandomness)
 	store.Set(types.UnprovenRandomnessKey(
-		unprovenRandomness.Index,
+		unprovenRandomness.Round,
 	), b)
 }
 
 // GetUnprovenRandomness returns a unprovenRandomness from its index
 func (k Keeper) GetUnprovenRandomness(
 	ctx sdk.Context,
-	index string,
+	round uint64,
 
 ) (val types.UnprovenRandomness, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.UnprovenRandomnessKeyPrefix))
 
 	b := store.Get(types.UnprovenRandomnessKey(
-		index,
+		round,
 	))
 	if b == nil {
 		return val, false
@@ -62,12 +59,12 @@ func (k Keeper) GetUnprovenRandomness(
 // RemoveUnprovenRandomness removes a unprovenRandomness from the store
 func (k Keeper) RemoveUnprovenRandomness(
 	ctx sdk.Context,
-	index string,
+	round uint64,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.UnprovenRandomnessKeyPrefix))
 	store.Delete(types.UnprovenRandomnessKey(
-		index,
+		round,
 	))
 }
 

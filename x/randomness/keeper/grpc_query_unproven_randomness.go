@@ -48,7 +48,7 @@ func (k Keeper) UnprovenRandomness(c context.Context, req *types.QueryGetUnprove
 
 	val, found := k.GetUnprovenRandomness(
 		ctx,
-		req.Index,
+		req.Round,
 	)
 	if !found {
 		return nil, status.Error(codes.NotFound, "not found")

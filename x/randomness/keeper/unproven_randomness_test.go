@@ -19,7 +19,7 @@ var _ = strconv.IntSize
 func createNUnprovenRandomness(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.UnprovenRandomness {
 	items := make([]types.UnprovenRandomness, n)
 	for i := range items {
-		items[i].Index = strconv.Itoa(i)
+		items[i].Round = uint64(i)
 
 		keeper.SetUnprovenRandomness(ctx, items[i])
 	}
@@ -31,7 +31,7 @@ func TestUnprovenRandomnessGet(t *testing.T) {
 	items := createNUnprovenRandomness(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetUnprovenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -45,10 +45,10 @@ func TestUnprovenRandomnessRemove(t *testing.T) {
 	items := createNUnprovenRandomness(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveUnprovenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		_, found := keeper.GetUnprovenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		require.False(t, found)
 	}

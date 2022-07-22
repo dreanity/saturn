@@ -30,7 +30,7 @@ func (gs GenesisState) Validate() error {
 	unprovenRandomnessIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.UnprovenRandomnessList {
-		index := string(UnprovenRandomnessKey(elem.Index))
+		index := string(UnprovenRandomnessKey(elem.Round))
 		if _, ok := unprovenRandomnessIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for unprovenRandomness")
 		}
@@ -40,7 +40,7 @@ func (gs GenesisState) Validate() error {
 	provenRandomnessIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.ProvenRandomnessList {
-		index := string(ProvenRandomnessKey(elem.Index))
+		index := string(ProvenRandomnessKey(elem.Round))
 		if _, ok := provenRandomnessIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for provenRandomness")
 		}

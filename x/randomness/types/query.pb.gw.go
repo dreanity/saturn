@@ -80,15 +80,15 @@ func request_Query_UnprovenRandomness_0(ctx context.Context, marshaler runtime.M
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["round"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "round")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Round, err = runtime.Uint64(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "round", err)
 	}
 
 	msg, err := client.UnprovenRandomness(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -107,15 +107,15 @@ func local_request_Query_UnprovenRandomness_0(ctx context.Context, marshaler run
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["round"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "round")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Round, err = runtime.Uint64(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "round", err)
 	}
 
 	msg, err := server.UnprovenRandomness(ctx, &protoReq)
@@ -170,15 +170,15 @@ func request_Query_ProvenRandomness_0(ctx context.Context, marshaler runtime.Mar
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["round"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "round")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Round, err = runtime.Uint64(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "round", err)
 	}
 
 	msg, err := client.ProvenRandomness(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -197,15 +197,15 @@ func local_request_Query_ProvenRandomness_0(ctx context.Context, marshaler runti
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["round"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "round")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Round, err = runtime.Uint64(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "round", err)
 	}
 
 	msg, err := server.ProvenRandomness(ctx, &protoReq)
@@ -562,13 +562,13 @@ var (
 
 	pattern_Query_ChainInfo_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"saturn", "randomness", "chain_info"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_UnprovenRandomness_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"saturn", "randomness", "unproven_randomness", "index"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_UnprovenRandomness_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"saturn", "randomness", "unproven_randomness_2", "round"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_UnprovenRandomnessAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"saturn", "randomness", "unproven_randomness"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_UnprovenRandomnessAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"saturn", "randomness", "unproven_randomness_2"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_ProvenRandomness_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"saturn", "randomness", "proven_randomness", "index"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_ProvenRandomness_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"saturn", "randomness", "proven_randomness_2", "round"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_ProvenRandomnessAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"saturn", "randomness", "proven_randomness"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_ProvenRandomnessAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"saturn", "randomness", "proven_randomness_2"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (

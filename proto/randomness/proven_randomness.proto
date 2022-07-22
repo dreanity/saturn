@@ -4,11 +4,10 @@ package saturn.randomness;
 option go_package = "saturn/x/randomness/types";
 
 message ProvenRandomness {
-  string index = 1; 
-  uint64 round = 2; 
-  uint64 time = 3; 
-  string randomness = 4; 
-  string signature = 5; 
-  string previousSignature = 6; 
+  uint64 round = 1; 
+  string randomness = 3; 
+  string signature = 4; 
+  string previousSignature = 5; 
+  
 }
 

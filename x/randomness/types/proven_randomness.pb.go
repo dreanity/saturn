@@ -23,12 +23,10 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type ProvenRandomness struct {
-	Index             string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
-	Round             uint64 `protobuf:"varint,2,opt,name=round,proto3" json:"round,omitempty"`
-	Time              uint64 `protobuf:"varint,3,opt,name=time,proto3" json:"time,omitempty"`
-	Randomness        string `protobuf:"bytes,4,opt,name=randomness,proto3" json:"randomness,omitempty"`
-	Signature         string `protobuf:"bytes,5,opt,name=signature,proto3" json:"signature,omitempty"`
-	PreviousSignature string `protobuf:"bytes,6,opt,name=previousSignature,proto3" json:"previousSignature,omitempty"`
+	Round             uint64 `protobuf:"varint,1,opt,name=round,proto3" json:"round,omitempty"`
+	Randomness        string `protobuf:"bytes,3,opt,name=randomness,proto3" json:"randomness,omitempty"`
+	Signature         string `protobuf:"bytes,4,opt,name=signature,proto3" json:"signature,omitempty"`
+	PreviousSignature string `protobuf:"bytes,5,opt,name=previousSignature,proto3" json:"previousSignature,omitempty"`
 }
 
 func (m *ProvenRandomness) Reset()         { *m = ProvenRandomness{} }
@@ -64,23 +62,9 @@ func (m *ProvenRandomness) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ProvenRandomness proto.InternalMessageInfo
 
-func (m *ProvenRandomness) GetIndex() string {
-	if m != nil {
-		return m.Index
-	}
-	return ""
-}
-
 func (m *ProvenRandomness) GetRound() uint64 {
 	if m != nil {
 		return m.Round
-	}
-	return 0
-}
-
-func (m *ProvenRandomness) GetTime() uint64 {
-	if m != nil {
-		return m.Time
 	}
 	return 0
 }
@@ -115,21 +99,19 @@ func init() {
 }
 
 var fileDescriptor_61df09207b669f89 = []byte{
-	// 218 bytes of a gzipped FileDescriptorProto
+	// 191 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2a, 0x4a, 0xcc, 0x4b,
 	0xc9, 0xcf, 0xcd, 0x4b, 0x2d, 0x2e, 0xd6, 0x2f, 0x28, 0xca, 0x2f, 0x4b, 0xcd, 0x8b, 0x47, 0x88,
 	0xe8, 0x15, 0x14, 0xe5, 0x97, 0xe4, 0x0b, 0x09, 0x16, 0x27, 0x96, 0x94, 0x16, 0xe5, 0xe9, 0x21,
-	0x24, 0x94, 0xf6, 0x31, 0x72, 0x09, 0x04, 0x80, 0x95, 0x07, 0xc1, 0x05, 0x85, 0x44, 0xb8, 0x58,
-	0x33, 0xf3, 0x52, 0x52, 0x2b, 0x24, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0x20, 0x1c, 0x90, 0x68,
-	0x51, 0x7e, 0x69, 0x5e, 0x8a, 0x04, 0x93, 0x02, 0xa3, 0x06, 0x4b, 0x10, 0x84, 0x23, 0x24, 0xc4,
-	0xc5, 0x52, 0x92, 0x99, 0x9b, 0x2a, 0xc1, 0x0c, 0x16, 0x04, 0xb3, 0x85, 0xe4, 0xb8, 0xb8, 0x10,
-	0x56, 0x48, 0xb0, 0x80, 0x0d, 0x41, 0x12, 0x11, 0x92, 0xe1, 0xe2, 0x2c, 0xce, 0x4c, 0xcf, 0x03,
-	0x39, 0x26, 0x55, 0x82, 0x15, 0x2c, 0x8d, 0x10, 0x10, 0xd2, 0xe1, 0x12, 0x2c, 0x28, 0x4a, 0x2d,
-	0xcb, 0xcc, 0x2f, 0x2d, 0x0e, 0x86, 0xab, 0x62, 0x03, 0xab, 0xc2, 0x94, 0x70, 0x32, 0x3e, 0xf1,
-	0x48, 0x8e, 0xf1, 0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8,
-	0xf0, 0x58, 0x8e, 0xe1, 0xc6, 0x63, 0x39, 0x86, 0x28, 0x49, 0x88, 0x6f, 0xf5, 0x2b, 0xf4, 0x91,
-	0x82, 0xa6, 0xa4, 0xb2, 0x20, 0xb5, 0x38, 0x89, 0x0d, 0x1c, 0x1e, 0xc6, 0x80, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0xe6, 0x21, 0x6b, 0x9b, 0x35, 0x01, 0x00, 0x00,
+	0x24, 0x94, 0xa6, 0x30, 0x72, 0x09, 0x04, 0x80, 0x95, 0x07, 0xc1, 0x05, 0x85, 0x44, 0xb8, 0x58,
+	0x8b, 0xf2, 0x4b, 0xf3, 0x52, 0x24, 0x18, 0x15, 0x18, 0x35, 0x58, 0x82, 0x20, 0x1c, 0x21, 0x39,
+	0x2e, 0x2e, 0x84, 0x46, 0x09, 0x66, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x24, 0x11, 0x21, 0x19, 0x2e,
+	0xce, 0xe2, 0xcc, 0xf4, 0x3c, 0x90, 0x15, 0xa9, 0x12, 0x2c, 0x60, 0x69, 0x84, 0x80, 0x90, 0x0e,
+	0x97, 0x60, 0x41, 0x51, 0x6a, 0x59, 0x66, 0x7e, 0x69, 0x71, 0x30, 0x5c, 0x15, 0x2b, 0x58, 0x15,
+	0xa6, 0x84, 0x93, 0xf1, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7,
+	0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb, 0x31, 0x44, 0x49, 0x42,
+	0xfc, 0xa0, 0x5f, 0xa1, 0x8f, 0xe4, 0xe1, 0x92, 0xca, 0x82, 0xd4, 0xe2, 0x24, 0x36, 0xb0, 0x2f,
+	0x8d, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xc8, 0x32, 0x5b, 0xbf, 0x0b, 0x01, 0x00, 0x00,
 }
 
 func (m *ProvenRandomness) Marshal() (dAtA []byte, err error) {
@@ -157,38 +139,26 @@ func (m *ProvenRandomness) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.PreviousSignature)
 		i = encodeVarintProvenRandomness(dAtA, i, uint64(len(m.PreviousSignature)))
 		i--
-		dAtA[i] = 0x32
+		dAtA[i] = 0x2a
 	}
 	if len(m.Signature) > 0 {
 		i -= len(m.Signature)
 		copy(dAtA[i:], m.Signature)
 		i = encodeVarintProvenRandomness(dAtA, i, uint64(len(m.Signature)))
 		i--
-		dAtA[i] = 0x2a
+		dAtA[i] = 0x22
 	}
 	if len(m.Randomness) > 0 {
 		i -= len(m.Randomness)
 		copy(dAtA[i:], m.Randomness)
 		i = encodeVarintProvenRandomness(dAtA, i, uint64(len(m.Randomness)))
 		i--
-		dAtA[i] = 0x22
-	}
-	if m.Time != 0 {
-		i = encodeVarintProvenRandomness(dAtA, i, uint64(m.Time))
-		i--
-		dAtA[i] = 0x18
+		dAtA[i] = 0x1a
 	}
 	if m.Round != 0 {
 		i = encodeVarintProvenRandomness(dAtA, i, uint64(m.Round))
 		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.Index) > 0 {
-		i -= len(m.Index)
-		copy(dAtA[i:], m.Index)
-		i = encodeVarintProvenRandomness(dAtA, i, uint64(len(m.Index)))
-		i--
-		dAtA[i] = 0xa
+		dAtA[i] = 0x8
 	}
 	return len(dAtA) - i, nil
 }
@@ -210,15 +180,8 @@ func (m *ProvenRandomness) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Index)
-	if l > 0 {
-		n += 1 + l + sovProvenRandomness(uint64(l))
-	}
 	if m.Round != 0 {
 		n += 1 + sovProvenRandomness(uint64(m.Round))
-	}
-	if m.Time != 0 {
-		n += 1 + sovProvenRandomness(uint64(m.Time))
 	}
 	l = len(m.Randomness)
 	if l > 0 {
@@ -271,38 +234,6 @@ func (m *ProvenRandomness) Unmarshal(dAtA []byte) error {
 		}
 		switch fieldNum {
 		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowProvenRandomness
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthProvenRandomness
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthProvenRandomness
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Index = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Round", wireType)
 			}
@@ -322,25 +253,6 @@ func (m *ProvenRandomness) Unmarshal(dAtA []byte) error {
 				}
 			}
 		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Time", wireType)
-			}
-			m.Time = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowProvenRandomness
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Time |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Randomness", wireType)
 			}
@@ -372,7 +284,7 @@ func (m *ProvenRandomness) Unmarshal(dAtA []byte) error {
 			}
 			m.Randomness = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 5:
+		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Signature", wireType)
 			}
@@ -404,7 +316,7 @@ func (m *ProvenRandomness) Unmarshal(dAtA []byte) error {
 			}
 			m.Signature = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 6:
+		case 5:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field PreviousSignature", wireType)
 			}

@@ -14,7 +14,6 @@ service Msg {
 message MsgProveRandomness {
   string creator = 1;
   uint64 round = 2;
-  uint64 time = 3;
   string randomness = 4;
   string signature = 5;
   string previousSignature = 6;

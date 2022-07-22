@@ -4,12 +4,13 @@ import (
 	"strconv"
 	"testing"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/stretchr/testify/require"
 	keepertest "saturn/testutil/keeper"
 	"saturn/testutil/nullify"
 	"saturn/x/randomness/keeper"
 	"saturn/x/randomness/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/stretchr/testify/require"
 )
 
 // Prevent strconv unused error
@@ -18,7 +19,7 @@ var _ = strconv.IntSize
 func createNProvenRandomness(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.ProvenRandomness {
 	items := make([]types.ProvenRandomness, n)
 	for i := range items {
-		items[i].Index = strconv.Itoa(i)
+		items[i].Round = uint64(i)
 
 		keeper.SetProvenRandomness(ctx, items[i])
 	}
@@ -30,7 +31,7 @@ func TestProvenRandomnessGet(t *testing.T) {
 	items := createNProvenRandomness(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetProvenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -44,10 +45,10 @@ func TestProvenRandomnessRemove(t *testing.T) {
 	items := createNProvenRandomness(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveProvenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		_, found := keeper.GetProvenRandomness(ctx,
-			item.Index,
+			item.Round,
 		)
 		require.False(t, found)
 	}

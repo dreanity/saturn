@@ -31,21 +31,21 @@ func TestUnprovenRandomnessQuerySingle(t *testing.T) {
 		{
 			desc: "First",
 			request: &types.QueryGetUnprovenRandomnessRequest{
-				Index: msgs[0].Index,
+				Round: msgs[0].Round,
 			},
 			response: &types.QueryGetUnprovenRandomnessResponse{UnprovenRandomness: msgs[0]},
 		},
 		{
 			desc: "Second",
 			request: &types.QueryGetUnprovenRandomnessRequest{
-				Index: msgs[1].Index,
+				Round: msgs[1].Round,
 			},
 			response: &types.QueryGetUnprovenRandomnessResponse{UnprovenRandomness: msgs[1]},
 		},
 		{
 			desc: "KeyNotFound",
 			request: &types.QueryGetUnprovenRandomnessRequest{
-				Index: strconv.Itoa(100000),
+				Round: 100000,
 			},
 			err: status.Error(codes.NotFound, "not found"),
 		},

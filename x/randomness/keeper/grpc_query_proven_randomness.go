@@ -3,12 +3,13 @@ package keeper
 import (
 	"context"
 
+	"saturn/x/randomness/types"
+
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"saturn/x/randomness/types"
 )
 
 func (k Keeper) ProvenRandomnessAll(c context.Context, req *types.QueryAllProvenRandomnessRequest) (*types.QueryAllProvenRandomnessResponse, error) {
@@ -47,7 +48,7 @@ func (k Keeper) ProvenRandomness(c context.Context, req *types.QueryGetProvenRan
 
 	val, found := k.GetProvenRandomness(
 		ctx,
-		req.Index,
+		req.Round,
 	)
 	if !found {
 		return nil, status.Error(codes.NotFound, "not found")

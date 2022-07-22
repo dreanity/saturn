@@ -11,12 +11,13 @@ const (
 
 // ProvenRandomnessKey returns the store key to retrieve a ProvenRandomness from the index fields
 func ProvenRandomnessKey(
-	index string,
+	round uint64,
 ) []byte {
 	var key []byte
 
-	indexBytes := []byte(index)
-	key = append(key, indexBytes...)
+	roundBytes := make([]byte, 8)
+	binary.BigEndian.PutUint64(roundBytes, round)
+	key = append(key, roundBytes...)
 	key = append(key, []byte("/")...)
 
 	return key

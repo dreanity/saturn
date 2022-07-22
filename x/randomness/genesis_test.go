@@ -23,18 +23,18 @@ func TestGenesis(t *testing.T) {
 		},
 		UnprovenRandomnessList: []types.UnprovenRandomness{
 			{
-				Index: "0",
+				Round: 0,
 			},
 			{
-				Index: "1",
+				Round: 1,
 			},
 		},
 		ProvenRandomnessList: []types.ProvenRandomness{
 			{
-				Index: "0",
+				Round: 0,
 			},
 			{
-				Index: "1",
+				Round: 1,
 			},
 		},
 		// this line is used by starport scaffolding # genesis/test/state

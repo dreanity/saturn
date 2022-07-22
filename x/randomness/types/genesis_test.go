@@ -31,18 +31,18 @@ func TestGenesisState_Validate(t *testing.T) {
 				},
 				UnprovenRandomnessList: []types.UnprovenRandomness{
 					{
-						Index: "0",
+						Round: 0,
 					},
 					{
-						Index: "1",
+						Round: 1,
 					},
 				},
 				ProvenRandomnessList: []types.ProvenRandomness{
 					{
-						Index: "0",
+						Round: 0,
 					},
 					{
-						Index: "1",
+						Round: 1,
 					},
 				},
 				// this line is used by starport scaffolding # types/genesis/validField
@@ -54,10 +54,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				UnprovenRandomnessList: []types.UnprovenRandomness{
 					{
-						Index: "0",
+						Round: 0,
 					},
 					{
-						Index: "0",
+						Round: 0,
 					},
 				},
 			},
@@ -68,10 +68,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				ProvenRandomnessList: []types.ProvenRandomness{
 					{
-						Index: "0",
+						Round: 0,
 					},
 					{
-						Index: "0",
+						Round: 0,
 					},
 				},
 			},

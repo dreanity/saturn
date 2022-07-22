@@ -7,13 +7,14 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 )
 
 func CmdListUnprovenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-unproven-randomness",
-		Short: "list all unproven_randomness",
+		Use:   "list-unproven-randomness-2",
+		Short: "list all UnprovenRandomness",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
@@ -45,18 +46,21 @@ func CmdListUnprovenRandomness() *cobra.Command {
 
 func CmdShowUnprovenRandomness() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-unproven-randomness [index]",
-		Short: "shows a unproven_randomness",
+		Use:   "show-unproven-randomness-2 [round]",
+		Short: "shows a UnprovenRandomness",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argIndex := args[0]
+			argRound, err := cast.ToUint64E(args[0])
+			if err != nil {
+				return err
+			}
 
 			params := &types.QueryGetUnprovenRandomnessRequest{
-				Index: argIndex,
+				Round: argRound,
 			}
 
 			res, err := queryClient.UnprovenRandomness(context.Background(), params)
