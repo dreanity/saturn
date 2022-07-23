@@ -15,10 +15,7 @@ func (k msgServer) ProveRandomness(goCtx context.Context, msg *types.MsgProveRan
 
 	unprovenRandomness, isFound := k.GetUnprovenRandomness(ctx, msg.Round)
 	if !isFound {
-		unprovenRandomness = types.UnprovenRandomness{Round: msg.Round}
-		k.SetUnprovenRandomness(ctx, unprovenRandomness)
-
-		// return nil, types.ErrUnprovenRandomnessNotExists
+		return nil, types.ErrUnprovenRandomnessNotExists
 	}
 
 	provenRandomness := types.ProvenRandomness{
@@ -43,7 +40,17 @@ func (k msgServer) ProveRandomness(goCtx context.Context, msg *types.MsgProveRan
 
 	ctx.EventManager().EmitTypedEvent(&randomnessProved)
 
-	gasMeter.RefundGas(gasMeter.GasConsumed(), "Refund for proven randomness")
+	reward := sdk.NewCoin("uhydrogen", sdk.NewInt(types.RandomnessVerificationReward))
+	rewards := sdk.NewCoins(reward)
+	awardedAddress, _ := sdk.AccAddressFromBech32(msg.Creator)
+
+	if err := k.bankKeeper.MintCoins(ctx, types.ModuleName, rewards); err != nil {
+		return nil, err
+	}
+
+	if err := k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, awardedAddress, rewards); err != nil {
+		return nil, err
+	}
 
 	return &types.MsgProveRandomnessResponse{
 		Proven: true,

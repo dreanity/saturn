@@ -1,11 +1,11 @@
 accounts:
   - name: alice
-    coins: ["20000token", "200000000stake"]
+    coins: ["200000000uhydrogen"]
   - name: bob
-    coins: ["10000token", "100000000stake"]
+    coins: ["100000000uhydrogen"]
 validator:
   name: alice
-  staked: "100000000stake"
+  staked: "100000000uhydrogen"
 client:
   openapi:
     path: "docs/static/openapi.yml"
@@ -13,6 +13,30 @@ client:
     # path: "vue/src/store"
 faucet:
   name: bob
-  coins: ["5token", "100000stake"]
+  coins: ["100000uhydrogen"]
 build:
   main: ./cmd/saturnd
+init:
+  app:
+    minimum-gas-prices: 1uhydrogen
+genesis:
+  app_state:
+    staking:
+      params:
+        bond_denom: uhydrogen
+    bank:
+      denom_metadata:
+        - description: hydrogen
+          base: uhydrogen
+          display: hydrogen
+          name: Hydrogen
+          symbol: H2
+          denom_units:
+            - denom: uhydrogen
+              exponent: 0
+              aliases:
+                - Hydrogen Micro
+            - denom: hydrogen
+              exponent: 6
+              aliases:
+                - Hydrogen

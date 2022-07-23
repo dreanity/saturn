@@ -16,7 +16,8 @@ const (
 	// MemStoreKey defines the in-memory store key
 	MemStoreKey = "mem_randomness"
 
-	RandomnessVerificationGas = 10_000
+	RandomnessVerificationReward = 1_000_000
+	RandomnessVerificationGas    = 10_000
 )
 
 func KeyPrefix(p string) []byte {
