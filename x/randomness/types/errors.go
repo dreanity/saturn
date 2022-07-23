@@ -8,5 +8,6 @@ import (
 
 // x/randomness module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrUnprovenRandomnessNotExists = sdkerrors.Register(ModuleName, 1100, "unproven randomnness not exists")
+	ErrRandomnessVerification      = sdkerrors.Register(ModuleName, 1101, "randomnness verification failed")
 )

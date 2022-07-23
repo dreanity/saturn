@@ -9,7 +9,7 @@ const TypeMsgProveRandomness = "prove_randomness"
 
 var _ sdk.Msg = &MsgProveRandomness{}
 
-func NewMsgProveRandomness(creator string, round uint64, time uint64, randomness string, signature string, previousSignature string) *MsgProveRandomness {
+func NewMsgProveRandomness(creator string, round uint64, randomness string, signature string, previousSignature string) *MsgProveRandomness {
 	return &MsgProveRandomness{
 		Creator:           creator,
 		Round:             round,

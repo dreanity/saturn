@@ -110,6 +110,15 @@ const (
 	Name                 = "saturn"
 )
 
+func SetupConfig(config *sdk.Config) {
+	config.SetBech32PrefixForAccount(AccountAddressPrefix, AccountAddressPrefix+sdk.PrefixPublic)
+	config.SetBech32PrefixForValidator(AccountAddressPrefix+sdk.PrefixValidator+sdk.PrefixOperator, AccountAddressPrefix+sdk.PrefixValidator+sdk.PrefixOperator+sdk.PrefixPublic)
+	config.SetBech32PrefixForConsensusNode(AccountAddressPrefix+sdk.PrefixValidator+sdk.PrefixConsensus, AccountAddressPrefix+sdk.PrefixValidator+sdk.PrefixConsensus+sdk.PrefixPublic)
+
+	// Following the coin type registered at https://github.com/satoshilabs/slips/blob/master/slip-0044.md
+	// config.SetCoinType(CoinType)
+}
+
 // this line is used by starport scaffolding # stargate/wasm/app/enabledProposals
 
 func getGovProposalHandlers() []govclient.ProposalHandler {

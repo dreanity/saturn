@@ -1,0 +1,9 @@
+syntax = "proto3";
+package saturn.randomness;
+
+option go_package = "saturn/x/randomness/types";
+
+message RandomnessProved {
+  uint64 Round = 1;
+  
+}

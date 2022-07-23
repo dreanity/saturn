@@ -15,7 +15,7 @@ import (
 )
 
 func (p *ProvenRandomness) Verify(c *ChainInfo) error {
-	groupHashBytes, err := hex.DecodeString("8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce")
+	groupHashBytes, err := hex.DecodeString(c.Hash)
 	if err != nil {
 		return err
 	}
@@ -34,12 +34,12 @@ func (p *ProvenRandomness) Verify(c *ChainInfo) error {
 		return err
 	}
 
-	sig, err := hex.DecodeString(p.PreviousSignature)
+	sig, err := hex.DecodeString(p.Signature)
 	if err != nil {
 		return err
 	}
 
-	psig, err := hex.DecodeString(p.Signature)
+	psig, err := hex.DecodeString(p.PreviousSignature)
 	if err != nil {
 		return err
 	}
@@ -51,13 +51,13 @@ func (p *ProvenRandomness) Verify(c *ChainInfo) error {
 
 	random := chain.RandomnessFromSignature(sig)
 	if hex.EncodeToString(random) != p.Randomness {
-		return errors.New("The recovered randomness does not match the one sent")
+		return errors.New("the recovered randomness does not match the one sent")
 	}
 
 	return nil
 }
 
-func (p *ProvenRandomness) verifyBeacon(round uint64, prevSig, sig []byte, pubkey kyber.Point) error {
+func (p *ProvenRandomness) verifyBeacon(round uint64, sig, prevSig []byte, pubkey kyber.Point) error {
 	msg := p.digestMessage(round, prevSig)
 
 	return key.Scheme.VerifyRecovered(pubkey, msg, sig)

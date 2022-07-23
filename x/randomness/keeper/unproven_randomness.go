@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-func (k Keeper) SetUnprovenRandomnessForTime(ctx sdk.Context, time uint64) {
+func (k Keeper) ComputeRandomnessRoundForTime(ctx sdk.Context, time uint64) uint64 {
 	chainInfo := k.GetChainInfo(ctx)
 	round := uint64(1)
 
@@ -21,11 +21,7 @@ func (k Keeper) SetUnprovenRandomnessForTime(ctx sdk.Context, time uint64) {
 		round = nextRound
 	}
 
-	unprovenRandomness := types.UnprovenRandomness{
-		Round: round,
-	}
-
-	k.SetUnprovenRandomness(ctx, unprovenRandomness)
+	return round
 }
 
 // SetUnprovenRandomness set a specific unprovenRandomness in the store from its index
