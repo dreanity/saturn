@@ -10,7 +10,7 @@ import "randomness/unproven_randomness.proto";
 import "randomness/proven_randomness.proto";
 // this line is used by starport scaffolding # 1
 
-option go_package = "saturn/x/randomness/types";
+option go_package = "github.com/dreanity/saturn/x/randomness/types";
 
 // Query defines the gRPC querier service.
 service Query {

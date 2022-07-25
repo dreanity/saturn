@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"google.golang.org/grpc/codes"

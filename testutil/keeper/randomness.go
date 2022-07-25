@@ -3,8 +3,8 @@ package keeper
 import (
 	"testing"
 
-	"saturn/x/randomness/keeper"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"

@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 // GetParams get all parameters as types.Params

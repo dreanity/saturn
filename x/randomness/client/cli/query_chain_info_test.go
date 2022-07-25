@@ -9,10 +9,11 @@ import (
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 	"google.golang.org/grpc/status"
 
-	"saturn/testutil/network"
-	"saturn/testutil/nullify"
-	"saturn/x/randomness/client/cli"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
+
+	"github.com/dreanity/saturn/testutil/network"
+	"github.com/dreanity/saturn/testutil/nullify"
+	"github.com/dreanity/saturn/x/randomness/client/cli"
 )
 
 func networkWithChainInfoObjects(t *testing.T) (*network.Network, types.ChainInfo) {

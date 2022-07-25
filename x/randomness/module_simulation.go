@@ -9,9 +9,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	"saturn/testutil/sample"
-	randomnesssimulation "saturn/x/randomness/simulation"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/testutil/sample"
+	randomnesssimulation "github.com/dreanity/saturn/x/randomness/simulation"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 // avoid unused import issue

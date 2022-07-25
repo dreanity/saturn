@@ -98,10 +98,10 @@ import (
 	monitoringpkeeper "github.com/tendermint/spn/x/monitoringp/keeper"
 	monitoringptypes "github.com/tendermint/spn/x/monitoringp/types"
 
-	"saturn/docs"
-	randomnessmodule "saturn/x/randomness"
-	randomnessmodulekeeper "saturn/x/randomness/keeper"
-	randomnessmoduletypes "saturn/x/randomness/types"
+	"github.com/dreanity/saturn/docs"
+	randomnessmodule "github.com/dreanity/saturn/x/randomness"
+	randomnessmodulekeeper "github.com/dreanity/saturn/x/randomness/keeper"
+	randomnessmoduletypes "github.com/dreanity/saturn/x/randomness/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 

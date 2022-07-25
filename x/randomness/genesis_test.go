@@ -3,10 +3,10 @@ package randomness_test
 import (
 	"testing"
 
-	keepertest "saturn/testutil/keeper"
-	"saturn/testutil/nullify"
-	"saturn/x/randomness"
-	"saturn/x/randomness/types"
+	keepertest "github.com/dreanity/saturn/testutil/keeper"
+	"github.com/dreanity/saturn/testutil/nullify"
+	"github.com/dreanity/saturn/x/randomness"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	"github.com/stretchr/testify/require"
 )

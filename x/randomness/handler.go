@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"saturn/x/randomness/keeper"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 // NewHandler ...

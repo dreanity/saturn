@@ -8,7 +8,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	// "github.com/cosmos/cosmos-sdk/client/flags"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 var (

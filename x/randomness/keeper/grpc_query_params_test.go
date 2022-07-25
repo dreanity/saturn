@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	testkeeper "github.com/dreanity/saturn/testutil/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 	"github.com/stretchr/testify/require"
-	testkeeper "saturn/testutil/keeper"
-	"saturn/x/randomness/types"
 )
 
 func TestParamsQuery(t *testing.T) {

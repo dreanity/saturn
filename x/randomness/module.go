@@ -16,9 +16,9 @@ import (
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"saturn/x/randomness/client/cli"
-	"saturn/x/randomness/keeper"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/client/cli"
+	"github.com/dreanity/saturn/x/randomness/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 var (

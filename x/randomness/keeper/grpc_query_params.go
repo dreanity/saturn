@@ -4,9 +4,9 @@ import (
 	"context"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"saturn/x/randomness/types"
 )
 
 func (k Keeper) Params(c context.Context, req *types.QueryParamsRequest) (*types.QueryParamsResponse, error) {

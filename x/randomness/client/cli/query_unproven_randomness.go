@@ -3,7 +3,7 @@ package cli
 import (
 	"context"
 
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"

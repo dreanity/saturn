@@ -3,7 +3,7 @@ package saturn.randomness;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "saturn/x/randomness/types";
+option go_package = "github.com/dreanity/saturn/x/randomness/types";
 
 // Params defines the parameters for the module.
 message Params {

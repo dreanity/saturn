@@ -1,8 +1,8 @@
 package randomness
 
 import (
-	"saturn/x/randomness/keeper"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

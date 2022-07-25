@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+	"github.com/dreanity/saturn/testutil/sample"
 	"github.com/stretchr/testify/require"
-	"saturn/testutil/sample"
 )
 
 func TestMsgProveRandomness_ValidateBasic(t *testing.T) {

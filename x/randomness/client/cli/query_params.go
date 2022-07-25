@@ -5,8 +5,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/dreanity/saturn/x/randomness/types"
 	"github.com/spf13/cobra"
-	"saturn/x/randomness/types"
 )
 
 func CmdQueryParams() *cobra.Command {

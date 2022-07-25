@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/x/randomness/types"
 
 	"github.com/stretchr/testify/require"
 )

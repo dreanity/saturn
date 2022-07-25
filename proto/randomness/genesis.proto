@@ -8,7 +8,7 @@ import "randomness/proven_randomness.proto";
 import "randomness/unproven_randomness.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
-option go_package = "saturn/x/randomness/types";
+option go_package = "github.com/dreanity/saturn/x/randomness/types";
 
 // GenesisState defines the randomness module's genesis state.
 message GenesisState {

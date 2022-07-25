@@ -1,4 +1,4 @@
-module saturn
+module github.com/dreanity/saturn
 
 go 1.16
 

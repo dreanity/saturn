@@ -12,10 +12,10 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"saturn/testutil/network"
-	"saturn/testutil/nullify"
-	"saturn/x/randomness/client/cli"
-	"saturn/x/randomness/types"
+	"github.com/dreanity/saturn/testutil/network"
+	"github.com/dreanity/saturn/testutil/nullify"
+	"github.com/dreanity/saturn/x/randomness/client/cli"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 // Prevent strconv unused error

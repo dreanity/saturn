@@ -8,9 +8,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	keepertest "saturn/testutil/keeper"
-	"saturn/testutil/nullify"
-	"saturn/x/randomness/types"
+	keepertest "github.com/dreanity/saturn/testutil/keeper"
+	"github.com/dreanity/saturn/testutil/nullify"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 func TestChainInfoQuery(t *testing.T) {

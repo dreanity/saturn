@@ -3,9 +3,9 @@ package keeper_test
 import (
 	"testing"
 
+	testkeeper "github.com/dreanity/saturn/testutil/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 	"github.com/stretchr/testify/require"
-	testkeeper "saturn/testutil/keeper"
-	"saturn/x/randomness/types"
 )
 
 func TestGetParams(t *testing.T) {

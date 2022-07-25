@@ -6,10 +6,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	keepertest "saturn/testutil/keeper"
-	"saturn/testutil/nullify"
-	"saturn/x/randomness/keeper"
-	"saturn/x/randomness/types"
+	keepertest "github.com/dreanity/saturn/testutil/keeper"
+	"github.com/dreanity/saturn/testutil/nullify"
+	"github.com/dreanity/saturn/x/randomness/keeper"
+	"github.com/dreanity/saturn/x/randomness/types"
 )
 
 func createTestChainInfo(keeper *keeper.Keeper, ctx sdk.Context) types.ChainInfo {
