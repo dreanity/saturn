@@ -1,7 +1,9 @@
 accounts:
   - name: alice
     coins: ["200000000uhydrogen"]
+    # mnemonic: brand retire one fee clap imitate dad abstract vendor market present plate sad dynamic load stand bunker tomorrow castle never ketchup home unlock point
   - name: bob
+    address: "saturn1wvvyvp4y7uq3sdsaz2vwslh8kk8z08jsvp0je9"
     coins: ["100000000uhydrogen"]
 validator:
   name: alice
@@ -11,9 +13,9 @@ client:
     path: "docs/static/openapi.yml"
   vuex:
     # path: "vue/src/store"
-faucet:
-  name: bob
-  coins: ["100000uhydrogen"]
+# faucet:
+#   name: bob
+#   coins: ["100000uhydrogen"]
 build:
   main: ./cmd/saturnd
 init:
@@ -40,3 +42,10 @@ genesis:
               exponent: 6
               aliases:
                 - Hydrogen
+    randomness: 
+      unprovenRandomnessList:
+        - round: 12
+        - round: 432
+        - round: 3
+        - round: 6
+        - round: 10000
