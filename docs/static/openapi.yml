@@ -19781,6 +19781,8 @@ paths:
                     retryCount:
                       type: string
                       format: uint64
+                    name:
+                      type: string
                     prizes:
                       type: array
                       items:
@@ -19919,6 +19921,8 @@ paths:
                   retryCount:
                     type: string
                     format: uint64
+                  name:
+                    type: string
                   prizes:
                     type: array
                     items:
@@ -47767,6 +47771,8 @@ definitions:
       retryCount:
         type: string
         format: uint64
+      name:
+        type: string
       prizes:
         type: array
         items:
@@ -47809,6 +47815,8 @@ definitions:
             retryCount:
               type: string
               format: uint64
+            name:
+              type: string
             prizes:
               type: array
               items:
@@ -47861,6 +47869,8 @@ definitions:
           retryCount:
             type: string
             format: uint64
+          name:
+            type: string
           prizes:
             type: array
             items:

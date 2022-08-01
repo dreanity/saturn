@@ -1,0 +1,18 @@
+syntax = "proto3";
+package dreanity.saturn.giveaway;
+
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/dreanity/saturn/x/giveaway/types";
+
+
+message Prize {
+	string amount = 1
+      [(cosmos_proto.scalar)  = "cosmos.Int", 
+       (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int", 
+       (gogoproto.nullable)   = false];
+	uint32 scale = 2;
+	string currency = 3;
+}
+

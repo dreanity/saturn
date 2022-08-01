@@ -5,8 +5,6 @@ package types
 
 import (
 	fmt "fmt"
-	_ "github.com/cosmos/cosmos-proto"
-	github_com_cosmos_cosmos_sdk_types "github.com/cosmos/cosmos-sdk/types"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
@@ -29,7 +27,8 @@ type Giveaway struct {
 	Index      uint64  `protobuf:"varint,1,opt,name=index,proto3" json:"index,omitempty"`
 	Duration   uint64  `protobuf:"varint,2,opt,name=duration,proto3" json:"duration,omitempty"`
 	RetryCount uint64  `protobuf:"varint,3,opt,name=retryCount,proto3" json:"retryCount,omitempty"`
-	Prizes     []Prize `protobuf:"bytes,4,rep,name=prizes,proto3" json:"prizes"`
+	Name       string  `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Prizes     []Prize `protobuf:"bytes,5,rep,name=prizes,proto3" json:"prizes"`
 }
 
 func (m *Giveaway) Reset()         { *m = Giveaway{} }
@@ -86,6 +85,13 @@ func (m *Giveaway) GetRetryCount() uint64 {
 	return 0
 }
 
+func (m *Giveaway) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *Giveaway) GetPrizes() []Prize {
 	if m != nil {
 		return m.Prizes
@@ -93,89 +99,31 @@ func (m *Giveaway) GetPrizes() []Prize {
 	return nil
 }
 
-type Prize struct {
-	Amount   github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,1,opt,name=amount,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"amount"`
-	Scale    uint32                                 `protobuf:"varint,2,opt,name=scale,proto3" json:"scale,omitempty"`
-	Currency string                                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
-}
-
-func (m *Prize) Reset()         { *m = Prize{} }
-func (m *Prize) String() string { return proto.CompactTextString(m) }
-func (*Prize) ProtoMessage()    {}
-func (*Prize) Descriptor() ([]byte, []int) {
-	return fileDescriptor_1cf0a435194c6a42, []int{1}
-}
-func (m *Prize) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Prize) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Prize.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Prize) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Prize.Merge(m, src)
-}
-func (m *Prize) XXX_Size() int {
-	return m.Size()
-}
-func (m *Prize) XXX_DiscardUnknown() {
-	xxx_messageInfo_Prize.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Prize proto.InternalMessageInfo
-
-func (m *Prize) GetScale() uint32 {
-	if m != nil {
-		return m.Scale
-	}
-	return 0
-}
-
-func (m *Prize) GetCurrency() string {
-	if m != nil {
-		return m.Currency
-	}
-	return ""
-}
-
 func init() {
 	proto.RegisterType((*Giveaway)(nil), "dreanity.saturn.giveaway.Giveaway")
-	proto.RegisterType((*Prize)(nil), "dreanity.saturn.giveaway.Prize")
 }
 
 func init() { proto.RegisterFile("giveaway/giveaway.proto", fileDescriptor_1cf0a435194c6a42) }
 
 var fileDescriptor_1cf0a435194c6a42 = []byte{
-	// 333 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0xbd, 0x4a, 0x03, 0x41,
-	0x14, 0x85, 0x77, 0xcc, 0x0f, 0xc9, 0x88, 0xcd, 0x12, 0x70, 0x4d, 0x31, 0x09, 0x29, 0x24, 0x20,
-	0x99, 0x05, 0x6d, 0xb5, 0x89, 0x88, 0xa4, 0x93, 0xc5, 0xca, 0x46, 0x26, 0xbb, 0xc3, 0x3a, 0x68,
-	0x66, 0xc2, 0xcc, 0xac, 0x66, 0x7d, 0x09, 0xed, 0x7d, 0x0d, 0x1f, 0x22, 0x65, 0xb0, 0x12, 0x8b,
-	0x20, 0xc9, 0x8b, 0xc8, 0xfc, 0x24, 0xa4, 0xb1, 0xda, 0x7b, 0xce, 0xbd, 0x77, 0xf7, 0x7c, 0x77,
-	0xe1, 0x61, 0xce, 0x9e, 0x29, 0x79, 0x21, 0x65, 0xbc, 0x29, 0xf0, 0x54, 0x0a, 0x2d, 0xc2, 0x28,
-	0x93, 0x94, 0x70, 0xa6, 0x4b, 0xac, 0x88, 0x2e, 0x24, 0xc7, 0x9b, 0x7e, 0xfb, 0x28, 0x15, 0x6a,
-	0x22, 0xd4, 0xbd, 0x9d, 0x8b, 0x9d, 0x70, 0x4b, 0xed, 0x56, 0x2e, 0x72, 0xe1, 0x7c, 0x53, 0x39,
-	0xb7, 0xf7, 0x01, 0x60, 0xe3, 0xda, 0x6f, 0x87, 0x2d, 0x58, 0x63, 0x3c, 0xa3, 0xb3, 0x08, 0x74,
-	0x41, 0xbf, 0x9a, 0x38, 0x11, 0xb6, 0x61, 0x23, 0x2b, 0x24, 0xd1, 0x4c, 0xf0, 0x68, 0xcf, 0x36,
-	0xb6, 0x3a, 0x44, 0x10, 0x4a, 0xaa, 0x65, 0x79, 0x29, 0x0a, 0xae, 0xa3, 0x8a, 0xed, 0xee, 0x38,
-	0xe1, 0x05, 0xac, 0x4f, 0x25, 0x7b, 0xa5, 0x2a, 0xaa, 0x76, 0x2b, 0xfd, 0xfd, 0xd3, 0x0e, 0xfe,
-	0x2f, 0x3a, 0xbe, 0x31, 0x73, 0xc3, 0xea, 0x7c, 0xd9, 0x09, 0x12, 0xbf, 0xd4, 0x7b, 0x03, 0xb0,
-	0x66, 0xfd, 0xf0, 0x16, 0xd6, 0xc9, 0xc4, 0x7e, 0xc4, 0x64, 0x6b, 0x0e, 0xcf, 0xcd, 0xdc, 0xcf,
-	0xb2, 0x73, 0x9c, 0x33, 0xfd, 0x50, 0x8c, 0x71, 0x2a, 0x26, 0x1e, 0xd7, 0x3f, 0x06, 0x2a, 0x7b,
-	0x8c, 0x75, 0x39, 0xa5, 0x0a, 0x8f, 0xb8, 0xfe, 0xfa, 0x1c, 0x40, 0x7f, 0x8d, 0x11, 0xd7, 0x89,
-	0x7f, 0x97, 0x01, 0x56, 0x29, 0x79, 0xa2, 0x96, 0xeb, 0x20, 0x71, 0xc2, 0x00, 0xa7, 0x85, 0x94,
-	0x94, 0xa7, 0xa5, 0x45, 0x6a, 0x26, 0x5b, 0x3d, 0xbc, 0x9a, 0xaf, 0x10, 0x58, 0xac, 0x10, 0xf8,
-	0x5d, 0x21, 0xf0, 0xbe, 0x46, 0xc1, 0x62, 0x8d, 0x82, 0xef, 0x35, 0x0a, 0xee, 0x4e, 0x76, 0x92,
-	0x6c, 0x20, 0x63, 0x07, 0x19, 0xcf, 0xb6, 0x7f, 0xd0, 0x45, 0x1a, 0xd7, 0xed, 0xf5, 0xcf, 0xfe,
-	0x02, 0x00, 0x00, 0xff, 0xff, 0xdf, 0x77, 0x45, 0xc6, 0xe3, 0x01, 0x00, 0x00,
+	// 260 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4f, 0xcf, 0x2c, 0x4b,
+	0x4d, 0x2c, 0x4f, 0xac, 0xd4, 0x87, 0x31, 0xf4, 0x0a, 0x8a, 0xf2, 0x4b, 0xf2, 0x85, 0x24, 0x52,
+	0x8a, 0x52, 0x13, 0xf3, 0x32, 0x4b, 0x2a, 0xf5, 0x8a, 0x13, 0x4b, 0x4a, 0x8b, 0xf2, 0xf4, 0x60,
+	0xf2, 0x52, 0x22, 0xe9, 0xf9, 0xe9, 0xf9, 0x60, 0x45, 0xfa, 0x20, 0x16, 0x44, 0xbd, 0x94, 0x08,
+	0xdc, 0xa0, 0x82, 0xa2, 0xcc, 0xaa, 0x54, 0x88, 0xa8, 0xd2, 0x7a, 0x46, 0x2e, 0x0e, 0x77, 0xa8,
+	0x84, 0x90, 0x08, 0x17, 0x6b, 0x66, 0x5e, 0x4a, 0x6a, 0x85, 0x04, 0xa3, 0x02, 0xa3, 0x06, 0x4b,
+	0x10, 0x84, 0x23, 0x24, 0xc5, 0xc5, 0x91, 0x52, 0x5a, 0x94, 0x58, 0x92, 0x99, 0x9f, 0x27, 0xc1,
+	0x04, 0x96, 0x80, 0xf3, 0x85, 0xe4, 0xb8, 0xb8, 0x8a, 0x52, 0x4b, 0x8a, 0x2a, 0x9d, 0xf3, 0x4b,
+	0xf3, 0x4a, 0x24, 0x98, 0xc1, 0xb2, 0x48, 0x22, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9,
+	0x12, 0x2c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x60, 0xb6, 0x90, 0x2d, 0x17, 0x1b, 0xd8, 0x05, 0xc5,
+	0x12, 0xac, 0x0a, 0xcc, 0x1a, 0xdc, 0x46, 0xf2, 0x7a, 0xb8, 0x7c, 0xa2, 0x17, 0x00, 0x52, 0xe7,
+	0xc4, 0x72, 0xe2, 0x9e, 0x3c, 0x43, 0x10, 0x54, 0x93, 0x93, 0xeb, 0x89, 0x47, 0x72, 0x8c, 0x17,
+	0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c,
+	0x37, 0x1e, 0xcb, 0x31, 0x44, 0x69, 0xa7, 0x67, 0x96, 0x64, 0x94, 0x26, 0xe9, 0x25, 0xe7, 0xe7,
+	0xea, 0xc3, 0x8c, 0xd4, 0x87, 0x18, 0xa9, 0x5f, 0x01, 0x0f, 0x3e, 0xfd, 0x92, 0xca, 0x82, 0xd4,
+	0xe2, 0x24, 0x36, 0xb0, 0xff, 0x8d, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0x84, 0x6a, 0x39, 0x78,
+	0x60, 0x01, 0x00, 0x00,
 }
 
 func (m *Giveaway) Marshal() (dAtA []byte, err error) {
@@ -209,8 +157,15 @@ func (m *Giveaway) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 				i = encodeVarintGiveaway(dAtA, i, uint64(size))
 			}
 			i--
-			dAtA[i] = 0x22
+			dAtA[i] = 0x2a
 		}
+	}
+	if len(m.Name) > 0 {
+		i -= len(m.Name)
+		copy(dAtA[i:], m.Name)
+		i = encodeVarintGiveaway(dAtA, i, uint64(len(m.Name)))
+		i--
+		dAtA[i] = 0x22
 	}
 	if m.RetryCount != 0 {
 		i = encodeVarintGiveaway(dAtA, i, uint64(m.RetryCount))
@@ -227,51 +182,6 @@ func (m *Giveaway) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x8
 	}
-	return len(dAtA) - i, nil
-}
-
-func (m *Prize) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *Prize) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Prize) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if len(m.Currency) > 0 {
-		i -= len(m.Currency)
-		copy(dAtA[i:], m.Currency)
-		i = encodeVarintGiveaway(dAtA, i, uint64(len(m.Currency)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Scale != 0 {
-		i = encodeVarintGiveaway(dAtA, i, uint64(m.Scale))
-		i--
-		dAtA[i] = 0x10
-	}
-	{
-		size := m.Amount.Size()
-		i -= size
-		if _, err := m.Amount.MarshalTo(dAtA[i:]); err != nil {
-			return 0, err
-		}
-		i = encodeVarintGiveaway(dAtA, i, uint64(size))
-	}
-	i--
-	dAtA[i] = 0xa
 	return len(dAtA) - i, nil
 }
 
@@ -301,29 +211,15 @@ func (m *Giveaway) Size() (n int) {
 	if m.RetryCount != 0 {
 		n += 1 + sovGiveaway(uint64(m.RetryCount))
 	}
+	l = len(m.Name)
+	if l > 0 {
+		n += 1 + l + sovGiveaway(uint64(l))
+	}
 	if len(m.Prizes) > 0 {
 		for _, e := range m.Prizes {
 			l = e.Size()
 			n += 1 + l + sovGiveaway(uint64(l))
 		}
-	}
-	return n
-}
-
-func (m *Prize) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = m.Amount.Size()
-	n += 1 + l + sovGiveaway(uint64(l))
-	if m.Scale != 0 {
-		n += 1 + sovGiveaway(uint64(m.Scale))
-	}
-	l = len(m.Currency)
-	if l > 0 {
-		n += 1 + l + sovGiveaway(uint64(l))
 	}
 	return n
 }
@@ -422,6 +318,38 @@ func (m *Giveaway) Unmarshal(dAtA []byte) error {
 			}
 		case 4:
 			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGiveaway
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthGiveaway
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthGiveaway
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Name = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Prizes", wireType)
 			}
 			var msglen int
@@ -453,141 +381,6 @@ func (m *Giveaway) Unmarshal(dAtA []byte) error {
 			if err := m.Prizes[len(m.Prizes)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipGiveaway(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthGiveaway
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Prize) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowGiveaway
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Prize: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Prize: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowGiveaway
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthGiveaway
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthGiveaway
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if err := m.Amount.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Scale", wireType)
-			}
-			m.Scale = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowGiveaway
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Scale |= uint32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Currency", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowGiveaway
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthGiveaway
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthGiveaway
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Currency = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
