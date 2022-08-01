@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "giveaway/params.proto";
+import "giveaway/giveaway.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -15,7 +16,17 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/dreanity/saturn/giveaway/params";
   }
-  // this line is used by starport scaffolding # 2
+  // Queries a Giveaway by index.
+	rpc Giveaway(QueryGetGiveawayRequest) returns (QueryGetGiveawayResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway/{index}";
+	}
+
+	// Queries a list of Giveaway items.
+	rpc GiveawayAll(QueryAllGiveawayRequest) returns (QueryAllGiveawayResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway";
+	}
+
+// this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -25,6 +36,24 @@ message QueryParamsRequest {}
 message QueryParamsResponse {
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetGiveawayRequest {
+	  uint64 index = 1;
+
+}
+
+message QueryGetGiveawayResponse {
+	Giveaway giveaway = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGiveawayRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGiveawayResponse {
+	repeated Giveaway giveaway = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 // this line is used by starport scaffolding # 3

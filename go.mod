@@ -3,6 +3,7 @@ module github.com/dreanity/saturn
 go 1.16
 
 require (
+	github.com/cosmos/cosmos-proto v1.0.0-alpha7
 	github.com/cosmos/cosmos-sdk v0.45.4
 	github.com/cosmos/ibc-go/v3 v3.0.0
 	github.com/drand/drand v1.3.2
