@@ -21,7 +21,7 @@ func CmdCreateGiveaway() *cobra.Command {
 		Short: "Broadcast message createGiveaway",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argDuration, err := cast.ToInt32E(args[0])
+			argDuration, err := cast.ToInt64E(args[0])
 			if err != nil {
 				return err
 			}

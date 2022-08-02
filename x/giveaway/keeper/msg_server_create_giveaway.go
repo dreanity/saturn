@@ -10,8 +10,9 @@ import (
 func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiveaway) (*types.MsgCreateGiveawayResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// TODO: Handling the message
 	_ = ctx
+
+	// if msg.Duration >
 
 	// giveway := types.Giveaway{
 
