@@ -15,7 +15,6 @@ service Msg {
 message MsgCreateGiveaway {
   string creator = 1;
   int32 duration = 2;
-  uint64 roundCount = 3;
   string name = 4;
   Prize prize = 5;
 }

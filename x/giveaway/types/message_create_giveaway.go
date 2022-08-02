@@ -9,13 +9,12 @@ const TypeMsgCreateGiveaway = "create_giveaway"
 
 var _ sdk.Msg = &MsgCreateGiveaway{}
 
-func NewMsgCreateGiveaway(creator string, duration int32, roundCount uint64, name string, prize *Prize) *MsgCreateGiveaway {
+func NewMsgCreateGiveaway(creator string, duration int32, name string, prize *Prize) *MsgCreateGiveaway {
 	return &MsgCreateGiveaway{
-		Creator:    creator,
-		Duration:   duration,
-		RoundCount: roundCount,
-		Name:       name,
-		Prize:      prize,
+		Creator:  creator,
+		Duration: duration,
+		Name:     name,
+		Prize:    prize,
 	}
 }
 

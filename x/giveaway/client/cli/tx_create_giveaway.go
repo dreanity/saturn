@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"encoding/json"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -16,7 +17,7 @@ var _ = strconv.Itoa(0)
 
 func CmdCreateGiveaway() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-giveaway [duration] [round-count] [name] [prize]",
+		Use:   "create-giveaway [duration] [name] [prize]",
 		Short: "Broadcast message createGiveaway",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -24,13 +25,10 @@ func CmdCreateGiveaway() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			argRoundCount, err := cast.ToUint64E(args[1])
-			if err != nil {
-				return err
-			}
-			argName := args[2]
+
+			argName := args[1]
 			argPrize := new(types.Prize)
-			err = json.Unmarshal([]byte(args[3]), argPrize)
+			err = json.Unmarshal([]byte(args[2]), argPrize)
 			if err != nil {
 				return err
 			}
@@ -43,7 +41,6 @@ func CmdCreateGiveaway() *cobra.Command {
 			msg := types.NewMsgCreateGiveaway(
 				clientCtx.GetFromAddress().String(),
 				argDuration,
-				argRoundCount,
 				argName,
 				argPrize,
 			)
