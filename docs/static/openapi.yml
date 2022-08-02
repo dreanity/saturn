@@ -47882,6 +47882,8 @@ definitions:
               format: int64
             currency:
               type: string
+  dreanity.saturn.giveaway.MsgCreateGiveawayResponse:
+    type: object
   dreanity.saturn.giveaway.Params:
     type: object
     description: Params defines the parameters for the module.

@@ -23,11 +23,11 @@ func networkWithTimeObjects(t *testing.T) (*network.Network, types.Time) {
 
 	time := &types.Time{}
 	nullify.Fill(&time)
-	state.Time = time
+	state.Time = *time
 	buf, err := cfg.Codec.MarshalJSON(&state)
 	require.NoError(t, err)
 	cfg.GenesisState[types.ModuleName] = buf
-	return network.New(t, cfg), *state.Time
+	return network.New(t, cfg), state.Time
 }
 
 func TestShowTime(t *testing.T) {

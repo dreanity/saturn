@@ -2,12 +2,25 @@ syntax = "proto3";
 package dreanity.saturn.giveaway;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "giveaway/prize.proto";
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc CreateGiveaway(MsgCreateGiveaway) returns (MsgCreateGiveawayResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateGiveaway {
+  string creator = 1;
+  int32 duration = 2;
+  uint64 roundCount = 3;
+  string name = 4;
+  Prize prize = 5;
+}
+
+message MsgCreateGiveawayResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
