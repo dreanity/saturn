@@ -19849,7 +19849,10 @@ paths:
                       format: uint64
                     duration:
                       type: string
-                      format: uint64
+                      format: int64
+                    createdAt:
+                      type: string
+                      format: int64
                     name:
                       type: string
                     prizes:
@@ -19864,6 +19867,9 @@ paths:
                             format: int64
                           currency:
                             type: string
+                    completionHeight:
+                      type: string
+                      format: int64
               pagination:
                 type: object
                 properties:
@@ -19986,7 +19992,10 @@ paths:
                     format: uint64
                   duration:
                     type: string
-                    format: uint64
+                    format: int64
+                  createdAt:
+                    type: string
+                    format: int64
                   name:
                     type: string
                   prizes:
@@ -20001,6 +20010,9 @@ paths:
                           format: int64
                         currency:
                           type: string
+                  completionHeight:
+                    type: string
+                    format: int64
         default:
           description: An unexpected error response.
           schema:
@@ -47894,7 +47906,10 @@ definitions:
         format: uint64
       duration:
         type: string
-        format: uint64
+        format: int64
+      createdAt:
+        type: string
+        format: int64
       name:
         type: string
       prizes:
@@ -47909,6 +47924,9 @@ definitions:
               format: int64
             currency:
               type: string
+      completionHeight:
+        type: string
+        format: int64
   dreanity.saturn.giveaway.GiveawayCount:
     type: object
     properties:
@@ -47943,7 +47961,10 @@ definitions:
               format: uint64
             duration:
               type: string
-              format: uint64
+              format: int64
+            createdAt:
+              type: string
+              format: int64
             name:
               type: string
             prizes:
@@ -47958,6 +47979,9 @@ definitions:
                     format: int64
                   currency:
                     type: string
+            completionHeight:
+              type: string
+              format: int64
       pagination:
         type: object
         properties:
@@ -48003,7 +48027,10 @@ definitions:
             format: uint64
           duration:
             type: string
-            format: uint64
+            format: int64
+          createdAt:
+            type: string
+            format: int64
           name:
             type: string
           prizes:
@@ -48018,6 +48045,9 @@ definitions:
                   format: int64
                 currency:
                   type: string
+          completionHeight:
+            type: string
+            format: int64
   dreanity.saturn.giveaway.QueryParamsResponse:
     type: object
     properties:

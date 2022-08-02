@@ -421,14 +421,6 @@ func New(
 	)
 	randomnessModule := randomnessmodule.NewAppModule(appCodec, app.RandomnessKeeper, app.AccountKeeper, app.BankKeeper)
 
-	app.GiveawayKeeper = *giveawaymodulekeeper.NewKeeper(
-		appCodec,
-		keys[giveawaymoduletypes.StoreKey],
-		keys[giveawaymoduletypes.MemStoreKey],
-		app.GetSubspace(giveawaymoduletypes.ModuleName),
-	)
-	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.AccountKeeper, app.BankKeeper)
-
 	app.GentimeKeeper = *gentimemodulekeeper.NewKeeper(
 		appCodec,
 		keys[gentimemoduletypes.StoreKey],
@@ -436,6 +428,15 @@ func New(
 		app.GetSubspace(gentimemoduletypes.ModuleName),
 	)
 	gentimeModule := gentimemodule.NewAppModule(appCodec, app.GentimeKeeper, app.AccountKeeper, app.BankKeeper)
+
+	app.GiveawayKeeper = *giveawaymodulekeeper.NewKeeper(
+		appCodec,
+		keys[giveawaymoduletypes.StoreKey],
+		keys[giveawaymoduletypes.MemStoreKey],
+		app.GetSubspace(giveawaymoduletypes.ModuleName),
+		app.GentimeKeeper,
+	)
+	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.GentimeKeeper)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 

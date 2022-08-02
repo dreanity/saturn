@@ -17,7 +17,7 @@ var _ = strconv.Itoa(0)
 
 func CmdCreateGiveaway() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-giveaway [duration] [name] [prize]",
+		Use:   "create-giveaway [duration] [name] [prizes]",
 		Short: "Broadcast message createGiveaway",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -27,8 +27,8 @@ func CmdCreateGiveaway() *cobra.Command {
 			}
 
 			argName := args[1]
-			argPrize := new(types.Prize)
-			err = json.Unmarshal([]byte(args[2]), argPrize)
+			argPrizes := new([]types.Prize)
+			err = json.Unmarshal([]byte(args[2]), argPrizes)
 			if err != nil {
 				return err
 			}
@@ -42,7 +42,7 @@ func CmdCreateGiveaway() *cobra.Command {
 				clientCtx.GetFromAddress().String(),
 				argDuration,
 				argName,
-				argPrize,
+				*argPrizes,
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err

@@ -20,11 +20,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 	genesis.Params = k.GetParams(ctx)
 
-	// Get all time
-	time, found := k.GetTime(ctx)
-	if found {
-		genesis.Time = time
-	}
+	genesis.Time = k.GetTime(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

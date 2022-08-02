@@ -8,8 +8,10 @@ option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
 message Giveaway {
   uint64 index = 1; 
-  uint64 duration = 2; 
+  int64 duration = 2; 
+  int64 createdAt = 3;
   string name = 4;
   repeated Prize prizes = 5 [(gogoproto.nullable) = false]; 
+  int64 completionHeight = 6;
   
 }

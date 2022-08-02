@@ -1,6 +1,7 @@
 syntax = "proto3";
 package dreanity.saturn.giveaway;
 
+import "gogoproto/gogo.proto";
 // this line is used by starport scaffolding # proto/tx/import
 import "giveaway/prize.proto";
 
@@ -16,7 +17,7 @@ message MsgCreateGiveaway {
   string creator = 1;
   int64 duration = 2;
   string name = 4;
-  Prize prize = 5;
+  repeated Prize prizes = 5 [(gogoproto.nullable) = false];
 }
 
 message MsgCreateGiveawayResponse {

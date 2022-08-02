@@ -15,10 +15,7 @@ func (k Keeper) Time(c context.Context, req *types.QueryGetTimeRequest) (*types.
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	val, found := k.GetTime(ctx)
-	if !found {
-		return nil, status.Error(codes.NotFound, "not found")
-	}
+	val := k.GetTime(ctx)
 
 	return &types.QueryGetTimeResponse{Time: val}, nil
 }

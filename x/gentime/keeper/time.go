@@ -14,16 +14,13 @@ func (k Keeper) SetTime(ctx sdk.Context, time types.Time) {
 }
 
 // GetTime returns time
-func (k Keeper) GetTime(ctx sdk.Context) (val types.Time, found bool) {
+func (k Keeper) GetTime(ctx sdk.Context) (val types.Time) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TimeKey))
 
 	b := store.Get([]byte{0})
-	if b == nil {
-		return val, false
-	}
 
 	k.cdc.MustUnmarshal(b, &val)
-	return val, true
+	return val
 }
 
 // RemoveTime removes time from the store
