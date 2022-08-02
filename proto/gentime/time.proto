@@ -1,0 +1,9 @@
+syntax = "proto3";
+package dreanity.saturn.gentime;
+
+option go_package = "github.com/dreanity/saturn/x/gentime/types";
+
+message Time {
+  int64 value = 1; 
+  
+}

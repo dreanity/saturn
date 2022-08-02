@@ -3,6 +3,7 @@ package dreanity.saturn.gentime;
 
 import "gogoproto/gogo.proto";
 import "gentime/params.proto";
+import "gentime/time.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/dreanity/saturn/x/gentime/types";
@@ -10,5 +11,6 @@ option go_package = "github.com/dreanity/saturn/x/gentime/types";
 // GenesisState defines the gentime module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  Time time = 2 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }

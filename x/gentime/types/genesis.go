@@ -1,8 +1,8 @@
 package types
 
-import (
+import "time"
+
 // this line is used by starport scaffolding # genesis/types/import
-)
 
 // DefaultIndex is the default capability global index
 const DefaultIndex uint64 = 1
@@ -10,6 +10,9 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default Capability genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
+		Time: Time{
+			Value: time.Now().UTC().Unix(),
+		},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
