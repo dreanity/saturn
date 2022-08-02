@@ -99,6 +99,9 @@ import (
 	monitoringptypes "github.com/tendermint/spn/x/monitoringp/types"
 
 	"github.com/dreanity/saturn/docs"
+	gentimemodule "github.com/dreanity/saturn/x/gentime"
+	gentimemodulekeeper "github.com/dreanity/saturn/x/gentime/keeper"
+	gentimemoduletypes "github.com/dreanity/saturn/x/gentime/types"
 	giveawaymodule "github.com/dreanity/saturn/x/giveaway"
 	giveawaymodulekeeper "github.com/dreanity/saturn/x/giveaway/keeper"
 	giveawaymoduletypes "github.com/dreanity/saturn/x/giveaway/types"
@@ -170,6 +173,7 @@ var (
 		monitoringp.AppModuleBasic{},
 		randomnessmodule.AppModuleBasic{},
 		giveawaymodule.AppModuleBasic{},
+		gentimemodule.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 	)
 
@@ -246,6 +250,8 @@ type App struct {
 	RandomnessKeeper randomnessmodulekeeper.Keeper
 
 	GiveawayKeeper giveawaymodulekeeper.Keeper
+
+	GentimeKeeper gentimemodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// mm is the module manager
@@ -284,6 +290,7 @@ func New(
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey, monitoringptypes.StoreKey,
 		randomnessmoduletypes.StoreKey,
 		giveawaymoduletypes.StoreKey,
+		gentimemoduletypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
@@ -422,6 +429,14 @@ func New(
 	)
 	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.AccountKeeper, app.BankKeeper)
 
+	app.GentimeKeeper = *gentimemodulekeeper.NewKeeper(
+		appCodec,
+		keys[gentimemoduletypes.StoreKey],
+		keys[gentimemoduletypes.MemStoreKey],
+		app.GetSubspace(gentimemoduletypes.ModuleName),
+	)
+	gentimeModule := gentimemodule.NewAppModule(appCodec, app.GentimeKeeper, app.AccountKeeper, app.BankKeeper)
+
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 
 	// Create static IBC router, add transfer route, then set and seal it
@@ -465,6 +480,7 @@ func New(
 		monitoringModule,
 		randomnessModule,
 		giveawayModule,
+		gentimeModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 	)
 
@@ -494,6 +510,7 @@ func New(
 		monitoringptypes.ModuleName,
 		randomnessmoduletypes.ModuleName,
 		giveawaymoduletypes.ModuleName,
+		gentimemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	)
 
@@ -519,6 +536,7 @@ func New(
 		monitoringptypes.ModuleName,
 		randomnessmoduletypes.ModuleName,
 		giveawaymoduletypes.ModuleName,
+		gentimemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	)
 
@@ -549,6 +567,7 @@ func New(
 		monitoringptypes.ModuleName,
 		randomnessmoduletypes.ModuleName,
 		giveawaymoduletypes.ModuleName,
+		gentimemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	)
 
@@ -575,6 +594,7 @@ func New(
 		monitoringModule,
 		randomnessModule,
 		giveawayModule,
+		gentimeModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 	)
 	app.sm.RegisterStoreDecoders()
@@ -766,6 +786,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(monitoringptypes.ModuleName)
 	paramsKeeper.Subspace(randomnessmoduletypes.ModuleName)
 	paramsKeeper.Subspace(giveawaymoduletypes.ModuleName)
+	paramsKeeper.Subspace(gentimemoduletypes.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
 
 	return paramsKeeper
