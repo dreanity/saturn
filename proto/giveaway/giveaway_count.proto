@@ -1,0 +1,9 @@
+syntax = "proto3";
+package dreanity.saturn.giveaway;
+
+option go_package = "github.com/dreanity/saturn/x/giveaway/types";
+
+message GiveawayCount {
+  uint64 value = 1; 
+  
+}

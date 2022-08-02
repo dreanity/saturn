@@ -13,5 +13,9 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	// TODO: Handling the message
 	_ = ctx
 
+	// giveway := types.Giveaway{
+
+	// }
+
 	return &types.MsgCreateGiveawayResponse{}, nil
 }

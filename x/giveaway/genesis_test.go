@@ -22,6 +22,9 @@ func TestGenesis(t *testing.T) {
 				Index: 1,
 			},
 		},
+		GiveawayCount: &types.GiveawayCount{
+			Value: 74,
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -34,5 +37,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.ElementsMatch(t, genesisState.GiveawayList, got.GiveawayList)
+	require.Equal(t, genesisState.GiveawayCount, got.GiveawayCount)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

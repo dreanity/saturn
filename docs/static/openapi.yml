@@ -19850,9 +19850,6 @@ paths:
                     duration:
                       type: string
                       format: uint64
-                    retryCount:
-                      type: string
-                      format: uint64
                     name:
                       type: string
                     prizes:
@@ -19990,9 +19987,6 @@ paths:
                   duration:
                     type: string
                     format: uint64
-                  retryCount:
-                    type: string
-                    format: uint64
                   name:
                     type: string
                   prizes:
@@ -20031,6 +20025,42 @@ paths:
           required: true
           type: string
           format: uint64
+      tags:
+        - Query
+  /dreanity/saturn/giveaway/giveaway_count:
+    get:
+      summary: Queries a GiveawayCount by index.
+      operationId: DreanitySaturnGiveawayGiveawayCount
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              GiveawayCount:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
       tags:
         - Query
   /dreanity/saturn/giveaway/params:
@@ -47865,9 +47895,6 @@ definitions:
       duration:
         type: string
         format: uint64
-      retryCount:
-        type: string
-        format: uint64
       name:
         type: string
       prizes:
@@ -47882,6 +47909,12 @@ definitions:
               format: int64
             currency:
               type: string
+  dreanity.saturn.giveaway.GiveawayCount:
+    type: object
+    properties:
+      value:
+        type: string
+        format: uint64
   dreanity.saturn.giveaway.MsgCreateGiveawayResponse:
     type: object
   dreanity.saturn.giveaway.Params:
@@ -47909,9 +47942,6 @@ definitions:
               type: string
               format: uint64
             duration:
-              type: string
-              format: uint64
-            retryCount:
               type: string
               format: uint64
             name:
@@ -47953,6 +47983,15 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  dreanity.saturn.giveaway.QueryGetGiveawayCountResponse:
+    type: object
+    properties:
+      GiveawayCount:
+        type: object
+        properties:
+          value:
+            type: string
+            format: uint64
   dreanity.saturn.giveaway.QueryGetGiveawayResponse:
     type: object
     properties:
@@ -47963,9 +48002,6 @@ definitions:
             type: string
             format: uint64
           duration:
-            type: string
-            format: uint64
-          retryCount:
             type: string
             format: uint64
           name:
