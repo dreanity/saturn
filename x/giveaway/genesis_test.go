@@ -22,7 +22,7 @@ func TestGenesis(t *testing.T) {
 				Index: 1,
 			},
 		},
-		GiveawayCount: &types.GiveawayCount{
+		GiveawayCount: types.GiveawayCount{
 			Value: 74,
 		},
 		// this line is used by starport scaffolding # genesis/test/state
