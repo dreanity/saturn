@@ -5,6 +5,7 @@ import "gogoproto/gogo.proto";
 import "giveaway/params.proto";
 import "giveaway/giveaway.proto";
 import "giveaway/giveaway_count.proto";
+import "giveaway/giveaway_by_height.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -14,5 +15,6 @@ message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   repeated Giveaway giveawayList = 2 [(gogoproto.nullable) = false];
   GiveawayCount giveawayCount = 3 [(gogoproto.nullable) = false];
+  repeated GiveawayByHeight giveawayByHeightList = 4 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }

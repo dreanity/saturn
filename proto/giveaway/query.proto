@@ -7,6 +7,7 @@ import "cosmos/base/query/v1beta1/pagination.proto";
 import "giveaway/params.proto";
 import "giveaway/giveaway.proto";
 import "giveaway/giveaway_count.proto";
+import "giveaway/giveaway_by_height.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -31,6 +32,16 @@ service Query {
 	rpc GiveawayCount(QueryGetGiveawayCountRequest) returns (QueryGetGiveawayCountResponse) {
 		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_count";
 	}
+// Queries a GiveawayByHeight by index.
+	rpc GiveawayByHeight(QueryGetGiveawayByHeightRequest) returns (QueryGetGiveawayByHeightResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_by_height/{height}";
+	}
+
+	// Queries a list of GiveawayByHeight items.
+	rpc GiveawayByHeightAll(QueryAllGiveawayByHeightRequest) returns (QueryAllGiveawayByHeightResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_by_height";
+	}
+
 // this line is used by starport scaffolding # 2
 }
 
@@ -66,4 +77,22 @@ message QueryGetGiveawayCountRequest {}
 message QueryGetGiveawayCountResponse {
 	GiveawayCount GiveawayCount = 1 [(gogoproto.nullable) = false];
 }
+message QueryGetGiveawayByHeightRequest {
+	  int32 height = 1;
+
+}
+
+message QueryGetGiveawayByHeightResponse {
+	GiveawayByHeight giveawayByHeight = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGiveawayByHeightRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGiveawayByHeightResponse {
+	repeated GiveawayByHeight giveawayByHeight = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
 // this line is used by starport scaffolding # 3

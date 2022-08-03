@@ -33,6 +33,14 @@ func TestGenesisState_Validate(t *testing.T) {
 				GiveawayCount: types.GiveawayCount{
 					Value: 22,
 				},
+				GiveawayByHeightList: []types.GiveawayByHeight{
+					{
+						Height: 0,
+					},
+					{
+						Height: 1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -46,6 +54,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Index: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated giveawayByHeight",
+			genState: &types.GenesisState{
+				GiveawayByHeightList: []types.GiveawayByHeight{
+					{
+						Height: 0,
+					},
+					{
+						Height: 0,
 					},
 				},
 			},

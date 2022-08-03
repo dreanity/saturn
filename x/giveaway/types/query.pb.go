@@ -377,6 +377,190 @@ func (m *QueryGetGiveawayCountResponse) GetGiveawayCount() GiveawayCount {
 	return GiveawayCount{}
 }
 
+type QueryGetGiveawayByHeightRequest struct {
+	Height int32 `protobuf:"varint,1,opt,name=height,proto3" json:"height,omitempty"`
+}
+
+func (m *QueryGetGiveawayByHeightRequest) Reset()         { *m = QueryGetGiveawayByHeightRequest{} }
+func (m *QueryGetGiveawayByHeightRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGiveawayByHeightRequest) ProtoMessage()    {}
+func (*QueryGetGiveawayByHeightRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_401008c3ac713d20, []int{8}
+}
+func (m *QueryGetGiveawayByHeightRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGiveawayByHeightRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGiveawayByHeightRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGiveawayByHeightRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGiveawayByHeightRequest.Merge(m, src)
+}
+func (m *QueryGetGiveawayByHeightRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGiveawayByHeightRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGiveawayByHeightRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGiveawayByHeightRequest proto.InternalMessageInfo
+
+func (m *QueryGetGiveawayByHeightRequest) GetHeight() int32 {
+	if m != nil {
+		return m.Height
+	}
+	return 0
+}
+
+type QueryGetGiveawayByHeightResponse struct {
+	GiveawayByHeight GiveawayByHeight `protobuf:"bytes,1,opt,name=giveawayByHeight,proto3" json:"giveawayByHeight"`
+}
+
+func (m *QueryGetGiveawayByHeightResponse) Reset()         { *m = QueryGetGiveawayByHeightResponse{} }
+func (m *QueryGetGiveawayByHeightResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGiveawayByHeightResponse) ProtoMessage()    {}
+func (*QueryGetGiveawayByHeightResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_401008c3ac713d20, []int{9}
+}
+func (m *QueryGetGiveawayByHeightResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGiveawayByHeightResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGiveawayByHeightResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGiveawayByHeightResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGiveawayByHeightResponse.Merge(m, src)
+}
+func (m *QueryGetGiveawayByHeightResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGiveawayByHeightResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGiveawayByHeightResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGiveawayByHeightResponse proto.InternalMessageInfo
+
+func (m *QueryGetGiveawayByHeightResponse) GetGiveawayByHeight() GiveawayByHeight {
+	if m != nil {
+		return m.GiveawayByHeight
+	}
+	return GiveawayByHeight{}
+}
+
+type QueryAllGiveawayByHeightRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGiveawayByHeightRequest) Reset()         { *m = QueryAllGiveawayByHeightRequest{} }
+func (m *QueryAllGiveawayByHeightRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGiveawayByHeightRequest) ProtoMessage()    {}
+func (*QueryAllGiveawayByHeightRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_401008c3ac713d20, []int{10}
+}
+func (m *QueryAllGiveawayByHeightRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGiveawayByHeightRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGiveawayByHeightRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGiveawayByHeightRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGiveawayByHeightRequest.Merge(m, src)
+}
+func (m *QueryAllGiveawayByHeightRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGiveawayByHeightRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGiveawayByHeightRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGiveawayByHeightRequest proto.InternalMessageInfo
+
+func (m *QueryAllGiveawayByHeightRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllGiveawayByHeightResponse struct {
+	GiveawayByHeight []GiveawayByHeight  `protobuf:"bytes,1,rep,name=giveawayByHeight,proto3" json:"giveawayByHeight"`
+	Pagination       *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGiveawayByHeightResponse) Reset()         { *m = QueryAllGiveawayByHeightResponse{} }
+func (m *QueryAllGiveawayByHeightResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGiveawayByHeightResponse) ProtoMessage()    {}
+func (*QueryAllGiveawayByHeightResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_401008c3ac713d20, []int{11}
+}
+func (m *QueryAllGiveawayByHeightResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGiveawayByHeightResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGiveawayByHeightResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGiveawayByHeightResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGiveawayByHeightResponse.Merge(m, src)
+}
+func (m *QueryAllGiveawayByHeightResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGiveawayByHeightResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGiveawayByHeightResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGiveawayByHeightResponse proto.InternalMessageInfo
+
+func (m *QueryAllGiveawayByHeightResponse) GetGiveawayByHeight() []GiveawayByHeight {
+	if m != nil {
+		return m.GiveawayByHeight
+	}
+	return nil
+}
+
+func (m *QueryAllGiveawayByHeightResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "dreanity.saturn.giveaway.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "dreanity.saturn.giveaway.QueryParamsResponse")
@@ -386,48 +570,61 @@ func init() {
 	proto.RegisterType((*QueryAllGiveawayResponse)(nil), "dreanity.saturn.giveaway.QueryAllGiveawayResponse")
 	proto.RegisterType((*QueryGetGiveawayCountRequest)(nil), "dreanity.saturn.giveaway.QueryGetGiveawayCountRequest")
 	proto.RegisterType((*QueryGetGiveawayCountResponse)(nil), "dreanity.saturn.giveaway.QueryGetGiveawayCountResponse")
+	proto.RegisterType((*QueryGetGiveawayByHeightRequest)(nil), "dreanity.saturn.giveaway.QueryGetGiveawayByHeightRequest")
+	proto.RegisterType((*QueryGetGiveawayByHeightResponse)(nil), "dreanity.saturn.giveaway.QueryGetGiveawayByHeightResponse")
+	proto.RegisterType((*QueryAllGiveawayByHeightRequest)(nil), "dreanity.saturn.giveaway.QueryAllGiveawayByHeightRequest")
+	proto.RegisterType((*QueryAllGiveawayByHeightResponse)(nil), "dreanity.saturn.giveaway.QueryAllGiveawayByHeightResponse")
 }
 
 func init() { proto.RegisterFile("giveaway/query.proto", fileDescriptor_401008c3ac713d20) }
 
 var fileDescriptor_401008c3ac713d20 = []byte{
-	// 568 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0xbf, 0x6f, 0xd3, 0x40,
-	0x14, 0xc7, 0x73, 0xa5, 0x8d, 0xaa, 0xab, 0x58, 0x8e, 0xa0, 0x46, 0x51, 0x6b, 0xa2, 0x13, 0xa2,
-	0x51, 0x28, 0x77, 0x24, 0x48, 0xb0, 0x21, 0xb5, 0xfc, 0xc8, 0x5a, 0x82, 0x58, 0x58, 0xe0, 0x92,
-	0x9e, 0x8c, 0x25, 0xc7, 0xe7, 0xda, 0xe7, 0xd2, 0x08, 0xb1, 0xf0, 0x0f, 0x80, 0xc4, 0xc4, 0xc6,
-	0xc2, 0xc0, 0xca, 0x5f, 0xd1, 0xb1, 0x12, 0x0b, 0x13, 0x42, 0x09, 0x7f, 0x08, 0xca, 0xdd, 0x73,
-	0x5a, 0xc7, 0xb5, 0xdc, 0xb2, 0x5d, 0xf2, 0xde, 0xf7, 0xbd, 0xcf, 0x7b, 0xf7, 0x3d, 0xe3, 0x9a,
-	0xeb, 0x1d, 0x4a, 0xf1, 0x56, 0x8c, 0xf9, 0x41, 0x22, 0xa3, 0x31, 0x0b, 0x23, 0xa5, 0x15, 0xa9,
-	0xef, 0x47, 0x52, 0x04, 0x9e, 0x1e, 0xb3, 0x58, 0xe8, 0x24, 0x0a, 0x58, 0x9a, 0xd5, 0xa8, 0xb9,
-	0xca, 0x55, 0x26, 0x89, 0xcf, 0x4e, 0x36, 0xbf, 0xb1, 0xe1, 0x2a, 0xe5, 0xfa, 0x92, 0x8b, 0xd0,
-	0xe3, 0x22, 0x08, 0x94, 0x16, 0xda, 0x53, 0x41, 0x0c, 0xd1, 0xf6, 0x50, 0xc5, 0x23, 0x15, 0xf3,
-	0x81, 0x88, 0xa5, 0x6d, 0xc3, 0x0f, 0x3b, 0x03, 0xa9, 0x45, 0x87, 0x87, 0xc2, 0xf5, 0x02, 0x93,
-	0x0c, 0xb9, 0xd7, 0xe7, 0x3c, 0xa1, 0x88, 0xc4, 0x28, 0x2d, 0xb1, 0x3e, 0xff, 0x3b, 0x3d, 0x40,
-	0x60, 0x33, 0x17, 0x78, 0x35, 0x54, 0x49, 0xa0, 0x6d, 0x98, 0xd6, 0x30, 0x79, 0x36, 0x6b, 0xb8,
-	0x67, 0x8a, 0xf5, 0xe5, 0x41, 0x22, 0x63, 0x4d, 0x5f, 0xe0, 0x6b, 0x99, 0x7f, 0xe3, 0x50, 0x05,
-	0xb1, 0x24, 0x0f, 0x71, 0xd5, 0x36, 0xad, 0xa3, 0x26, 0x6a, 0xad, 0x75, 0x9b, 0xac, 0x68, 0x0d,
-	0xcc, 0x2a, 0x77, 0x97, 0x8f, 0x7f, 0xdf, 0xa8, 0xf4, 0x41, 0x45, 0x39, 0x5e, 0x37, 0x65, 0x7b,
-	0x52, 0xf7, 0x20, 0x11, 0x3a, 0x92, 0x1a, 0x5e, 0xf1, 0x82, 0x7d, 0x79, 0x64, 0x2a, 0x2f, 0xf7,
-	0xed, 0x0f, 0xfa, 0x1a, 0xd7, 0xf3, 0x02, 0x80, 0x79, 0x8c, 0x57, 0xd3, 0x6e, 0x80, 0x43, 0x8b,
-	0x71, 0x52, 0x35, 0x00, 0xcd, 0x95, 0x54, 0x00, 0xd2, 0x8e, 0xef, 0x2f, 0x22, 0x3d, 0xc5, 0xf8,
-	0x74, 0xfb, 0xd0, 0xe2, 0x16, 0xb3, 0x57, 0xc5, 0x66, 0x57, 0xc5, 0xac, 0x23, 0xe0, 0xaa, 0xd8,
-	0x9e, 0x70, 0x25, 0x68, 0xfb, 0x67, 0x94, 0xf4, 0x3b, 0x82, 0x29, 0x32, 0x3d, 0xce, 0x9d, 0xe2,
-	0xca, 0xff, 0x4d, 0x41, 0x7a, 0x19, 0xd4, 0x25, 0x83, 0xba, 0x55, 0x8a, 0x6a, 0x11, 0x32, 0xac,
-	0x0e, 0xde, 0x58, 0x5c, 0xf8, 0xa3, 0x99, 0x5b, 0x52, 0x63, 0x68, 0xbc, 0x59, 0x10, 0x87, 0x79,
-	0x9e, 0xe3, 0xab, 0x99, 0x00, 0xec, 0x6d, 0xab, 0x7c, 0x28, 0x93, 0x0e, 0x93, 0x65, 0x6b, 0x74,
-	0xbf, 0xac, 0xe0, 0x15, 0xd3, 0x96, 0x7c, 0x44, 0xb8, 0x6a, 0xad, 0x45, 0xb6, 0x8b, 0x4b, 0xe6,
-	0x1d, 0xdd, 0xb8, 0x73, 0xc1, 0x6c, 0x3b, 0x06, 0x6d, 0x7d, 0xf8, 0xf9, 0xf7, 0xf3, 0x12, 0x25,
-	0x4d, 0x9e, 0xca, 0xb8, 0x95, 0xf1, 0x85, 0xe7, 0x47, 0xbe, 0x21, 0xbc, 0x9a, 0xd2, 0x92, 0x4e,
-	0x49, 0x97, 0xbc, 0xf1, 0x1b, 0xdd, 0xcb, 0x48, 0x80, 0xae, 0x6b, 0xe8, 0xb6, 0x49, 0xbb, 0x98,
-	0x6e, 0x7e, 0x78, 0x67, 0x5e, 0xd2, 0x7b, 0xf2, 0x15, 0xe1, 0xb5, 0xb4, 0xd0, 0x8e, 0xef, 0x97,
-	0xa2, 0xe6, 0x1f, 0x44, 0x29, 0xea, 0x39, 0xfe, 0xa6, 0x6d, 0x83, 0x7a, 0x93, 0xd0, 0x72, 0x54,
-	0xf2, 0x03, 0x2d, 0x98, 0x87, 0xdc, 0xbf, 0xf8, 0x72, 0xce, 0xda, 0xb4, 0xf1, 0xe0, 0xd2, 0x3a,
-	0xc0, 0xbd, 0x6b, 0x70, 0xdb, 0xa4, 0x55, 0x8e, 0x6b, 0x3f, 0xa3, 0xbb, 0x4f, 0x8e, 0x27, 0x0e,
-	0x3a, 0x99, 0x38, 0xe8, 0xcf, 0xc4, 0x41, 0x9f, 0xa6, 0x4e, 0xe5, 0x64, 0xea, 0x54, 0x7e, 0x4d,
-	0x9d, 0xca, 0xcb, 0xdb, 0xae, 0xa7, 0xdf, 0x24, 0x03, 0x36, 0x54, 0xa3, 0x5c, 0xb5, 0xa3, 0xd3,
-	0x7a, 0x7a, 0x1c, 0xca, 0x78, 0x50, 0x35, 0x9f, 0xe3, 0x7b, 0xff, 0x02, 0x00, 0x00, 0xff, 0xff,
-	0x29, 0x5c, 0x04, 0x19, 0x6f, 0x06, 0x00, 0x00,
+	// 720 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xdd, 0x4e, 0x13, 0x41,
+	0x14, 0xc7, 0x3b, 0x7c, 0x34, 0x64, 0x88, 0x09, 0x19, 0xaa, 0x90, 0x06, 0x96, 0x3a, 0x31, 0x42,
+	0x2a, 0xee, 0x48, 0xfd, 0x20, 0x98, 0x68, 0x02, 0x7e, 0xe0, 0x25, 0xd6, 0x78, 0x63, 0x4c, 0x70,
+	0x0a, 0x93, 0x65, 0x93, 0xb2, 0x53, 0xba, 0x53, 0xa4, 0x21, 0x24, 0xc6, 0x17, 0xd0, 0xc4, 0x17,
+	0xf0, 0xc6, 0x0b, 0x6e, 0x7d, 0x04, 0xaf, 0xf0, 0x8e, 0xc4, 0x1b, 0xaf, 0x8c, 0x01, 0x1f, 0xc4,
+	0x74, 0xe6, 0x6c, 0x61, 0x77, 0x59, 0x76, 0x4b, 0xb8, 0xea, 0xee, 0x9e, 0xf3, 0x3f, 0xe7, 0x77,
+	0xe6, 0x9c, 0x3d, 0x5b, 0x5c, 0x70, 0xdc, 0x6d, 0xc1, 0xdf, 0xf3, 0x36, 0xdb, 0x6a, 0x89, 0x66,
+	0xdb, 0x6e, 0x34, 0xa5, 0x92, 0x64, 0x7c, 0xbd, 0x29, 0xb8, 0xe7, 0xaa, 0xb6, 0xed, 0x73, 0xd5,
+	0x6a, 0x7a, 0x76, 0xe0, 0x55, 0x2c, 0x38, 0xd2, 0x91, 0xda, 0x89, 0x75, 0xae, 0x8c, 0x7f, 0x71,
+	0xc2, 0x91, 0xd2, 0xa9, 0x0b, 0xc6, 0x1b, 0x2e, 0xe3, 0x9e, 0x27, 0x15, 0x57, 0xae, 0xf4, 0x7c,
+	0xb0, 0x96, 0xd7, 0xa4, 0xbf, 0x29, 0x7d, 0x56, 0xe3, 0xbe, 0x30, 0x69, 0xd8, 0xf6, 0x5c, 0x4d,
+	0x28, 0x3e, 0xc7, 0x1a, 0xdc, 0x71, 0x3d, 0xed, 0x0c, 0xbe, 0x57, 0xbb, 0x3c, 0x0d, 0xde, 0xe4,
+	0x9b, 0x41, 0x88, 0xb1, 0xee, 0xe3, 0xe0, 0x02, 0x0c, 0x93, 0x31, 0xc3, 0xea, 0x9a, 0x6c, 0x79,
+	0x0a, 0xcc, 0xd7, 0xe3, 0xe6, 0x5a, 0x7b, 0x75, 0x43, 0xb8, 0xce, 0x06, 0xb8, 0xd0, 0x02, 0x26,
+	0x2f, 0x3b, 0x4c, 0x2b, 0x3a, 0x5f, 0x55, 0x6c, 0xb5, 0x84, 0xaf, 0xe8, 0x6b, 0x3c, 0x1a, 0x7a,
+	0xea, 0x37, 0xa4, 0xe7, 0x0b, 0xf2, 0x18, 0xe7, 0x0d, 0xd7, 0x38, 0x2a, 0xa1, 0x99, 0xe1, 0x4a,
+	0xc9, 0x4e, 0x3a, 0x29, 0xdb, 0x28, 0x97, 0x06, 0x0e, 0xfe, 0x4c, 0xe5, 0xaa, 0xa0, 0xa2, 0x0c,
+	0x8f, 0xe9, 0xb0, 0xcb, 0x42, 0x2d, 0x83, 0x23, 0x64, 0x24, 0x05, 0x3c, 0xe8, 0x7a, 0xeb, 0x62,
+	0x47, 0x47, 0x1e, 0xa8, 0x9a, 0x1b, 0xfa, 0x0e, 0x8f, 0xc7, 0x05, 0x00, 0xf3, 0x14, 0x0f, 0x05,
+	0xd9, 0x00, 0x87, 0x26, 0xe3, 0x04, 0x6a, 0x00, 0xea, 0x2a, 0x29, 0x07, 0xa4, 0xc5, 0x7a, 0x3d,
+	0x8a, 0xf4, 0x1c, 0xe3, 0x93, 0x06, 0x41, 0x8a, 0x9b, 0xb6, 0xe9, 0xa6, 0xdd, 0xe9, 0xa6, 0x6d,
+	0x86, 0x06, 0xba, 0x69, 0xaf, 0x70, 0x47, 0x80, 0xb6, 0x7a, 0x4a, 0x49, 0xf7, 0x11, 0x54, 0x11,
+	0xca, 0x71, 0x66, 0x15, 0xfd, 0x17, 0xab, 0x82, 0x2c, 0x87, 0x50, 0xfb, 0x34, 0xea, 0x74, 0x2a,
+	0xaa, 0x41, 0x08, 0xb1, 0x5a, 0x78, 0x22, 0x7a, 0xe0, 0x4f, 0x3a, 0x03, 0x15, 0x0c, 0x86, 0xc2,
+	0x93, 0x09, 0x76, 0xa8, 0xe7, 0x15, 0xbe, 0x12, 0x32, 0xc0, 0xb9, 0x4d, 0xa7, 0x17, 0xa5, 0xdd,
+	0xa1, 0xb2, 0x70, 0x0c, 0xba, 0x80, 0xa7, 0xa2, 0x59, 0x97, 0xda, 0x2f, 0xf4, 0x18, 0x07, 0xcd,
+	0xba, 0x86, 0xf3, 0x66, 0xae, 0x75, 0xc2, 0xc1, 0x2a, 0xdc, 0xd1, 0x0f, 0x08, 0x97, 0x92, 0xb5,
+	0x00, 0xfd, 0x16, 0x8f, 0x38, 0x11, 0x1b, 0x70, 0x97, 0x33, 0x34, 0x03, 0x14, 0x80, 0x1e, 0x8b,
+	0x44, 0x5d, 0xa0, 0x3f, 0xd5, 0xfe, 0x28, 0xfd, 0x65, 0x8d, 0xda, 0xcf, 0xa0, 0xda, 0x33, 0x73,
+	0x9d, 0x5b, 0x6d, 0xff, 0xe5, 0x54, 0x7b, 0x69, 0xa3, 0x58, 0xd9, 0x1f, 0xc2, 0x83, 0xba, 0x16,
+	0xf2, 0x09, 0xe1, 0xbc, 0xd9, 0x27, 0x64, 0x36, 0x99, 0x30, 0xbe, 0xc6, 0x8a, 0xb7, 0x33, 0x7a,
+	0x9b, 0xec, 0x74, 0xe6, 0xe3, 0xaf, 0x7f, 0x5f, 0xfa, 0x28, 0x29, 0xb1, 0x40, 0xc6, 0x8c, 0x8c,
+	0x45, 0xd6, 0x32, 0xf9, 0x86, 0xf0, 0x50, 0x70, 0x22, 0x64, 0x2e, 0x25, 0x4b, 0x7c, 0xdb, 0x15,
+	0x2b, 0xbd, 0x48, 0x80, 0xae, 0xa2, 0xe9, 0x66, 0x49, 0x39, 0x99, 0xae, 0x7b, 0xb1, 0xab, 0xd7,
+	0xe7, 0x1e, 0xf9, 0x8a, 0xf0, 0x70, 0x10, 0x68, 0xb1, 0x5e, 0x4f, 0x45, 0x8d, 0x6f, 0xc1, 0x54,
+	0xd4, 0x33, 0x96, 0x1a, 0x2d, 0x6b, 0xd4, 0x1b, 0x84, 0xa6, 0xa3, 0x92, 0xef, 0x28, 0xb2, 0x31,
+	0xc8, 0x83, 0xec, 0x87, 0x73, 0x7a, 0x37, 0x15, 0xe7, 0x7b, 0xd6, 0x01, 0xee, 0x1d, 0x8d, 0x5b,
+	0x26, 0x33, 0xe9, 0xb8, 0xe6, 0xf3, 0x4a, 0x0e, 0x10, 0x1e, 0x89, 0xbe, 0x11, 0x64, 0x21, 0x7b,
+	0xfe, 0xc8, 0xfb, 0x5f, 0x7c, 0x78, 0x11, 0x29, 0xd0, 0x3f, 0xd2, 0xf4, 0xf3, 0xe4, 0x7e, 0x06,
+	0xfa, 0xee, 0xd7, 0x9f, 0xed, 0x9a, 0xdf, 0x3d, 0xf2, 0x03, 0xe1, 0xd1, 0x68, 0xec, 0xce, 0xa8,
+	0x2c, 0x64, 0xef, 0x7b, 0xaf, 0xd5, 0x9c, 0xb3, 0x9c, 0xe8, 0x3d, 0x5d, 0x8d, 0x4d, 0x66, 0x7b,
+	0xa9, 0x66, 0xe9, 0xd9, 0xc1, 0x91, 0x85, 0x0e, 0x8f, 0x2c, 0xf4, 0xf7, 0xc8, 0x42, 0x9f, 0x8f,
+	0xad, 0xdc, 0xe1, 0xb1, 0x95, 0xfb, 0x7d, 0x6c, 0xe5, 0xde, 0xdc, 0x72, 0x5c, 0xb5, 0xd1, 0xaa,
+	0xd9, 0x6b, 0x72, 0x33, 0x16, 0x71, 0xe7, 0x24, 0xa6, 0x6a, 0x37, 0x84, 0x5f, 0xcb, 0xeb, 0xff,
+	0x44, 0x77, 0xff, 0x07, 0x00, 0x00, 0xff, 0xff, 0x45, 0x99, 0x02, 0xb1, 0x17, 0x0a, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -450,6 +647,10 @@ type QueryClient interface {
 	GiveawayAll(ctx context.Context, in *QueryAllGiveawayRequest, opts ...grpc.CallOption) (*QueryAllGiveawayResponse, error)
 	// Queries a GiveawayCount by index.
 	GiveawayCount(ctx context.Context, in *QueryGetGiveawayCountRequest, opts ...grpc.CallOption) (*QueryGetGiveawayCountResponse, error)
+	// Queries a GiveawayByHeight by index.
+	GiveawayByHeight(ctx context.Context, in *QueryGetGiveawayByHeightRequest, opts ...grpc.CallOption) (*QueryGetGiveawayByHeightResponse, error)
+	// Queries a list of GiveawayByHeight items.
+	GiveawayByHeightAll(ctx context.Context, in *QueryAllGiveawayByHeightRequest, opts ...grpc.CallOption) (*QueryAllGiveawayByHeightResponse, error)
 }
 
 type queryClient struct {
@@ -496,6 +697,24 @@ func (c *queryClient) GiveawayCount(ctx context.Context, in *QueryGetGiveawayCou
 	return out, nil
 }
 
+func (c *queryClient) GiveawayByHeight(ctx context.Context, in *QueryGetGiveawayByHeightRequest, opts ...grpc.CallOption) (*QueryGetGiveawayByHeightResponse, error) {
+	out := new(QueryGetGiveawayByHeightResponse)
+	err := c.cc.Invoke(ctx, "/dreanity.saturn.giveaway.Query/GiveawayByHeight", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) GiveawayByHeightAll(ctx context.Context, in *QueryAllGiveawayByHeightRequest, opts ...grpc.CallOption) (*QueryAllGiveawayByHeightResponse, error) {
+	out := new(QueryAllGiveawayByHeightResponse)
+	err := c.cc.Invoke(ctx, "/dreanity.saturn.giveaway.Query/GiveawayByHeightAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -506,6 +725,10 @@ type QueryServer interface {
 	GiveawayAll(context.Context, *QueryAllGiveawayRequest) (*QueryAllGiveawayResponse, error)
 	// Queries a GiveawayCount by index.
 	GiveawayCount(context.Context, *QueryGetGiveawayCountRequest) (*QueryGetGiveawayCountResponse, error)
+	// Queries a GiveawayByHeight by index.
+	GiveawayByHeight(context.Context, *QueryGetGiveawayByHeightRequest) (*QueryGetGiveawayByHeightResponse, error)
+	// Queries a list of GiveawayByHeight items.
+	GiveawayByHeightAll(context.Context, *QueryAllGiveawayByHeightRequest) (*QueryAllGiveawayByHeightResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -523,6 +746,12 @@ func (*UnimplementedQueryServer) GiveawayAll(ctx context.Context, req *QueryAllG
 }
 func (*UnimplementedQueryServer) GiveawayCount(ctx context.Context, req *QueryGetGiveawayCountRequest) (*QueryGetGiveawayCountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GiveawayCount not implemented")
+}
+func (*UnimplementedQueryServer) GiveawayByHeight(ctx context.Context, req *QueryGetGiveawayByHeightRequest) (*QueryGetGiveawayByHeightResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GiveawayByHeight not implemented")
+}
+func (*UnimplementedQueryServer) GiveawayByHeightAll(ctx context.Context, req *QueryAllGiveawayByHeightRequest) (*QueryAllGiveawayByHeightResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GiveawayByHeightAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -601,6 +830,42 @@ func _Query_GiveawayCount_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GiveawayByHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetGiveawayByHeightRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GiveawayByHeight(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dreanity.saturn.giveaway.Query/GiveawayByHeight",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GiveawayByHeight(ctx, req.(*QueryGetGiveawayByHeightRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_GiveawayByHeightAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllGiveawayByHeightRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GiveawayByHeightAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dreanity.saturn.giveaway.Query/GiveawayByHeightAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GiveawayByHeightAll(ctx, req.(*QueryAllGiveawayByHeightRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "dreanity.saturn.giveaway.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -620,6 +885,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GiveawayCount",
 			Handler:    _Query_GiveawayCount_Handler,
+		},
+		{
+			MethodName: "GiveawayByHeight",
+			Handler:    _Query_GiveawayByHeight_Handler,
+		},
+		{
+			MethodName: "GiveawayByHeightAll",
+			Handler:    _Query_GiveawayByHeightAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -883,6 +1156,151 @@ func (m *QueryGetGiveawayCountResponse) MarshalToSizedBuffer(dAtA []byte) (int, 
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetGiveawayByHeightRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGiveawayByHeightRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGiveawayByHeightRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Height != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Height))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetGiveawayByHeightResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGiveawayByHeightResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGiveawayByHeightResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.GiveawayByHeight.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGiveawayByHeightRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGiveawayByHeightRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGiveawayByHeightRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGiveawayByHeightResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGiveawayByHeightResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGiveawayByHeightResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.GiveawayByHeight) > 0 {
+		for iNdEx := len(m.GiveawayByHeight) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.GiveawayByHeight[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -986,6 +1404,61 @@ func (m *QueryGetGiveawayCountResponse) Size() (n int) {
 	_ = l
 	l = m.GiveawayCount.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetGiveawayByHeightRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Height != 0 {
+		n += 1 + sovQuery(uint64(m.Height))
+	}
+	return n
+}
+
+func (m *QueryGetGiveawayByHeightResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.GiveawayByHeight.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllGiveawayByHeightRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllGiveawayByHeightResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.GiveawayByHeight) > 0 {
+		for _, e := range m.GiveawayByHeight {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -1595,6 +2068,364 @@ func (m *QueryGetGiveawayCountResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.GiveawayCount.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGiveawayByHeightRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGiveawayByHeightRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGiveawayByHeightRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Height", wireType)
+			}
+			m.Height = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Height |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGiveawayByHeightResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGiveawayByHeightResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGiveawayByHeightResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GiveawayByHeight", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.GiveawayByHeight.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGiveawayByHeightRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGiveawayByHeightRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGiveawayByHeightRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGiveawayByHeightResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGiveawayByHeightResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGiveawayByHeightResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GiveawayByHeight", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.GiveawayByHeight = append(m.GiveawayByHeight, GiveawayByHeight{})
+			if err := m.GiveawayByHeight[len(m.GiveawayByHeight)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
