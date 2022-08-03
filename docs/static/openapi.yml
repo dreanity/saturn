@@ -20235,8 +20235,8 @@ paths:
         - name: height
           in: path
           required: true
-          type: integer
-          format: int32
+          type: string
+          format: int64
       tags:
         - Query
   /dreanity/saturn/giveaway/giveaway_count:

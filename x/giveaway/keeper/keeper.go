@@ -13,11 +13,12 @@ import (
 
 type (
 	Keeper struct {
-		cdc           codec.BinaryCodec
-		storeKey      sdk.StoreKey
-		memKey        sdk.StoreKey
-		paramstore    paramtypes.Subspace
-		gentimeKeeper types.GentimeKeeper
+		cdc              codec.BinaryCodec
+		storeKey         sdk.StoreKey
+		memKey           sdk.StoreKey
+		paramstore       paramtypes.Subspace
+		gentimeKeeper    types.GentimeKeeper
+		randomnessKeeper types.RandomnessKeeper
 	}
 )
 
@@ -27,6 +28,7 @@ func NewKeeper(
 	memKey sdk.StoreKey,
 	ps paramtypes.Subspace,
 	gentimeKeeper types.GentimeKeeper,
+	randomnessKeeper types.RandomnessKeeper,
 ) *Keeper {
 	// set KeyTable if it has not already been set
 	if !ps.HasKeyTable() {
@@ -35,11 +37,12 @@ func NewKeeper(
 
 	return &Keeper{
 
-		cdc:           cdc,
-		storeKey:      storeKey,
-		memKey:        memKey,
-		paramstore:    ps,
-		gentimeKeeper: gentimeKeeper,
+		cdc:              cdc,
+		storeKey:         storeKey,
+		memKey:           memKey,
+		paramstore:       ps,
+		gentimeKeeper:    gentimeKeeper,
+		randomnessKeeper: randomnessKeeper,
 	}
 }
 

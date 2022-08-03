@@ -435,8 +435,9 @@ func New(
 		keys[giveawaymoduletypes.MemStoreKey],
 		app.GetSubspace(giveawaymoduletypes.ModuleName),
 		app.GentimeKeeper,
+		app.RandomnessKeeper,
 	)
-	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.GentimeKeeper)
+	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.GentimeKeeper, app.RandomnessKeeper)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 
