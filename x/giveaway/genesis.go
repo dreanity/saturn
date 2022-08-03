@@ -19,6 +19,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	for _, elem := range genState.GiveawayByHeightList {
 		k.SetGiveawayByHeight(ctx, elem)
 	}
+	// Set all the giveawayByRandomness
+	for _, elem := range genState.GiveawayByRandomnessList {
+		k.SetGiveawayByRandomness(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -32,6 +36,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	// Get all giveawayCount
 	genesis.GiveawayCount = k.GetGiveawayCount(ctx)
 	genesis.GiveawayByHeightList = k.GetAllGiveawayByHeight(ctx)
+	genesis.GiveawayByRandomnessList = k.GetAllGiveawayByRandomness(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

@@ -10,9 +10,10 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default Capability genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		GiveawayList:         []Giveaway{},
-		GiveawayCount:        GiveawayCount{Value: 0},
-		GiveawayByHeightList: []GiveawayByHeight{},
+		GiveawayList:             []Giveaway{},
+		GiveawayCount:            GiveawayCount{Value: 0},
+		GiveawayByHeightList:     []GiveawayByHeight{},
+		GiveawayByRandomnessList: []GiveawayByRandomness{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -40,6 +41,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("duplicated index for giveawayByHeight")
 		}
 		giveawayByHeightIndexMap[index] = struct{}{}
+	}
+	// Check for duplicated index in giveawayByRandomness
+	giveawayByRandomnessIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.GiveawayByRandomnessList {
+		index := string(GiveawayByRandomnessKey(elem.Round))
+		if _, ok := giveawayByRandomnessIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for giveawayByRandomness")
+		}
+		giveawayByRandomnessIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

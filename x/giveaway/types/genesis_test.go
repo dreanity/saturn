@@ -41,6 +41,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Height: 1,
 					},
 				},
+				GiveawayByRandomnessList: []types.GiveawayByRandomness{
+					{
+						Round: 0,
+					},
+					{
+						Round: 1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -68,6 +76,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Height: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated giveawayByRandomness",
+			genState: &types.GenesisState{
+				GiveawayByRandomnessList: []types.GiveawayByRandomness{
+					{
+						Round: 0,
+					},
+					{
+						Round: 0,
 					},
 				},
 			},

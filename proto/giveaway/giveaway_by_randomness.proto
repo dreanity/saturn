@@ -1,0 +1,11 @@
+syntax = "proto3";
+package dreanity.saturn.giveaway;
+
+option go_package = "github.com/dreanity/saturn/x/giveaway/types";
+
+message GiveawayByRandomness {
+  uint64 round = 1; 
+  repeated uint64 indexes = 2; 
+  
+}
+

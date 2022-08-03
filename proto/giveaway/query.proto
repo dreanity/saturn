@@ -8,6 +8,7 @@ import "giveaway/params.proto";
 import "giveaway/giveaway.proto";
 import "giveaway/giveaway_count.proto";
 import "giveaway/giveaway_by_height.proto";
+import "giveaway/giveaway_by_randomness.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -40,6 +41,16 @@ service Query {
 	// Queries a list of GiveawayByHeight items.
 	rpc GiveawayByHeightAll(QueryAllGiveawayByHeightRequest) returns (QueryAllGiveawayByHeightResponse) {
 		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_by_height";
+	}
+
+// Queries a GiveawayByRandomness by index.
+	rpc GiveawayByRandomness(QueryGetGiveawayByRandomnessRequest) returns (QueryGetGiveawayByRandomnessResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_by_randomness/{round}";
+	}
+
+	// Queries a list of GiveawayByRandomness items.
+	rpc GiveawayByRandomnessAll(QueryAllGiveawayByRandomnessRequest) returns (QueryAllGiveawayByRandomnessResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaway_by_randomness";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -92,6 +103,24 @@ message QueryAllGiveawayByHeightRequest {
 
 message QueryAllGiveawayByHeightResponse {
 	repeated GiveawayByHeight giveawayByHeight = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetGiveawayByRandomnessRequest {
+	  uint64 round = 1;
+
+}
+
+message QueryGetGiveawayByRandomnessResponse {
+	GiveawayByRandomness giveawayByRandomness = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGiveawayByRandomnessRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGiveawayByRandomnessResponse {
+	repeated GiveawayByRandomness giveawayByRandomness = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

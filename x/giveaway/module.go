@@ -171,6 +171,12 @@ func (am AppModule) BeginBlock(ctx sdk.Context, _ abci.RequestBeginBlock) {
 	// giveawaysByHeight, found := am.keeper.GetGiveawayByHeight(ctx, height)
 	// if found {
 	// 	blockTime := ctx.BlockTime()
+	// 	randomnessRound := am.randomnessKeeper.ComputeRandomnessRoundForTime(ctx, uint64(blockTime.UTC().Unix()))
+
+	// 	unprovenRandomness := randomnessTypes.UnprovenRandomness{
+	// 		Round: randomnessRound,
+	// 	}
+	// 	am.randomnessKeeper.SetUnprovenRandomness(ctx, unprovenRandomness)
 
 	// 	for _, index := range giveawaysByHeight.Indexes {
 

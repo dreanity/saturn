@@ -33,6 +33,14 @@ func TestGenesis(t *testing.T) {
 				Height: 1,
 			},
 		},
+		GiveawayByRandomnessList: []types.GiveawayByRandomness{
+			{
+				Round: 0,
+			},
+			{
+				Round: 1,
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -47,5 +55,6 @@ func TestGenesis(t *testing.T) {
 	require.ElementsMatch(t, genesisState.GiveawayList, got.GiveawayList)
 	require.Equal(t, genesisState.GiveawayCount, got.GiveawayCount)
 	require.ElementsMatch(t, genesisState.GiveawayByHeightList, got.GiveawayByHeightList)
+	require.ElementsMatch(t, genesisState.GiveawayByRandomnessList, got.GiveawayByRandomnessList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
