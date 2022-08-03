@@ -167,21 +167,37 @@ func (AppModule) ConsensusVersion() uint64 { return 2 }
 
 // BeginBlock executes all ABCI BeginBlock logic respective to the capability module.
 func (am AppModule) BeginBlock(ctx sdk.Context, _ abci.RequestBeginBlock) {
-	// height := ctx.BlockHeight()
-	// giveawaysByHeight, found := am.keeper.GetGiveawayByHeight(ctx, height)
-	// if found {
-	// 	blockTime := ctx.BlockTime()
-	// 	randomnessRound := am.randomnessKeeper.ComputeRandomnessRoundForTime(ctx, uint64(blockTime.UTC().Unix()))
+	height := ctx.BlockHeight()
+	giveawaysByHeight, found := am.keeper.GetGiveawayByHeight(ctx, height)
+	if found {
+		blockTime := ctx.BlockTime()
+		randomnessRound := am.randomnessKeeper.ComputeRandomnessRoundForTime(ctx, uint64(blockTime.UTC().Unix()))
 
-	// 	unprovenRandomness := randomnessTypes.UnprovenRandomness{
-	// 		Round: randomnessRound,
-	// 	}
-	// 	am.randomnessKeeper.SetUnprovenRandomness(ctx, unprovenRandomness)
+		unprovenRandomness, found := am.randomnessKeeper.GetUnprovenRandomness(ctx, randomnessRound)
 
-	// 	for _, index := range giveawaysByHeight.Indexes {
+		if !found {
+			unprovenRandomness.Round = randomnessRound
+			am.randomnessKeeper.SetUnprovenRandomness(ctx, unprovenRandomness)
+		}
 
-	// 	}
-	// }
+		giveawayByRandomness, found := am.keeper.GetGiveawayByRandomness(ctx, randomnessRound)
+		if !found {
+			giveawayByRandomness.Round = randomnessRound
+		}
+		giveawayByRandomness.Indexes = append(giveawayByRandomness.Indexes, giveawaysByHeight.Indexes...)
+		am.keeper.SetGiveawayByRandomness(ctx, giveawayByRandomness)
+
+		for _, index := range giveawaysByHeight.Indexes {
+			giveaway, found := am.keeper.GetGiveaway(ctx, index)
+			if !found {
+				panic("Giveaway not found by giveawayByGiveaway indexes")
+			}
+			giveaway.Status = types.Giveaway_WINNERS_DETERMINATION
+			am.keeper.SetGiveaway(ctx, giveaway)
+		}
+
+		am.keeper.RemoveGiveawayByHeight(ctx, height)
+	}
 }
 
 // EndBlock executes all ABCI EndBlock logic respective to the capability module. It
