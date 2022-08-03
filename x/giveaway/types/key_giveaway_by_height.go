@@ -11,7 +11,7 @@ const (
 
 // GiveawayByHeightKey returns the store key to retrieve a GiveawayByHeight from the index fields
 func GiveawayByHeightKey(
-	height int32,
+	height int64,
 ) []byte {
 	var key []byte
 

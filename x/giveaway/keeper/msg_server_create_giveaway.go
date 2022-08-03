@@ -69,5 +69,14 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	k.SetGiveawayCount(ctx, giveawayCount)
 	k.SetGiveaway(ctx, giveaway)
 
+	giveawaysByHeight, found := k.GetGiveawayByHeight(ctx, giveaway.CompletionHeight)
+	if !found {
+		giveawaysByHeight.Height = giveaway.CompletionHeight
+		giveawaysByHeight.Indexes = append(giveawaysByHeight.Indexes, giveaway.Index)
+	} else {
+		giveawaysByHeight.Indexes = append(giveawaysByHeight.Indexes, giveaway.Index)
+	}
+	k.SetGiveawayByHeight(ctx, giveawaysByHeight)
+
 	return &types.MsgCreateGiveawayResponse{}, nil
 }

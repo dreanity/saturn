@@ -18,7 +18,7 @@ var _ = strconv.IntSize
 func createNGiveawayByHeight(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.GiveawayByHeight {
 	items := make([]types.GiveawayByHeight, n)
 	for i := range items {
-		items[i].Height = int32(i)
+		items[i].Height = int64(i)
 
 		keeper.SetGiveawayByHeight(ctx, items[i])
 	}

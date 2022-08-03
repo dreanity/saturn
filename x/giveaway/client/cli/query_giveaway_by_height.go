@@ -53,7 +53,7 @@ func CmdShowGiveawayByHeight() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argHeight, err := cast.ToInt32E(args[0])
+			argHeight, err := cast.ToInt64E(args[0])
 			if err != nil {
 				return err
 			}

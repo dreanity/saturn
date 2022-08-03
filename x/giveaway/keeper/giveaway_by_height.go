@@ -18,7 +18,7 @@ func (k Keeper) SetGiveawayByHeight(ctx sdk.Context, giveawayByHeight types.Give
 // GetGiveawayByHeight returns a giveawayByHeight from its index
 func (k Keeper) GetGiveawayByHeight(
 	ctx sdk.Context,
-	height int32,
+	height int64,
 
 ) (val types.GiveawayByHeight, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GiveawayByHeightKeyPrefix))
@@ -37,7 +37,7 @@ func (k Keeper) GetGiveawayByHeight(
 // RemoveGiveawayByHeight removes a giveawayByHeight from the store
 func (k Keeper) RemoveGiveawayByHeight(
 	ctx sdk.Context,
-	height int32,
+	height int64,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GiveawayByHeightKeyPrefix))

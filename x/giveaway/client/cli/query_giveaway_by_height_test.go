@@ -29,7 +29,7 @@ func networkWithGiveawayByHeightObjects(t *testing.T, n int) (*network.Network, 
 
 	for i := 0; i < n; i++ {
 		giveawayByHeight := types.GiveawayByHeight{
-			Height: int32(i),
+			Height: int64(i),
 		}
 		nullify.Fill(&giveawayByHeight)
 		state.GiveawayByHeightList = append(state.GiveawayByHeightList, giveawayByHeight)
@@ -49,7 +49,7 @@ func TestShowGiveawayByHeight(t *testing.T) {
 	}
 	for _, tc := range []struct {
 		desc     string
-		idHeight int32
+		idHeight int64
 
 		args []string
 		err  error
