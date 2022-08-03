@@ -19870,6 +19870,19 @@ paths:
                     completionHeight:
                       type: string
                       format: int64
+                    status:
+                      type: string
+                      enum:
+                        - TICKETS_REGISTRATION
+                        - WINNERS_DETERMINATION
+                        - WINNERS_DETERMINED
+                        - CANCELLED_INSUF_TICKETS
+                      default: TICKETS_REGISTRATION
+                    winningTicketNumbers:
+                      type: array
+                      items:
+                        type: integer
+                        format: int64
               pagination:
                 type: object
                 properties:
@@ -20013,6 +20026,19 @@ paths:
                   completionHeight:
                     type: string
                     format: int64
+                  status:
+                    type: string
+                    enum:
+                      - TICKETS_REGISTRATION
+                      - WINNERS_DETERMINATION
+                      - WINNERS_DETERMINED
+                      - CANCELLED_INSUF_TICKETS
+                    default: TICKETS_REGISTRATION
+                  winningTicketNumbers:
+                    type: array
+                    items:
+                      type: integer
+                      format: int64
         default:
           description: An unexpected error response.
           schema:
@@ -47927,6 +47953,27 @@ definitions:
       completionHeight:
         type: string
         format: int64
+      status:
+        type: string
+        enum:
+          - TICKETS_REGISTRATION
+          - WINNERS_DETERMINATION
+          - WINNERS_DETERMINED
+          - CANCELLED_INSUF_TICKETS
+        default: TICKETS_REGISTRATION
+      winningTicketNumbers:
+        type: array
+        items:
+          type: integer
+          format: int64
+  dreanity.saturn.giveaway.Giveaway.Status:
+    type: string
+    enum:
+      - TICKETS_REGISTRATION
+      - WINNERS_DETERMINATION
+      - WINNERS_DETERMINED
+      - CANCELLED_INSUF_TICKETS
+    default: TICKETS_REGISTRATION
   dreanity.saturn.giveaway.GiveawayCount:
     type: object
     properties:
@@ -47982,6 +48029,19 @@ definitions:
             completionHeight:
               type: string
               format: int64
+            status:
+              type: string
+              enum:
+                - TICKETS_REGISTRATION
+                - WINNERS_DETERMINATION
+                - WINNERS_DETERMINED
+                - CANCELLED_INSUF_TICKETS
+              default: TICKETS_REGISTRATION
+            winningTicketNumbers:
+              type: array
+              items:
+                type: integer
+                format: int64
       pagination:
         type: object
         properties:
@@ -48048,6 +48108,19 @@ definitions:
           completionHeight:
             type: string
             format: int64
+          status:
+            type: string
+            enum:
+              - TICKETS_REGISTRATION
+              - WINNERS_DETERMINATION
+              - WINNERS_DETERMINED
+              - CANCELLED_INSUF_TICKETS
+            default: TICKETS_REGISTRATION
+          winningTicketNumbers:
+            type: array
+            items:
+              type: integer
+              format: int64
   dreanity.saturn.giveaway.QueryParamsResponse:
     type: object
     properties:

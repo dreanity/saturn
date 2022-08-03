@@ -46,7 +46,8 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	height := sdk.NewDecFromBigInt(big.NewInt(ctx.BlockHeight()))
 	blockTime := ctx.BlockTime()
 	timeDiff := sdk.NewDecFromBigInt(
-		big.NewInt(genTime.Value - blockTime.UTC().Unix()))
+		big.NewInt(blockTime.UTC().Unix() - genTime.Value))
+
 	avgBlockTime := timeDiff.Quo(height)
 
 	numberOfBlocksToComplete := sdk.NewDecFromBigInt(
@@ -55,12 +56,14 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	complitionHeight := height.Add(numberOfBlocksToComplete).TruncateInt().Int64()
 
 	giveaway := types.Giveaway{
-		Index:            giveawayCount.Value,
-		Duration:         msg.Duration,
-		CreatedAt:        ctx.BlockTime().UTC().Unix(),
-		Name:             msg.Name,
-		Prizes:           msg.Prizes,
-		CompletionHeight: complitionHeight,
+		Index:                giveawayCount.Value,
+		Duration:             msg.Duration,
+		CreatedAt:            ctx.BlockTime().UTC().Unix(),
+		Name:                 msg.Name,
+		Prizes:               msg.Prizes,
+		CompletionHeight:     complitionHeight,
+		Status:               types.Giveaway_TICKETS_REGISTRATION,
+		WinningTicketNumbers: []uint32{},
 	}
 
 	k.SetGiveawayCount(ctx, giveawayCount)

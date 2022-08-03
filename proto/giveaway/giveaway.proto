@@ -13,5 +13,14 @@ message Giveaway {
   string name = 4;
   repeated Prize prizes = 5 [(gogoproto.nullable) = false]; 
   int64 completionHeight = 6;
+
+  enum Status {
+    TICKETS_REGISTRATION = 0;
+    WINNERS_DETERMINATION = 1;
+    WINNERS_DETERMINED = 2;
+    CANCELLED_INSUF_TICKETS = 3;
+  }
+  Status status = 7;
   
+  repeated uint32 winningTicketNumbers = 8;
 }
