@@ -24,7 +24,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type GiveawayByHeight struct {
 	Height  int32    `protobuf:"varint,1,opt,name=height,proto3" json:"height,omitempty"`
-	Indexes []string `protobuf:"bytes,2,rep,name=indexes,proto3" json:"indexes,omitempty"`
+	Indexes []uint64 `protobuf:"varint,2,rep,packed,name=indexes,proto3" json:"indexes,omitempty"`
 }
 
 func (m *GiveawayByHeight) Reset()         { *m = GiveawayByHeight{} }
@@ -67,7 +67,7 @@ func (m *GiveawayByHeight) GetHeight() int32 {
 	return 0
 }
 
-func (m *GiveawayByHeight) GetIndexes() []string {
+func (m *GiveawayByHeight) GetIndexes() []uint64 {
 	if m != nil {
 		return m.Indexes
 	}
@@ -88,12 +88,12 @@ var fileDescriptor_2a0b98c17753ce3d = []byte{
 	0x2a, 0xf5, 0x8a, 0x13, 0x4b, 0x4a, 0x8b, 0xf2, 0xf4, 0x60, 0x2a, 0x95, 0x5c, 0xb8, 0x04, 0xdc,
 	0xa1, 0x6c, 0xa7, 0x4a, 0x0f, 0xb0, 0x1e, 0x21, 0x31, 0x2e, 0x36, 0x88, 0x6e, 0x09, 0x46, 0x05,
 	0x46, 0x0d, 0xd6, 0x20, 0x28, 0x4f, 0x48, 0x82, 0x8b, 0x3d, 0x33, 0x2f, 0x25, 0xb5, 0x22, 0xb5,
-	0x58, 0x82, 0x49, 0x81, 0x59, 0x83, 0x33, 0x08, 0xc6, 0x75, 0x72, 0x3d, 0xf1, 0x48, 0x8e, 0xf1,
+	0x58, 0x82, 0x49, 0x81, 0x59, 0x83, 0x25, 0x08, 0xc6, 0x75, 0x72, 0x3d, 0xf1, 0x48, 0x8e, 0xf1,
 	0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8, 0xf0, 0x58, 0x8e,
 	0xe1, 0xc6, 0x63, 0x39, 0x86, 0x28, 0xed, 0xf4, 0xcc, 0x92, 0x8c, 0xd2, 0x24, 0xbd, 0xe4, 0xfc,
 	0x5c, 0x7d, 0x98, 0x23, 0xf4, 0x21, 0x8e, 0xd0, 0xaf, 0x80, 0x3b, 0x58, 0xbf, 0xa4, 0xb2, 0x20,
-	0xb5, 0x38, 0x89, 0x0d, 0xec, 0x5a, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x45, 0x42, 0x4a,
-	0xda, 0xd2, 0x00, 0x00, 0x00,
+	0xb5, 0x38, 0x89, 0x0d, 0xec, 0x5a, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x6e, 0xff, 0xf7,
+	0x62, 0xd2, 0x00, 0x00, 0x00,
 }
 
 func (m *GiveawayByHeight) Marshal() (dAtA []byte, err error) {
@@ -117,13 +117,22 @@ func (m *GiveawayByHeight) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	var l int
 	_ = l
 	if len(m.Indexes) > 0 {
-		for iNdEx := len(m.Indexes) - 1; iNdEx >= 0; iNdEx-- {
-			i -= len(m.Indexes[iNdEx])
-			copy(dAtA[i:], m.Indexes[iNdEx])
-			i = encodeVarintGiveawayByHeight(dAtA, i, uint64(len(m.Indexes[iNdEx])))
-			i--
-			dAtA[i] = 0x12
+		dAtA2 := make([]byte, len(m.Indexes)*10)
+		var j1 int
+		for _, num := range m.Indexes {
+			for num >= 1<<7 {
+				dAtA2[j1] = uint8(uint64(num)&0x7f | 0x80)
+				num >>= 7
+				j1++
+			}
+			dAtA2[j1] = uint8(num)
+			j1++
 		}
+		i -= j1
+		copy(dAtA[i:], dAtA2[:j1])
+		i = encodeVarintGiveawayByHeight(dAtA, i, uint64(j1))
+		i--
+		dAtA[i] = 0x12
 	}
 	if m.Height != 0 {
 		i = encodeVarintGiveawayByHeight(dAtA, i, uint64(m.Height))
@@ -154,10 +163,11 @@ func (m *GiveawayByHeight) Size() (n int) {
 		n += 1 + sovGiveawayByHeight(uint64(m.Height))
 	}
 	if len(m.Indexes) > 0 {
-		for _, s := range m.Indexes {
-			l = len(s)
-			n += 1 + l + sovGiveawayByHeight(uint64(l))
+		l = 0
+		for _, e := range m.Indexes {
+			l += sovGiveawayByHeight(uint64(e))
 		}
+		n += 1 + sovGiveawayByHeight(uint64(l)) + l
 	}
 	return n
 }
@@ -217,37 +227,81 @@ func (m *GiveawayByHeight) Unmarshal(dAtA []byte) error {
 				}
 			}
 		case 2:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Indexes", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowGiveawayByHeight
+			if wireType == 0 {
+				var v uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowGiveawayByHeight
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					v |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
 				}
-				if iNdEx >= l {
+				m.Indexes = append(m.Indexes, v)
+			} else if wireType == 2 {
+				var packedLen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowGiveawayByHeight
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					packedLen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if packedLen < 0 {
+					return ErrInvalidLengthGiveawayByHeight
+				}
+				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthGiveawayByHeight
+				}
+				if postIndex > l {
 					return io.ErrUnexpectedEOF
 				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
+				var elementCount int
+				var count int
+				for _, integer := range dAtA[iNdEx:postIndex] {
+					if integer < 128 {
+						count++
+					}
 				}
+				elementCount = count
+				if elementCount != 0 && len(m.Indexes) == 0 {
+					m.Indexes = make([]uint64, 0, elementCount)
+				}
+				for iNdEx < postIndex {
+					var v uint64
+					for shift := uint(0); ; shift += 7 {
+						if shift >= 64 {
+							return ErrIntOverflowGiveawayByHeight
+						}
+						if iNdEx >= l {
+							return io.ErrUnexpectedEOF
+						}
+						b := dAtA[iNdEx]
+						iNdEx++
+						v |= uint64(b&0x7F) << shift
+						if b < 0x80 {
+							break
+						}
+					}
+					m.Indexes = append(m.Indexes, v)
+				}
+			} else {
+				return fmt.Errorf("proto: wrong wireType = %d for field Indexes", wireType)
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthGiveawayByHeight
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthGiveawayByHeight
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Indexes = append(m.Indexes, string(dAtA[iNdEx:postIndex]))
-			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGiveawayByHeight(dAtA[iNdEx:])
