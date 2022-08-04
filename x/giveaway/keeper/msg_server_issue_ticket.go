@@ -23,7 +23,6 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 	if !found {
 		return nil, types.ErrIssueTicketForNonExistentGiveaway
 	}
-	ticketCount.Count += 1
 
 	ticket := types.Ticket{
 		Index:           ticketCount.Count,
@@ -31,6 +30,7 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 		ParticipantId:   msg.ParticipantId,
 		ParticipantName: msg.ParticipantName,
 	}
+	ticketCount.Count += 1
 
 	k.SetTicket(ctx, ticket)
 	k.SetTicketCount(ctx, ticketCount)
