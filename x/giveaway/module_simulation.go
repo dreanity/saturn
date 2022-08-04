@@ -85,7 +85,7 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	)
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgIssueTicket,
-		giveawaysimulation.SimulateMsgIssueTicket(am.accountKeeper, am.bankKeeper, am.keeper),
+		giveawaysimulation.SimulateMsgIssueTicket(am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation
