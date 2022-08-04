@@ -7,7 +7,7 @@ import "giveaway/prize.proto";
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
 message Giveaway {
-  uint64 index = 1; 
+  uint32 index = 1; 
   int64 duration = 2; 
   int64 createdAt = 3;
   string name = 4;

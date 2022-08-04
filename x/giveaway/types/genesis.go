@@ -14,6 +14,7 @@ func DefaultGenesis() *GenesisState {
 		GiveawayCount:            GiveawayCount{Value: 0},
 		GiveawayByHeightList:     []GiveawayByHeight{},
 		GiveawayByRandomnessList: []GiveawayByRandomness{},
+		TicketList:               []Ticket{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -51,6 +52,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("duplicated index for giveawayByRandomness")
 		}
 		giveawayByRandomnessIndexMap[index] = struct{}{}
+	}
+	// Check for duplicated index in ticket
+	ticketIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.TicketList {
+		index := string(TicketKey(elem.Index))
+		if _, ok := ticketIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for ticket")
+		}
+		ticketIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

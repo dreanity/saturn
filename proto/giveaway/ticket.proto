@@ -3,9 +3,11 @@ package dreanity.saturn.giveaway;
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
-message GiveawayByRandomness {
-  uint64 round = 1; 
-  repeated uint32 indexes = 2; 
+message Ticket {
+  uint32 index = 1; 
+  uint32 giveawayId = 2; 
+  string participantId = 3; 
+  string participantName = 4; 
   
 }
 

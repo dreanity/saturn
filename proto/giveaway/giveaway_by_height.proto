@@ -5,7 +5,7 @@ option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
 message GiveawayByHeight {
   int64 height = 1; 
-  repeated uint64 indexes = 2; 
+  repeated uint32 indexes = 2; 
   
 }
 

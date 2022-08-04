@@ -5,12 +5,12 @@ import "encoding/binary"
 var _ binary.ByteOrder
 
 const (
-	// GiveawayKeyPrefix is the prefix to retrieve all Giveaway
-	GiveawayKeyPrefix = "Giveaway/value/"
+	// TicketKeyPrefix is the prefix to retrieve all Ticket
+	TicketKeyPrefix = "Ticket/value/"
 )
 
-// GiveawayKey returns the store key to retrieve a Giveaway from the index fields
-func GiveawayKey(
+// TicketKey returns the store key to retrieve a Ticket from the index fields
+func TicketKey(
 	index uint32,
 ) []byte {
 	var key []byte

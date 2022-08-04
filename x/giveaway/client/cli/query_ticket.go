@@ -10,10 +10,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CmdListGiveaway() *cobra.Command {
+func CmdListTicket() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "list-giveaway",
-		Short: "list all giveaway",
+		Use:   "list-ticket",
+		Short: "list all ticket",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
@@ -24,11 +24,11 @@ func CmdListGiveaway() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllGiveawayRequest{
+			params := &types.QueryAllTicketRequest{
 				Pagination: pageReq,
 			}
 
-			res, err := queryClient.GiveawayAll(context.Background(), params)
+			res, err := queryClient.TicketAll(context.Background(), params)
 			if err != nil {
 				return err
 			}
@@ -43,10 +43,10 @@ func CmdListGiveaway() *cobra.Command {
 	return cmd
 }
 
-func CmdShowGiveaway() *cobra.Command {
+func CmdShowTicket() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-giveaway [index]",
-		Short: "shows a giveaway",
+		Use:   "show-ticket [index]",
+		Short: "shows a ticket",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
@@ -58,11 +58,11 @@ func CmdShowGiveaway() *cobra.Command {
 				return err
 			}
 
-			params := &types.QueryGetGiveawayRequest{
+			params := &types.QueryGetTicketRequest{
 				Index: argIndex,
 			}
 
-			res, err := queryClient.Giveaway(context.Background(), params)
+			res, err := queryClient.Ticket(context.Background(), params)
 			if err != nil {
 				return err
 			}

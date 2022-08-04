@@ -41,6 +41,14 @@ func TestGenesis(t *testing.T) {
 				Round: 1,
 			},
 		},
+		TicketList: []types.Ticket{
+			{
+				Index: 0,
+			},
+			{
+				Index: 1,
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -56,5 +64,6 @@ func TestGenesis(t *testing.T) {
 	require.Equal(t, genesisState.GiveawayCount, got.GiveawayCount)
 	require.ElementsMatch(t, genesisState.GiveawayByHeightList, got.GiveawayByHeightList)
 	require.ElementsMatch(t, genesisState.GiveawayByRandomnessList, got.GiveawayByRandomnessList)
+	require.ElementsMatch(t, genesisState.TicketList, got.TicketList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

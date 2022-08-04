@@ -15,21 +15,21 @@ import (
 // Prevent strconv unused error
 var _ = strconv.IntSize
 
-func createNGiveaway(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.Giveaway {
-	items := make([]types.Giveaway, n)
+func createNTicket(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.Ticket {
+	items := make([]types.Ticket, n)
 	for i := range items {
 		items[i].Index = uint32(i)
 
-		keeper.SetGiveaway(ctx, items[i])
+		keeper.SetTicket(ctx, items[i])
 	}
 	return items
 }
 
-func TestGiveawayGet(t *testing.T) {
+func TestTicketGet(t *testing.T) {
 	keeper, ctx := keepertest.GiveawayKeeper(t)
-	items := createNGiveaway(keeper, ctx, 10)
+	items := createNTicket(keeper, ctx, 10)
 	for _, item := range items {
-		rst, found := keeper.GetGiveaway(ctx,
+		rst, found := keeper.GetTicket(ctx,
 			item.Index,
 		)
 		require.True(t, found)
@@ -39,25 +39,25 @@ func TestGiveawayGet(t *testing.T) {
 		)
 	}
 }
-func TestGiveawayRemove(t *testing.T) {
+func TestTicketRemove(t *testing.T) {
 	keeper, ctx := keepertest.GiveawayKeeper(t)
-	items := createNGiveaway(keeper, ctx, 10)
+	items := createNTicket(keeper, ctx, 10)
 	for _, item := range items {
-		keeper.RemoveGiveaway(ctx,
+		keeper.RemoveTicket(ctx,
 			item.Index,
 		)
-		_, found := keeper.GetGiveaway(ctx,
+		_, found := keeper.GetTicket(ctx,
 			item.Index,
 		)
 		require.False(t, found)
 	}
 }
 
-func TestGiveawayGetAll(t *testing.T) {
+func TestTicketGetAll(t *testing.T) {
 	keeper, ctx := keepertest.GiveawayKeeper(t)
-	items := createNGiveaway(keeper, ctx, 10)
+	items := createNTicket(keeper, ctx, 10)
 	require.ElementsMatch(t,
 		nullify.Fill(items),
-		nullify.Fill(keeper.GetAllGiveaway(ctx)),
+		nullify.Fill(keeper.GetAllTicket(ctx)),
 	)
 }

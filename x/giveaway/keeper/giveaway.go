@@ -18,7 +18,7 @@ func (k Keeper) SetGiveaway(ctx sdk.Context, giveaway types.Giveaway) {
 // GetGiveaway returns a giveaway from its index
 func (k Keeper) GetGiveaway(
 	ctx sdk.Context,
-	index uint64,
+	index uint32,
 
 ) (val types.Giveaway, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GiveawayKeyPrefix))
@@ -37,7 +37,7 @@ func (k Keeper) GetGiveaway(
 // RemoveGiveaway removes a giveaway from the store
 func (k Keeper) RemoveGiveaway(
 	ctx sdk.Context,
-	index uint64,
+	index uint32,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GiveawayKeyPrefix))

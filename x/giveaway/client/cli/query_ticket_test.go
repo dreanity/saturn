@@ -21,27 +21,27 @@ import (
 // Prevent strconv unused error
 var _ = strconv.IntSize
 
-func networkWithGiveawayObjects(t *testing.T, n int) (*network.Network, []types.Giveaway) {
+func networkWithTicketObjects(t *testing.T, n int) (*network.Network, []types.Ticket) {
 	t.Helper()
 	cfg := network.DefaultConfig()
 	state := types.GenesisState{}
 	require.NoError(t, cfg.Codec.UnmarshalJSON(cfg.GenesisState[types.ModuleName], &state))
 
 	for i := 0; i < n; i++ {
-		giveaway := types.Giveaway{
+		ticket := types.Ticket{
 			Index: uint32(i),
 		}
-		nullify.Fill(&giveaway)
-		state.GiveawayList = append(state.GiveawayList, giveaway)
+		nullify.Fill(&ticket)
+		state.TicketList = append(state.TicketList, ticket)
 	}
 	buf, err := cfg.Codec.MarshalJSON(&state)
 	require.NoError(t, err)
 	cfg.GenesisState[types.ModuleName] = buf
-	return network.New(t, cfg), state.GiveawayList
+	return network.New(t, cfg), state.TicketList
 }
 
-func TestShowGiveaway(t *testing.T) {
-	net, objs := networkWithGiveawayObjects(t, 2)
+func TestShowTicket(t *testing.T) {
+	net, objs := networkWithTicketObjects(t, 2)
 
 	ctx := net.Validators[0].ClientCtx
 	common := []string{
@@ -53,7 +53,7 @@ func TestShowGiveaway(t *testing.T) {
 
 		args []string
 		err  error
-		obj  types.Giveaway
+		obj  types.Ticket
 	}{
 		{
 			desc:    "found",
@@ -75,27 +75,27 @@ func TestShowGiveaway(t *testing.T) {
 				strconv.Itoa(int(tc.idIndex)),
 			}
 			args = append(args, tc.args...)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowGiveaway(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowTicket(), args)
 			if tc.err != nil {
 				stat, ok := status.FromError(tc.err)
 				require.True(t, ok)
 				require.ErrorIs(t, stat.Err(), tc.err)
 			} else {
 				require.NoError(t, err)
-				var resp types.QueryGetGiveawayResponse
+				var resp types.QueryGetTicketResponse
 				require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-				require.NotNil(t, resp.Giveaway)
+				require.NotNil(t, resp.Ticket)
 				require.Equal(t,
 					nullify.Fill(&tc.obj),
-					nullify.Fill(&resp.Giveaway),
+					nullify.Fill(&resp.Ticket),
 				)
 			}
 		})
 	}
 }
 
-func TestListGiveaway(t *testing.T) {
-	net, objs := networkWithGiveawayObjects(t, 5)
+func TestListTicket(t *testing.T) {
+	net, objs := networkWithTicketObjects(t, 5)
 
 	ctx := net.Validators[0].ClientCtx
 	request := func(next []byte, offset, limit uint64, total bool) []string {
@@ -117,14 +117,14 @@ func TestListGiveaway(t *testing.T) {
 		step := 2
 		for i := 0; i < len(objs); i += step {
 			args := request(nil, uint64(i), uint64(step), false)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListGiveaway(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListTicket(), args)
 			require.NoError(t, err)
-			var resp types.QueryAllGiveawayResponse
+			var resp types.QueryAllTicketResponse
 			require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-			require.LessOrEqual(t, len(resp.Giveaway), step)
+			require.LessOrEqual(t, len(resp.Ticket), step)
 			require.Subset(t,
 				nullify.Fill(objs),
-				nullify.Fill(resp.Giveaway),
+				nullify.Fill(resp.Ticket),
 			)
 		}
 	})
@@ -133,29 +133,29 @@ func TestListGiveaway(t *testing.T) {
 		var next []byte
 		for i := 0; i < len(objs); i += step {
 			args := request(next, 0, uint64(step), false)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListGiveaway(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListTicket(), args)
 			require.NoError(t, err)
-			var resp types.QueryAllGiveawayResponse
+			var resp types.QueryAllTicketResponse
 			require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
-			require.LessOrEqual(t, len(resp.Giveaway), step)
+			require.LessOrEqual(t, len(resp.Ticket), step)
 			require.Subset(t,
 				nullify.Fill(objs),
-				nullify.Fill(resp.Giveaway),
+				nullify.Fill(resp.Ticket),
 			)
 			next = resp.Pagination.NextKey
 		}
 	})
 	t.Run("Total", func(t *testing.T) {
 		args := request(nil, 0, uint64(len(objs)), true)
-		out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListGiveaway(), args)
+		out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdListTicket(), args)
 		require.NoError(t, err)
-		var resp types.QueryAllGiveawayResponse
+		var resp types.QueryAllTicketResponse
 		require.NoError(t, net.Config.Codec.UnmarshalJSON(out.Bytes(), &resp))
 		require.NoError(t, err)
 		require.Equal(t, len(objs), int(resp.Pagination.Total))
 		require.ElementsMatch(t,
 			nullify.Fill(objs),
-			nullify.Fill(resp.Giveaway),
+			nullify.Fill(resp.Ticket),
 		)
 	})
 }
