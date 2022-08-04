@@ -10,6 +10,7 @@ import "giveaway/giveaway_count.proto";
 import "giveaway/giveaway_by_height.proto";
 import "giveaway/giveaway_by_randomness.proto";
 import "giveaway/ticket.proto";
+import "giveaway/ticket_count.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -62,6 +63,16 @@ service Query {
 	// Queries a list of Ticket items.
 	rpc TicketAll(QueryAllTicketRequest) returns (QueryAllTicketResponse) {
 		option (google.api.http).get = "/dreanity/saturn/giveaway/ticket";
+	}
+
+// Queries a TicketCount by index.
+	rpc TicketCount(QueryGetTicketCountRequest) returns (QueryGetTicketCountResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/ticket_count/{giveawayId}";
+	}
+
+	// Queries a list of TicketCount items.
+	rpc TicketCountAll(QueryAllTicketCountRequest) returns (QueryAllTicketCountResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/ticket_count";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -150,6 +161,24 @@ message QueryAllTicketRequest {
 
 message QueryAllTicketResponse {
 	repeated Ticket ticket = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetTicketCountRequest {
+	  uint32 giveawayId = 1;
+
+}
+
+message QueryGetTicketCountResponse {
+	TicketCount ticketCount = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllTicketCountRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllTicketCountResponse {
+	repeated TicketCount ticketCount = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

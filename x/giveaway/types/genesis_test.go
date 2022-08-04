@@ -57,6 +57,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Index: 1,
 					},
 				},
+				TicketCountList: []types.TicketCount{
+					{
+						GiveawayId: 0,
+					},
+					{
+						GiveawayId: 1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -112,6 +120,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Index: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated ticketCount",
+			genState: &types.GenesisState{
+				TicketCountList: []types.TicketCount{
+					{
+						GiveawayId: 0,
+					},
+					{
+						GiveawayId: 0,
 					},
 				},
 			},

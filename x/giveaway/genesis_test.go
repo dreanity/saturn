@@ -49,6 +49,14 @@ func TestGenesis(t *testing.T) {
 				Index: 1,
 			},
 		},
+		TicketCountList: []types.TicketCount{
+			{
+				GiveawayId: 0,
+			},
+			{
+				GiveawayId: 1,
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -65,5 +73,6 @@ func TestGenesis(t *testing.T) {
 	require.ElementsMatch(t, genesisState.GiveawayByHeightList, got.GiveawayByHeightList)
 	require.ElementsMatch(t, genesisState.GiveawayByRandomnessList, got.GiveawayByRandomnessList)
 	require.ElementsMatch(t, genesisState.TicketList, got.TicketList)
+	require.ElementsMatch(t, genesisState.TicketCountList, got.TicketCountList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
