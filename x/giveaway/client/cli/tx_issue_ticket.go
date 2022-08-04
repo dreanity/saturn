@@ -19,7 +19,7 @@ func CmdIssueTicket() *cobra.Command {
 		Short: "Issue a ticket to distribution participant",
 		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argGiveawayId, err := cast.ToUint64E(args[0])
+			argGiveawayId, err := cast.ToUint32E(args[0])
 			if err != nil {
 				return err
 			}
