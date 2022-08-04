@@ -66,14 +66,14 @@ func (r *Drbg) Read(p []byte) (n int, err error) {
 	return off, nil
 }
 
-func (r *Drbg) ReadUint64() uint64 {
-	data := make([]byte, 8)
+func (r *Drbg) ReadUint32() uint32 {
+	data := make([]byte, 4)
 	_, err := r.Read(data)
 	if err != nil {
 		// Reaching error is not practically possible in hmbc_drbg's codepath.
 		panic(err)
 	}
-	return binary.BigEndian.Uint64(data)
+	return binary.BigEndian.Uint32(data)
 }
 
 func (r *Drbg) generate(requestedNumberOfBytes int, additionalInput []byte) ([]byte, error) {
