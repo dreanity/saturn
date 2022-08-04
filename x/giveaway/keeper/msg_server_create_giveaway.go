@@ -78,5 +78,11 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	}
 	k.SetGiveawayByHeight(ctx, giveawaysByHeight)
 
+	ticketCount := types.TicketCount{
+		GiveawayId: giveaway.Index,
+		Count:      0,
+	}
+	k.SetTicketCount(ctx, ticketCount)
+
 	return &types.MsgCreateGiveawayResponse{}, nil
 }
