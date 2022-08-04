@@ -48700,6 +48700,8 @@ definitions:
         format: int64
   dreanity.saturn.giveaway.MsgCreateGiveawayResponse:
     type: object
+  dreanity.saturn.giveaway.MsgIssueTicketResponse:
+    type: object
   dreanity.saturn.giveaway.Params:
     type: object
     description: Params defines the parameters for the module.

@@ -28,6 +28,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateGiveaway int = 100
 
+	opWeightMsgIssueTicket = "op_weight_msg_issue_ticket"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgIssueTicket int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -71,6 +75,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgCreateGiveaway,
 		giveawaysimulation.SimulateMsgCreateGiveaway(am.gentimeKeeper, am.keeper),
+	))
+
+	var weightMsgIssueTicket int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgIssueTicket, &weightMsgIssueTicket, nil,
+		func(_ *rand.Rand) {
+			weightMsgIssueTicket = defaultWeightMsgIssueTicket
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgIssueTicket,
+		giveawaysimulation.SimulateMsgIssueTicket(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

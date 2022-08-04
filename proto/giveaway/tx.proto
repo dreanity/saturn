@@ -10,6 +10,7 @@ option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 // Msg defines the Msg service.
 service Msg {
       rpc CreateGiveaway(MsgCreateGiveaway) returns (MsgCreateGiveawayResponse);
+  rpc IssueTicket(MsgIssueTicket) returns (MsgIssueTicketResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -21,6 +22,16 @@ message MsgCreateGiveaway {
 }
 
 message MsgCreateGiveawayResponse {
+}
+
+message MsgIssueTicket {
+  string creator = 1;
+  uint32 giveawayId = 2;
+  string participantId = 3;
+  string participantName = 4;
+}
+
+message MsgIssueTicketResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
