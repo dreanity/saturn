@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"strings"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/dreanity/saturn/x/giveaway/types"
@@ -9,6 +10,14 @@ import (
 
 func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket) (*types.MsgIssueTicketResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	if len(strings.Trim(msg.ParticipantId, " ")) < 1 {
+		return nil, types.ErrInvalidParticipantId
+	}
+
+	if len(strings.Trim(msg.ParticipantName, " ")) < 1 {
+		return nil, types.ErrInvalidParticipantName
+	}
 
 	ticketCount, found := k.GetTicketCount(ctx, msg.GiveawayId)
 	if !found {

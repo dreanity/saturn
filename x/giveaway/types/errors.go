@@ -15,4 +15,6 @@ var (
 	ErrPrizeScaleToBig                   = sdkerrors.Register(ModuleName, 1105, "prize scale to big")
 	ErrPrizeCurrencyMustBeMoreThanZero   = sdkerrors.Register(ModuleName, 1106, "length of prize currency must be more than zero")
 	ErrIssueTicketForNonExistentGiveaway = sdkerrors.Register(ModuleName, 1107, "attempt to issue a ticket for a non-existent giveaway")
+	ErrInvalidParticipantId              = sdkerrors.Register(ModuleName, 1108, "participantId must not be empty")
+	ErrInvalidParticipantName            = sdkerrors.Register(ModuleName, 1109, "participantName must not be empty")
 )
