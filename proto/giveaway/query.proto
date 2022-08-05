@@ -147,8 +147,8 @@ message QueryAllGiveawayByRandomnessResponse {
 }
 
 message QueryGetTicketRequest {
-	  uint32 index = 1;
-
+	uint32 giveawayId = 1;
+	uint32 index = 2;
 }
 
 message QueryGetTicketResponse {

@@ -20661,6 +20661,11 @@ paths:
           required: true
           type: integer
           format: int64
+        - name: giveawayId
+          in: query
+          required: false
+          type: integer
+          format: int64
       tags:
         - Query
   /dreanity/saturn/giveaway/ticket_count:

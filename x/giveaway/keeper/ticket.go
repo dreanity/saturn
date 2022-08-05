@@ -11,6 +11,7 @@ func (k Keeper) SetTicket(ctx sdk.Context, ticket types.Ticket) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TicketKeyPrefix))
 	b := k.cdc.MustMarshal(&ticket)
 	store.Set(types.TicketKey(
+		ticket.GiveawayId,
 		ticket.Index,
 	), b)
 }
@@ -18,12 +19,14 @@ func (k Keeper) SetTicket(ctx sdk.Context, ticket types.Ticket) {
 // GetTicket returns a ticket from its index
 func (k Keeper) GetTicket(
 	ctx sdk.Context,
+	giveawayId uint32,
 	index uint32,
 
 ) (val types.Ticket, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TicketKeyPrefix))
 
 	b := store.Get(types.TicketKey(
+		giveawayId,
 		index,
 	))
 	if b == nil {
@@ -37,11 +40,13 @@ func (k Keeper) GetTicket(
 // RemoveTicket removes a ticket from the store
 func (k Keeper) RemoveTicket(
 	ctx sdk.Context,
+	giveawayId uint32,
 	index uint32,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TicketKeyPrefix))
 	store.Delete(types.TicketKey(
+		giveawayId,
 		index,
 	))
 }

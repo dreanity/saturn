@@ -58,7 +58,7 @@ func (gs GenesisState) Validate() error {
 	ticketIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.TicketList {
-		index := string(TicketKey(elem.Index))
+		index := string(TicketKey(elem.GiveawayId, elem.Index))
 		if _, ok := ticketIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for ticket")
 		}

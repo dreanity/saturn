@@ -47,6 +47,7 @@ func (k Keeper) Ticket(c context.Context, req *types.QueryGetTicketRequest) (*ty
 
 	val, found := k.GetTicket(
 		ctx,
+		req.GiveawayId,
 		req.Index,
 	)
 	if !found {

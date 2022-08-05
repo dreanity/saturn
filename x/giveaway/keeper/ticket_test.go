@@ -30,6 +30,7 @@ func TestTicketGet(t *testing.T) {
 	items := createNTicket(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetTicket(ctx,
+			item.GiveawayId,
 			item.Index,
 		)
 		require.True(t, found)
@@ -44,9 +45,11 @@ func TestTicketRemove(t *testing.T) {
 	items := createNTicket(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveTicket(ctx,
+			item.GiveawayId,
 			item.Index,
 		)
 		_, found := keeper.GetTicket(ctx,
+			item.GiveawayId,
 			item.Index,
 		)
 		require.False(t, found)

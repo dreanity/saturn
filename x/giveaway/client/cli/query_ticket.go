@@ -45,21 +45,27 @@ func CmdListTicket() *cobra.Command {
 
 func CmdShowTicket() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-ticket [index]",
+		Use:   "show-ticket [giveawayId] [index]",
 		Short: "shows a ticket",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argIndex, err := cast.ToUint32E(args[0])
+			argIndex, err := cast.ToUint32E(args[1])
+			if err != nil {
+				return err
+			}
+
+			argGiveawayId, err := cast.ToUint32E(args[0])
 			if err != nil {
 				return err
 			}
 
 			params := &types.QueryGetTicketRequest{
-				Index: argIndex,
+				GiveawayId: argGiveawayId,
+				Index:      argIndex,
 			}
 
 			res, err := queryClient.Ticket(context.Background(), params)
