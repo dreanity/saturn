@@ -19,6 +19,15 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 		return nil, types.ErrInvalidParticipantName
 	}
 
+	giveaway, found := k.GetGiveaway(ctx, msg.GiveawayId)
+	if !found {
+		return nil, types.ErrIssueTicketForNonExistentGiveaway
+	}
+
+	if giveaway.Status != types.Giveaway_TICKETS_REGISTRATION {
+		return nil, types.ErrTicketRegistrationClosed
+	}
+
 	ticketCount, found := k.GetTicketCount(ctx, msg.GiveawayId)
 	if !found {
 		return nil, types.ErrIssueTicketForNonExistentGiveaway
