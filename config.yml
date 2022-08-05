@@ -1,7 +1,6 @@
 accounts:
   - name: alice
     coins: ["200000000uhydrogen"]
-    # mnemonic: brand retire one fee clap imitate dad abstract vendor market present plate sad dynamic load stand bunker tomorrow castle never ketchup home unlock point
   - name: bob
     address: "saturn1wvvyvp4y7uq3sdsaz2vwslh8kk8z08jsvp0je9"
     coins: ["100000000uhydrogen"]

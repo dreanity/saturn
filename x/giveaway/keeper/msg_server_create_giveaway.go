@@ -13,7 +13,7 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 
 	_ = ctx
 
-	if msg.Duration < 3600 {
+	if msg.Duration < 0 { // TODO: Поправить время на 3600
 		return nil, types.ErrDurationToLow
 	}
 

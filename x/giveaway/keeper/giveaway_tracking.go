@@ -52,17 +52,14 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 	for _, giveawayByRandomness := range giveawaysByRandomness {
 		round := giveawayByRandomness.Round
 		provenRandomness, found := k.randomnessKeeper.GetProvenRandomness(ctx, round)
+
 		if found {
 			for _, giveawayIndex := range giveawayByRandomness.Indexes {
-				drbgSeed, err := hex.DecodeString(provenRandomness.Randomness)
-				if err != nil {
-					panic("Randomness not hex decode")
+				giveaway, found := k.GetGiveaway(ctx, giveawayIndex)
+				if !found {
+					msg := fmt.Sprintf("Giveaway #%d not found", giveawayIndex)
+					panic(msg)
 				}
-
-				drbgNonce := make([]byte, 4)
-				binary.BigEndian.PutUint32(drbgNonce, giveawayIndex)
-
-				drbgPersonalize := []byte(ctx.ChainID())
 
 				ticketCount, found := k.GetTicketCount(ctx, giveawayIndex)
 				if !found {
@@ -70,15 +67,27 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 					panic(msg)
 				}
 
-				giveaway, found := k.GetGiveaway(ctx, giveawayIndex)
-				if !found {
-					msg := fmt.Sprintf("Giveaway #%d not found", giveawayIndex)
-					panic(msg)
+				if ticketCount.Count == 0 || ticketCount.Count < uint32(len(giveaway.Prizes)) {
+					giveaway.Status = types.Giveaway_CANCELLED_INSUF_TICKETS
+					k.SetGiveaway(ctx, giveaway)
+					continue
 				}
-				winnersCount := len(giveaway.Prizes)
 
-				winnersNumber := determineWinners(drbgSeed, drbgNonce, drbgPersonalize, ticketCount.Count, winnersCount)
+				drbgSeed, err := hex.DecodeString(provenRandomness.Randomness)
+				if err != nil {
+					panic("Randomness not hex decode")
+				}
+				drbgNonce := make([]byte, 4)
+				binary.BigEndian.PutUint32(drbgNonce, giveawayIndex)
+
+				drbgPersonalize := []byte(ctx.ChainID())
+
+				winnersCount := len(giveaway.Prizes)
+				winnersNumber := determineWinners(ctx, drbgSeed, drbgNonce, drbgPersonalize, ticketCount.Count, winnersCount)
+
 				giveaway.WinningTicketNumbers = winnersNumber
+				giveaway.Status = types.Giveaway_WINNERS_DETERMINED
+
 				k.SetGiveaway(ctx, giveaway)
 			}
 
@@ -87,7 +96,7 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 	}
 }
 
-func determineWinners(seed, nonce, personalize []byte, ticketsCount uint32, winnersCount int) []uint32 {
+func determineWinners(ctx sdk.Context, seed, nonce, personalize []byte, ticketsCount uint32, winnersCount int) []uint32 {
 	drbg, err := crypto.NewHmacDrbg(stdcrypto.SHA256, seed, nonce, personalize)
 	if err != nil {
 		msg := fmt.Sprintf("error creating hmac_drbg: %s", err)
@@ -145,7 +154,7 @@ func determineWinners(seed, nonce, personalize []byte, ticketsCount uint32, winn
 		winnerNumbersToPlaces[winnerNumber] = uint32(place)
 	}
 
-	winnersNumber := make([]uint32, winnersCount)
+	winnersNumber := make([]uint32, 0)
 	for winnerNumber, _ := range winnerNumbersToPlaces {
 		winnersNumber = append(winnersNumber, winnerNumber)
 	}
