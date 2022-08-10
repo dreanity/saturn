@@ -56,13 +56,13 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	complitionHeight := height.Add(numberOfBlocksToComplete).TruncateInt().Int64()
 
 	giveaway := types.Giveaway{
-		Index:                giveawayCount.Value,
-		Duration:             msg.Duration,
+		CompletionHeight:     complitionHeight,
 		CreatedAt:            ctx.BlockTime().UTC().Unix(),
+		Duration:             msg.Duration,
+		Index:                giveawayCount.Value,
 		Name:                 msg.Name,
 		Prizes:               msg.Prizes,
-		CompletionHeight:     complitionHeight,
-		Status:               types.Giveaway_TICKETS_REGISTRATION,
+		Status:               types.GiveawayStatus_TICKETS_REGISTRATION,
 		WinningTicketNumbers: []uint32{},
 	}
 
@@ -83,6 +83,17 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 		Count:      0,
 	}
 	k.SetTicketCount(ctx, ticketCount)
+
+	ctx.EventManager().EmitTypedEvent(&types.GiveawayCreated{
+		CompletionHeight:     giveaway.CompletionHeight,
+		CreatedAt:            giveaway.CreatedAt,
+		Duration:             giveaway.Duration,
+		Index:                giveaway.Index,
+		Name:                 giveaway.Name,
+		Prizes:               giveaway.Prizes,
+		Status:               giveaway.Status,
+		WinningTicketNumbers: giveaway.WinningTicketNumbers,
+	})
 
 	return &types.MsgCreateGiveawayResponse{}, nil
 }

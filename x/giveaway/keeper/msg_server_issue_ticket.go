@@ -24,7 +24,7 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 		return nil, types.ErrIssueTicketForNonExistentGiveaway
 	}
 
-	if giveaway.Status != types.Giveaway_TICKETS_REGISTRATION {
+	if giveaway.Status != types.GiveawayStatus_TICKETS_REGISTRATION {
 		return nil, types.ErrTicketRegistrationClosed
 	}
 

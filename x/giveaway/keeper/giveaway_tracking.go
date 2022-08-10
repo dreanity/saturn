@@ -38,7 +38,7 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 			if !found {
 				panic("Giveaway not found by giveawayByGiveaway indexes")
 			}
-			giveaway.Status = types.Giveaway_WINNERS_DETERMINATION
+			giveaway.Status = types.GiveawayStatus_WINNERS_DETERMINATION
 			k.SetGiveaway(ctx, giveaway)
 		}
 
@@ -68,7 +68,7 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 				}
 
 				if ticketCount.Count == 0 || ticketCount.Count < uint32(len(giveaway.Prizes)) {
-					giveaway.Status = types.Giveaway_CANCELLED_INSUF_TICKETS
+					giveaway.Status = types.GiveawayStatus_CANCELLED_INSUF_TICKETS
 					k.SetGiveaway(ctx, giveaway)
 					continue
 				}
@@ -86,7 +86,7 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 				winnersNumber := determineWinners(ctx, drbgSeed, drbgNonce, drbgPersonalize, ticketCount.Count, winnersCount)
 
 				giveaway.WinningTicketNumbers = winnersNumber
-				giveaway.Status = types.Giveaway_WINNERS_DETERMINED
+				giveaway.Status = types.GiveawayStatus_WINNERS_DETERMINED
 
 				k.SetGiveaway(ctx, giveaway)
 			}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package dreanity.saturn.giveaway;
+
+import "gogoproto/gogo.proto";
+import "giveaway/giveaway.proto";
+import "giveaway/prize.proto";
+
+option go_package = "github.com/dreanity/saturn/x/giveaway/types";
+
+message GiveawayCreated {
+	uint32 index = 1; 
+	int64 duration = 2; 
+	int64 createdAt = 3;
+	string name = 4;
+	repeated Prize prizes = 5 [(gogoproto.nullable) = false]; 
+	int64 completionHeight = 6;
+	GiveawayStatus status = 7;
+	repeated uint32 winningTicketNumbers = 8;
+}

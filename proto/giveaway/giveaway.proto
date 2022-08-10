@@ -6,6 +6,13 @@ import "giveaway/prize.proto";
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
 
+enum GiveawayStatus {
+  TICKETS_REGISTRATION = 0;
+  WINNERS_DETERMINATION = 1;
+  WINNERS_DETERMINED = 2;
+  CANCELLED_INSUF_TICKETS = 3;
+}
+
 message Giveaway {
   uint32 index = 1; 
   int64 duration = 2; 
@@ -14,13 +21,7 @@ message Giveaway {
   repeated Prize prizes = 5 [(gogoproto.nullable) = false]; 
   int64 completionHeight = 6;
 
-  enum Status {
-    TICKETS_REGISTRATION = 0;
-    WINNERS_DETERMINATION = 1;
-    WINNERS_DETERMINED = 2;
-    CANCELLED_INSUF_TICKETS = 3;
-  }
-  Status status = 7;
+  GiveawayStatus status = 7;
   
   repeated uint32 winningTicketNumbers = 8;
 }
