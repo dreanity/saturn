@@ -48667,14 +48667,6 @@ definitions:
         items:
           type: integer
           format: int64
-  dreanity.saturn.giveaway.Giveaway.Status:
-    type: string
-    enum:
-      - TICKETS_REGISTRATION
-      - WINNERS_DETERMINATION
-      - WINNERS_DETERMINED
-      - CANCELLED_INSUF_TICKETS
-    default: TICKETS_REGISTRATION
   dreanity.saturn.giveaway.GiveawayByHeight:
     type: object
     properties:
@@ -48703,6 +48695,14 @@ definitions:
       value:
         type: integer
         format: int64
+  dreanity.saturn.giveaway.GiveawayStatus:
+    type: string
+    enum:
+      - TICKETS_REGISTRATION
+      - WINNERS_DETERMINATION
+      - WINNERS_DETERMINED
+      - CANCELLED_INSUF_TICKETS
+    default: TICKETS_REGISTRATION
   dreanity.saturn.giveaway.MsgCreateGiveawayResponse:
     type: object
   dreanity.saturn.giveaway.MsgIssueTicketResponse:
