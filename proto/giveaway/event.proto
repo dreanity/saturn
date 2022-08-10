@@ -17,3 +17,10 @@ message GiveawayCreated {
 	GiveawayStatus status = 7;
 	repeated uint32 winningTicketNumbers = 8;
 }
+
+message TicketCreated {
+  	uint32 index = 1; 
+  	uint32 giveawayId = 2; 
+  	string participantId = 3; 
+  	string participantName = 4;
+}

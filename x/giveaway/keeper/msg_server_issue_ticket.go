@@ -34,8 +34,8 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 	}
 
 	ticket := types.Ticket{
-		Index:           ticketCount.Count,
 		GiveawayId:      msg.GiveawayId,
+		Index:           ticketCount.Count,
 		ParticipantId:   msg.ParticipantId,
 		ParticipantName: msg.ParticipantName,
 	}
@@ -43,6 +43,13 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 
 	k.SetTicket(ctx, ticket)
 	k.SetTicketCount(ctx, ticketCount)
+
+	ctx.EventManager().EmitTypedEvent(&types.TicketCreated{
+		GiveawayId:      ticket.GiveawayId,
+		Index:           ticket.Index,
+		ParticipantId:   ticket.ParticipantId,
+		ParticipantName: ticket.ParticipantName,
+	})
 
 	return &types.MsgIssueTicketResponse{}, nil
 }
