@@ -18,6 +18,11 @@ message GiveawayCreated {
 	repeated uint32 winningTicketNumbers = 8;
 }
 
+message GiveawayWinnersDeterminationBegun {
+	uint32 giveawayId = 1;
+	uint64 randomnessRound = 2;
+}
+
 message TicketCreated {
   	uint32 index = 1; 
   	uint32 giveawayId = 2; 

@@ -16,6 +16,8 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 	height := ctx.BlockHeight()
 	giveawaysByHeight, found := k.GetGiveawayByHeight(ctx, height)
 	if found {
+		emgr := ctx.EventManager()
+
 		blockTime := ctx.BlockTime()
 		randomnessRound := k.randomnessKeeper.ComputeRandomnessRoundForTime(ctx, uint64(blockTime.UTC().Unix()))
 
@@ -23,7 +25,7 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 
 		if !found {
 			unprovenRandomness.Round = randomnessRound
-			k.randomnessKeeper.SetUnprovenRandomness(ctx, unprovenRandomness)
+			k.randomnessKeeper.SetUnprovenRandomnessWithEvent(ctx, unprovenRandomness)
 		}
 
 		giveawayByRandomness, found := k.GetGiveawayByRandomness(ctx, randomnessRound)
@@ -40,6 +42,11 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 			}
 			giveaway.Status = types.GiveawayStatus_WINNERS_DETERMINATION
 			k.SetGiveaway(ctx, giveaway)
+
+			emgr.EmitTypedEvents(&types.GiveawayWinnersDeterminationBegun{
+				GiveawayId:      giveaway.Index,
+				RandomnessRound: unprovenRandomness.Round,
+			})
 		}
 
 		k.RemoveGiveawayByHeight(ctx, height)
