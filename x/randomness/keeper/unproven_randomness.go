@@ -33,6 +33,20 @@ func (k Keeper) SetUnprovenRandomness(ctx sdk.Context, unprovenRandomness types.
 	), b)
 }
 
+func (k Keeper) SetUnprovenRandomnessWithEvent(ctx sdk.Context, unprovenRandomness types.UnprovenRandomness) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.UnprovenRandomnessKeyPrefix))
+	b := k.cdc.MustMarshal(&unprovenRandomness)
+	store.Set(types.UnprovenRandomnessKey(
+		unprovenRandomness.Round,
+	), b)
+
+	unprovenRandomnessCreated := types.UnprovenRandomnessCreated{
+		Round: unprovenRandomness.Round,
+	}
+
+	ctx.EventManager().EmitTypedEvent(&unprovenRandomnessCreated)
+}
+
 // GetUnprovenRandomness returns a unprovenRandomness from its index
 func (k Keeper) GetUnprovenRandomness(
 	ctx sdk.Context,

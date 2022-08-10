@@ -34,13 +34,21 @@ func (k msgServer) ProveRandomness(goCtx context.Context, msg *types.MsgProveRan
 	k.RemoveUnprovenRandomness(ctx, unprovenRandomness.Round)
 	k.SetProvenRandomness(ctx, provenRandomness)
 
-	randomnessProved := types.RandomnessProved{
-		Round: provenRandomness.Round,
+	provenRandomnessCreated := types.ProvenRandomnessCreated{
+		Round:             provenRandomness.Round,
+		Randomness:        provenRandomness.Randomness,
+		Signature:         provenRandomness.Signature,
+		PreviousSignature: provenRandomness.PreviousSignature,
 	}
 
-	ctx.EventManager().EmitTypedEvent(&randomnessProved)
+	ctx.EventManager().EmitTypedEvent(&provenRandomnessCreated)
 
-	reward := sdk.NewCoin("uhydrogen", sdk.NewInt(types.RandomnessVerificationReward))
+	gasConsumed := ctx.GasMeter().GasConsumed()
+	gasLimit := ctx.GasMeter().Limit()
+
+	rewardSum := (gasConsumed + (gasLimit - gasConsumed)) * 3
+
+	reward := sdk.NewCoin("uhydrogen", sdk.NewInt(int64(rewardSum)))
 	rewards := sdk.NewCoins(reward)
 	awardedAddress, _ := sdk.AccAddressFromBech32(msg.Creator)
 

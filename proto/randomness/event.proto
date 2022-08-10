@@ -3,7 +3,13 @@ package saturn.randomness;
 
 option go_package = "github.com/dreanity/saturn/x/randomness/types";
 
-message RandomnessProved {
-  uint64 Round = 1;
-  
+message ProvenRandomnessCreated {
+  uint64 round = 1;
+  string randomness = 2; 
+  string signature = 3; 
+  string previousSignature = 4; 
+}
+
+message UnprovenRandomnessCreated {
+  uint64 round = 1;
 }
