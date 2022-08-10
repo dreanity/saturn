@@ -44,6 +44,9 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 			if ticketCount.Count == 0 || ticketCount.Count < uint32(len(giveaway.Prizes)) {
 				giveaway.Status = types.GiveawayStatus_CANCELLED_INSUF_TICKETS
 				k.SetGiveaway(ctx, giveaway)
+				emgr.EmitTypedEvents(&types.GiveawayCancelledInsufTickets{
+					GiveawayId: giveaway.Index,
+				})
 				continue
 			}
 
@@ -72,6 +75,7 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 
 func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 	giveawaysByRandomness := k.GetAllGiveawayByRandomness(ctx)
+	emgr := ctx.EventManager()
 
 	for _, giveawayByRandomness := range giveawaysByRandomness {
 		round := giveawayByRandomness.Round
@@ -107,9 +111,14 @@ func (k Keeper) TrackGiveawayByRandomness(ctx sdk.Context) {
 				giveaway.Status = types.GiveawayStatus_WINNERS_DETERMINED
 
 				k.SetGiveaway(ctx, giveaway)
+				emgr.EmitTypedEvents(&types.GiveawayWinnersDetermined{
+					GiveawayId:     giveaway.Index,
+					WinnersNumbers: winnersNumber,
+				})
 			}
 
 			k.RemoveGiveawayByRandomness(ctx, round)
+
 		}
 	}
 }

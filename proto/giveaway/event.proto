@@ -23,6 +23,15 @@ message GiveawayWinnersDeterminationBegun {
 	uint64 randomnessRound = 2;
 }
 
+message GiveawayCancelledInsufTickets {
+	uint32 giveawayId = 1;
+}
+
+message GiveawayWinnersDetermined {
+	uint32 giveawayId = 1;
+	repeated uint32 winnersNumbers = 2;
+}
+
 message TicketCreated {
   	uint32 index = 1; 
   	uint32 giveawayId = 2; 
