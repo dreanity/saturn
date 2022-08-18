@@ -8,5 +8,6 @@ import (
 
 // x/treasury module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrInvalidGasPrice       = sdkerrors.Register(ModuleName, 1101, "invalid gas price")
+	ErrCreatorIsNotTreasurer = sdkerrors.Register(ModuleName, 1102, "the creator is not the treasurer")
 )
