@@ -2,12 +2,22 @@ syntax = "proto3";
 package dreanity.saturn.treasury;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "treasury/gas_price.proto";
 
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc ChangeGasPrices(MsgChangeGasPrices) returns (MsgChangeGasPricesResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgChangeGasPrices {
+  string creator = 1;
+  repeated GasPrice gasPrices = 2;
+}
+
+message MsgChangeGasPricesResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
