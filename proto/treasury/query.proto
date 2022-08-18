@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "treasury/params.proto";
 import "treasury/treasurer.proto";
+import "treasury/gas_price.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
@@ -20,6 +21,16 @@ service Query {
 	rpc Treasurer(QueryGetTreasurerRequest) returns (QueryGetTreasurerResponse) {
 		option (google.api.http).get = "/dreanity/saturn/treasury/treasurer";
 	}
+// Queries a GasPrice by index.
+	rpc GasPrice(QueryGetGasPriceRequest) returns (QueryGetGasPriceResponse) {
+		option (google.api.http).get = "/dreanity/saturn/treasury/gas_price/{currency}";
+	}
+
+	// Queries a list of GasPrice items.
+	rpc GasPriceAll(QueryAllGasPriceRequest) returns (QueryAllGasPriceResponse) {
+		option (google.api.http).get = "/dreanity/saturn/treasury/gas_price";
+	}
+
 // this line is used by starport scaffolding # 2
 }
 
@@ -37,4 +48,22 @@ message QueryGetTreasurerRequest {}
 message QueryGetTreasurerResponse {
 	Treasurer Treasurer = 1 [(gogoproto.nullable) = false];
 }
+message QueryGetGasPriceRequest {
+	  string currency = 1;
+
+}
+
+message QueryGetGasPriceResponse {
+	GasPrice gasPrice = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGasPriceRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGasPriceResponse {
+	repeated GasPrice gasPrice = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
 // this line is used by starport scaffolding # 3

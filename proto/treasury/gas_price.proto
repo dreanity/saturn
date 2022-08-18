@@ -1,0 +1,11 @@
+syntax = "proto3";
+package dreanity.saturn.treasury;
+
+option go_package = "github.com/dreanity/saturn/x/treasury/types";
+
+message GasPrice {
+  string currency = 1; 
+  string value = 2; 
+  
+}
+

@@ -17,6 +17,14 @@ func TestGenesis(t *testing.T) {
 		Treasurer: types.Treasurer{
 			Address: "96",
 		},
+		GasPriceList: []types.GasPrice{
+			{
+				Currency: "0",
+			},
+			{
+				Currency: "1",
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -29,5 +37,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.Equal(t, genesisState.Treasurer, got.Treasurer)
+	require.ElementsMatch(t, genesisState.GasPriceList, got.GasPriceList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

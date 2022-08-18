@@ -25,9 +25,31 @@ func TestGenesisState_Validate(t *testing.T) {
 				Treasurer: types.Treasurer{
 					Address: "56",
 				},
+				GasPriceList: []types.GasPrice{
+					{
+						Currency: "0",
+					},
+					{
+						Currency: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated gasPrice",
+			genState: &types.GenesisState{
+				GasPriceList: []types.GasPrice{
+					{
+						Currency: "0",
+					},
+					{
+						Currency: "0",
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {

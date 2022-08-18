@@ -4,6 +4,7 @@ package dreanity.saturn.treasury;
 import "gogoproto/gogo.proto";
 import "treasury/params.proto";
 import "treasury/treasurer.proto";
+import "treasury/gas_price.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
@@ -12,5 +13,6 @@ option go_package = "github.com/dreanity/saturn/x/treasury/types";
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   Treasurer treasurer = 2 [(gogoproto.nullable) = false];
+  repeated GasPrice gasPriceList = 3 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
