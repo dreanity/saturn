@@ -14,20 +14,11 @@ func (k Keeper) SetTreasurer(ctx sdk.Context, treasurer types.Treasurer) {
 }
 
 // GetTreasurer returns treasurer
-func (k Keeper) GetTreasurer(ctx sdk.Context) (val types.Treasurer, found bool) {
+func (k Keeper) GetTreasurer(ctx sdk.Context) (val types.Treasurer) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TreasurerKey))
 
 	b := store.Get([]byte{0})
-	if b == nil {
-		return val, false
-	}
 
 	k.cdc.MustUnmarshal(b, &val)
-	return val, true
-}
-
-// RemoveTreasurer removes treasurer from the store
-func (k Keeper) RemoveTreasurer(ctx sdk.Context) {
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.TreasurerKey))
-	store.Delete([]byte{0})
+	return val
 }

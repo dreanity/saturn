@@ -21,18 +21,9 @@ func createTestTreasurer(keeper *keeper.Keeper, ctx sdk.Context) types.Treasurer
 func TestTreasurerGet(t *testing.T) {
 	keeper, ctx := keepertest.TreasuryKeeper(t)
 	item := createTestTreasurer(keeper, ctx)
-	rst, found := keeper.GetTreasurer(ctx)
-	require.True(t, found)
+	rst := keeper.GetTreasurer(ctx)
 	require.Equal(t,
 		nullify.Fill(&item),
 		nullify.Fill(&rst),
 	)
-}
-
-func TestTreasurerRemove(t *testing.T) {
-	keeper, ctx := keepertest.TreasuryKeeper(t)
-	createTestTreasurer(keeper, ctx)
-	keeper.RemoveTreasurer(ctx)
-	_, found := keeper.GetTreasurer(ctx)
-	require.False(t, found)
 }

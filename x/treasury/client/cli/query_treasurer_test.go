@@ -23,11 +23,11 @@ func networkWithTreasurerObjects(t *testing.T) (*network.Network, types.Treasure
 
 	treasurer := &types.Treasurer{}
 	nullify.Fill(&treasurer)
-	state.Treasurer = treasurer
+	state.Treasurer = *treasurer
 	buf, err := cfg.Codec.MarshalJSON(&state)
 	require.NoError(t, err)
 	cfg.GenesisState[types.ModuleName] = buf
-	return network.New(t, cfg), *state.Treasurer
+	return network.New(t, cfg), state.Treasurer
 }
 
 func TestShowTreasurer(t *testing.T) {

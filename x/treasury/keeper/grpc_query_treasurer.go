@@ -15,10 +15,7 @@ func (k Keeper) Treasurer(c context.Context, req *types.QueryGetTreasurerRequest
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	val, found := k.GetTreasurer(ctx)
-	if !found {
-		return nil, status.Error(codes.NotFound, "not found")
-	}
+	val := k.GetTreasurer(ctx)
 
 	return &types.QueryGetTreasurerResponse{Treasurer: val}, nil
 }

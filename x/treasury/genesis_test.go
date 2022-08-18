@@ -14,7 +14,7 @@ func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
-		Treasurer: &types.Treasurer{
+		Treasurer: types.Treasurer{
 			Address: "96",
 		},
 		// this line is used by starport scaffolding # genesis/test/state

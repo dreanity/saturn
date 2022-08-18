@@ -10,9 +10,7 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// Set if defined
-	if genState.Treasurer != nil {
-		k.SetTreasurer(ctx, *genState.Treasurer)
-	}
+	k.SetTreasurer(ctx, genState.Treasurer)
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -23,10 +21,8 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis.Params = k.GetParams(ctx)
 
 	// Get all treasurer
-	treasurer, found := k.GetTreasurer(ctx)
-	if found {
-		genesis.Treasurer = &treasurer
-	}
+	treasurer := k.GetTreasurer(ctx)
+	genesis.Treasurer = treasurer
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis
