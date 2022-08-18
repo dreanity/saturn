@@ -1,0 +1,9 @@
+syntax = "proto3";
+package dreanity.saturn.treasury;
+
+option go_package = "github.com/dreanity/saturn/x/treasury/types";
+
+message Treasurer {
+  string address = 1; 
+  
+}

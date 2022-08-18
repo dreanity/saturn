@@ -3,6 +3,7 @@ package dreanity.saturn.treasury;
 
 import "gogoproto/gogo.proto";
 import "treasury/params.proto";
+import "treasury/treasurer.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
@@ -10,5 +11,6 @@ option go_package = "github.com/dreanity/saturn/x/treasury/types";
 // GenesisState defines the treasury module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  Treasurer treasurer = 2;
   // this line is used by starport scaffolding # genesis/proto/state
 }
