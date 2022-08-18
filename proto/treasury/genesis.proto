@@ -11,6 +11,6 @@ option go_package = "github.com/dreanity/saturn/x/treasury/types";
 // GenesisState defines the treasury module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
-  Treasurer treasurer = 2;
+  Treasurer treasurer = 2 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
