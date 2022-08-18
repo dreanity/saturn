@@ -28,6 +28,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgChangeGasPrices int = 100
 
+	opWeightMsgExecuteGasBid = "op_weight_msg_execute_gas_bid"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgExecuteGasBid int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -71,6 +75,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgChangeGasPrices,
 		treasurysimulation.SimulateMsgChangeGasPrices(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgExecuteGasBid int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgExecuteGasBid, &weightMsgExecuteGasBid, nil,
+		func(_ *rand.Rand) {
+			weightMsgExecuteGasBid = defaultWeightMsgExecuteGasBid
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgExecuteGasBid,
+		treasurysimulation.SimulateMsgExecuteGasBid(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

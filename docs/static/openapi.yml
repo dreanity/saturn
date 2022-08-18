@@ -49515,6 +49515,8 @@ definitions:
         type: string
   dreanity.saturn.treasury.MsgChangeGasPricesResponse:
     type: object
+  dreanity.saturn.treasury.MsgExecuteGasBidResponse:
+    type: object
   dreanity.saturn.treasury.Params:
     type: object
     description: Params defines the parameters for the module.
