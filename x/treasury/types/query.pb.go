@@ -377,6 +377,190 @@ func (m *QueryAllGasPriceResponse) GetPagination() *query.PageResponse {
 	return nil
 }
 
+type QueryGetGasBidRequest struct {
+	FromChain string `protobuf:"bytes,1,opt,name=fromChain,proto3" json:"fromChain,omitempty"`
+}
+
+func (m *QueryGetGasBidRequest) Reset()         { *m = QueryGetGasBidRequest{} }
+func (m *QueryGetGasBidRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGasBidRequest) ProtoMessage()    {}
+func (*QueryGetGasBidRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7a8b5f9157b6b762, []int{8}
+}
+func (m *QueryGetGasBidRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGasBidRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGasBidRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGasBidRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGasBidRequest.Merge(m, src)
+}
+func (m *QueryGetGasBidRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGasBidRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGasBidRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGasBidRequest proto.InternalMessageInfo
+
+func (m *QueryGetGasBidRequest) GetFromChain() string {
+	if m != nil {
+		return m.FromChain
+	}
+	return ""
+}
+
+type QueryGetGasBidResponse struct {
+	GasBid GasBid `protobuf:"bytes,1,opt,name=gasBid,proto3" json:"gasBid"`
+}
+
+func (m *QueryGetGasBidResponse) Reset()         { *m = QueryGetGasBidResponse{} }
+func (m *QueryGetGasBidResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGasBidResponse) ProtoMessage()    {}
+func (*QueryGetGasBidResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7a8b5f9157b6b762, []int{9}
+}
+func (m *QueryGetGasBidResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGasBidResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGasBidResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGasBidResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGasBidResponse.Merge(m, src)
+}
+func (m *QueryGetGasBidResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGasBidResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGasBidResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGasBidResponse proto.InternalMessageInfo
+
+func (m *QueryGetGasBidResponse) GetGasBid() GasBid {
+	if m != nil {
+		return m.GasBid
+	}
+	return GasBid{}
+}
+
+type QueryAllGasBidRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGasBidRequest) Reset()         { *m = QueryAllGasBidRequest{} }
+func (m *QueryAllGasBidRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGasBidRequest) ProtoMessage()    {}
+func (*QueryAllGasBidRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7a8b5f9157b6b762, []int{10}
+}
+func (m *QueryAllGasBidRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGasBidRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGasBidRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGasBidRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGasBidRequest.Merge(m, src)
+}
+func (m *QueryAllGasBidRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGasBidRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGasBidRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGasBidRequest proto.InternalMessageInfo
+
+func (m *QueryAllGasBidRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllGasBidResponse struct {
+	GasBid     []GasBid            `protobuf:"bytes,1,rep,name=gasBid,proto3" json:"gasBid"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGasBidResponse) Reset()         { *m = QueryAllGasBidResponse{} }
+func (m *QueryAllGasBidResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGasBidResponse) ProtoMessage()    {}
+func (*QueryAllGasBidResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7a8b5f9157b6b762, []int{11}
+}
+func (m *QueryAllGasBidResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGasBidResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGasBidResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGasBidResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGasBidResponse.Merge(m, src)
+}
+func (m *QueryAllGasBidResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGasBidResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGasBidResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGasBidResponse proto.InternalMessageInfo
+
+func (m *QueryAllGasBidResponse) GetGasBid() []GasBid {
+	if m != nil {
+		return m.GasBid
+	}
+	return nil
+}
+
+func (m *QueryAllGasBidResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "dreanity.saturn.treasury.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "dreanity.saturn.treasury.QueryParamsResponse")
@@ -386,48 +570,60 @@ func init() {
 	proto.RegisterType((*QueryGetGasPriceResponse)(nil), "dreanity.saturn.treasury.QueryGetGasPriceResponse")
 	proto.RegisterType((*QueryAllGasPriceRequest)(nil), "dreanity.saturn.treasury.QueryAllGasPriceRequest")
 	proto.RegisterType((*QueryAllGasPriceResponse)(nil), "dreanity.saturn.treasury.QueryAllGasPriceResponse")
+	proto.RegisterType((*QueryGetGasBidRequest)(nil), "dreanity.saturn.treasury.QueryGetGasBidRequest")
+	proto.RegisterType((*QueryGetGasBidResponse)(nil), "dreanity.saturn.treasury.QueryGetGasBidResponse")
+	proto.RegisterType((*QueryAllGasBidRequest)(nil), "dreanity.saturn.treasury.QueryAllGasBidRequest")
+	proto.RegisterType((*QueryAllGasBidResponse)(nil), "dreanity.saturn.treasury.QueryAllGasBidResponse")
 }
 
 func init() { proto.RegisterFile("treasury/query.proto", fileDescriptor_7a8b5f9157b6b762) }
 
 var fileDescriptor_7a8b5f9157b6b762 = []byte{
-	// 561 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x4f, 0x6f, 0xd3, 0x30,
-	0x18, 0xc6, 0x9b, 0xc1, 0xaa, 0xce, 0xbb, 0x99, 0x22, 0x4a, 0x84, 0x42, 0xe5, 0x09, 0x98, 0x18,
-	0xd8, 0xb4, 0x13, 0x1c, 0x91, 0x36, 0x01, 0xbd, 0x96, 0x0a, 0x2e, 0x5c, 0xc0, 0xed, 0xac, 0x10,
-	0xa9, 0x8d, 0x33, 0xdb, 0x41, 0x54, 0x88, 0x0b, 0x77, 0x04, 0x12, 0x9f, 0x80, 0xe3, 0xbe, 0xc9,
-	0x8e, 0x93, 0xb8, 0x70, 0x42, 0xa8, 0xe5, 0x83, 0xa0, 0xf8, 0x4f, 0xfa, 0x37, 0xca, 0xb6, 0x5b,
-	0x62, 0xbf, 0xcf, 0xfb, 0xfc, 0xec, 0x3c, 0x6f, 0x40, 0x5d, 0x09, 0x46, 0x65, 0x2a, 0xc6, 0xe4,
-	0x38, 0x65, 0x62, 0x8c, 0x13, 0xc1, 0x15, 0x87, 0x8d, 0x23, 0xc1, 0x68, 0x1c, 0xa9, 0x31, 0x96,
-	0x54, 0xa5, 0x22, 0xc6, 0xae, 0xca, 0xaf, 0x87, 0x3c, 0xe4, 0xba, 0x88, 0x64, 0x4f, 0xa6, 0xde,
-	0xbf, 0x15, 0x72, 0x1e, 0x0e, 0x19, 0xa1, 0x49, 0x44, 0x68, 0x1c, 0x73, 0x45, 0x55, 0xc4, 0x63,
-	0x69, 0x77, 0xef, 0x0f, 0xb8, 0x1c, 0x71, 0x49, 0xfa, 0x54, 0x32, 0x63, 0x43, 0x3e, 0xb4, 0xfa,
-	0x4c, 0xd1, 0x16, 0x49, 0x68, 0x18, 0xc5, 0xba, 0xd8, 0xd6, 0x5e, 0xcf, 0x79, 0x12, 0x2a, 0xe8,
-	0xc8, 0xb5, 0x68, 0xe4, 0xcb, 0xf6, 0x81, 0x89, 0x95, 0x9d, 0x90, 0xca, 0xb7, 0x89, 0x88, 0x06,
-	0xcc, 0xec, 0xa0, 0x3a, 0x80, 0x2f, 0x33, 0xb3, 0xae, 0x6e, 0xd4, 0x63, 0xc7, 0x29, 0x93, 0x0a,
-	0xbd, 0x06, 0xd7, 0x16, 0x56, 0x65, 0xc2, 0x63, 0xc9, 0xe0, 0x53, 0x50, 0x35, 0x86, 0x0d, 0xaf,
-	0xe9, 0xed, 0x6e, 0xb7, 0x9b, 0xb8, 0xe8, 0x0a, 0xb0, 0x51, 0x1e, 0x5e, 0x3d, 0xfd, 0x73, 0xbb,
-	0xd2, 0xb3, 0x2a, 0xe4, 0x83, 0x86, 0x6e, 0xdb, 0x61, 0xea, 0x95, 0x23, 0x74, 0x96, 0x47, 0xe0,
-	0xe6, 0x9a, 0x3d, 0x6b, 0xdc, 0x01, 0x5b, 0xf9, 0xa2, 0xf5, 0xde, 0x29, 0xf6, 0xce, 0x4b, 0xad,
-	0xfd, 0x4c, 0x8b, 0x1e, 0x83, 0x1b, 0xce, 0xa5, 0x43, 0x65, 0x37, 0xbb, 0x08, 0x0b, 0x00, 0x7d,
-	0x50, 0x1b, 0xa4, 0x42, 0xb0, 0x78, 0x30, 0xd6, 0x16, 0x5b, 0xbd, 0xfc, 0x1d, 0xbd, 0x9b, 0x81,
-	0xcf, 0x64, 0x96, 0xed, 0x19, 0xa8, 0x85, 0x76, 0xcd, 0xa2, 0xa1, 0x62, 0x34, 0xa7, 0xb6, 0x64,
-	0xb9, 0x12, 0x51, 0x0b, 0x76, 0x30, 0x1c, 0x2e, 0x83, 0xbd, 0x00, 0x60, 0x96, 0x00, 0x6b, 0x71,
-	0x17, 0x9b, 0xb8, 0xe0, 0x2c, 0x2e, 0xd8, 0xa4, 0xd2, 0xc6, 0x05, 0x77, 0x69, 0xe8, 0xb4, 0xbd,
-	0x39, 0x25, 0x3a, 0xf1, 0xec, 0x29, 0x16, 0x3c, 0xd6, 0x9e, 0xe2, 0xca, 0xe5, 0x4e, 0x01, 0x3b,
-	0x0b, 0xa8, 0x1b, 0x1a, 0xf5, 0x5e, 0x29, 0xaa, 0x41, 0x98, 0x67, 0x6d, 0x7f, 0xdd, 0x04, 0x9b,
-	0x9a, 0x15, 0x7e, 0xf3, 0x40, 0xd5, 0x84, 0x09, 0x3e, 0x28, 0x26, 0x5a, 0xcd, 0xb0, 0xff, 0xf0,
-	0x9c, 0xd5, 0xc6, 0x1d, 0xed, 0x7e, 0xf9, 0xf5, 0xef, 0xc7, 0x06, 0x82, 0x4d, 0xe2, 0x64, 0xc4,
-	0xc8, 0xc8, 0xd2, 0xb0, 0xc1, 0x9f, 0xde, 0x5c, 0x1a, 0x61, 0xbb, 0xc4, 0x66, 0x4d, 0xd6, 0xfd,
-	0xfd, 0x0b, 0x69, 0x2c, 0xe0, 0x9e, 0x06, 0xbc, 0x03, 0x77, 0x8a, 0x01, 0xf3, 0xb1, 0x87, 0x27,
-	0x1e, 0xa8, 0xb9, 0xaf, 0x04, 0x5b, 0xe5, 0x76, 0x4b, 0x99, 0xf3, 0xdb, 0x17, 0x91, 0x58, 0xc0,
-	0x27, 0x1a, 0xf0, 0x11, 0xc4, 0xc5, 0x80, 0xf9, 0xdf, 0x87, 0x7c, 0x72, 0xb3, 0xf5, 0x39, 0xbb,
-	0xcf, 0x6d, 0xd7, 0xec, 0x60, 0x38, 0x2c, 0xc5, 0x5d, 0x1d, 0x91, 0x52, 0xdc, 0x35, 0x89, 0x3f,
-	0xcf, 0x7d, 0xe6, 0xb8, 0x87, 0xcf, 0x4f, 0x27, 0x81, 0x77, 0x36, 0x09, 0xbc, 0xbf, 0x93, 0xc0,
-	0xfb, 0x3e, 0x0d, 0x2a, 0x67, 0xd3, 0xa0, 0xf2, 0x7b, 0x1a, 0x54, 0xde, 0xec, 0x85, 0x91, 0x7a,
-	0x9f, 0xf6, 0xf1, 0x80, 0x8f, 0x56, 0x1a, 0x7d, 0x9c, 0xfb, 0x34, 0xe3, 0x84, 0xc9, 0x7e, 0x55,
-	0xff, 0x74, 0xf7, 0xff, 0x07, 0x00, 0x00, 0xff, 0xff, 0xb3, 0x87, 0xc4, 0x9b, 0x51, 0x06, 0x00,
-	0x00,
+	// 700 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0x4d, 0x4f, 0x13, 0x41,
+	0x18, 0xc7, 0x3b, 0xa0, 0x95, 0x0e, 0xb7, 0x11, 0xb0, 0x6e, 0x48, 0xc5, 0x21, 0x2a, 0x8a, 0xec,
+	0x40, 0x09, 0x1e, 0x4d, 0xc0, 0x97, 0x5e, 0xb1, 0xd1, 0xc4, 0x78, 0xc1, 0x69, 0x3b, 0x2e, 0x9b,
+	0xb4, 0x3b, 0xcb, 0xcc, 0xd6, 0xd8, 0x10, 0x2e, 0x7e, 0x01, 0x4d, 0x3c, 0x79, 0xc4, 0x1b, 0xdf,
+	0x84, 0x93, 0x21, 0xf1, 0xe2, 0xc9, 0x18, 0xf0, 0x83, 0x98, 0xce, 0xcb, 0x6e, 0xdf, 0xd6, 0x6d,
+	0x0d, 0xb7, 0xe5, 0x99, 0xe7, 0x3f, 0xff, 0xdf, 0x3c, 0xf3, 0xcc, 0x43, 0xe1, 0x5c, 0x24, 0x18,
+	0x95, 0x6d, 0xd1, 0x21, 0x07, 0x6d, 0x26, 0x3a, 0x6e, 0x28, 0x78, 0xc4, 0x51, 0xb1, 0x21, 0x18,
+	0x0d, 0xfc, 0xa8, 0xe3, 0x4a, 0x1a, 0xb5, 0x45, 0xe0, 0xda, 0x2c, 0x67, 0xce, 0xe3, 0x1e, 0x57,
+	0x49, 0xa4, 0xfb, 0xa5, 0xf3, 0x9d, 0x45, 0x8f, 0x73, 0xaf, 0xc9, 0x08, 0x0d, 0x7d, 0x42, 0x83,
+	0x80, 0x47, 0x34, 0xf2, 0x79, 0x20, 0xcd, 0xea, 0x83, 0x3a, 0x97, 0x2d, 0x2e, 0x49, 0x8d, 0x4a,
+	0xa6, 0x6d, 0xc8, 0xfb, 0x8d, 0x1a, 0x8b, 0xe8, 0x06, 0x09, 0xa9, 0xe7, 0x07, 0x2a, 0xd9, 0xe4,
+	0xce, 0xc7, 0x3c, 0x21, 0x15, 0xb4, 0x65, 0xb7, 0x28, 0xc6, 0x61, 0xf3, 0xc1, 0xc4, 0xd0, 0x8a,
+	0x47, 0xe5, 0x5e, 0x28, 0xfc, 0x3a, 0x33, 0x2b, 0x0b, 0x7d, 0x2b, 0x35, 0xbf, 0xa1, 0xe3, 0x78,
+	0x0e, 0xa2, 0x17, 0x5d, 0x88, 0x5d, 0x65, 0x50, 0x65, 0x07, 0x6d, 0x26, 0x23, 0xfc, 0x0a, 0x5e,
+	0xef, 0x8b, 0xca, 0x90, 0x07, 0x92, 0xa1, 0xc7, 0x30, 0xaf, 0x41, 0x8a, 0x60, 0x09, 0xac, 0xcc,
+	0x96, 0x97, 0xdc, 0xb4, 0xd2, 0xb8, 0x5a, 0xb9, 0x73, 0xe5, 0xf4, 0xd7, 0xad, 0x5c, 0xd5, 0xa8,
+	0xb0, 0x03, 0x8b, 0x6a, 0xdb, 0x0a, 0x8b, 0x5e, 0x5a, 0x72, 0x6b, 0xd9, 0x80, 0x37, 0x47, 0xac,
+	0x19, 0xe3, 0x0a, 0x2c, 0xc4, 0x41, 0xe3, 0xbd, 0x9c, 0xee, 0x1d, 0xa7, 0x1a, 0xfb, 0x44, 0x8b,
+	0xb7, 0xe0, 0x0d, 0xeb, 0x52, 0xa1, 0x72, 0xb7, 0x5b, 0x20, 0x03, 0x80, 0x1c, 0x38, 0x53, 0x6f,
+	0x0b, 0xc1, 0x82, 0x7a, 0x47, 0x59, 0x14, 0xaa, 0xf1, 0xdf, 0xf8, 0x6d, 0x02, 0x9e, 0xc8, 0x0c,
+	0xdb, 0x53, 0x38, 0xe3, 0x99, 0x98, 0x41, 0xc3, 0xe9, 0x68, 0x56, 0x6d, 0xc8, 0x62, 0x25, 0xa6,
+	0x06, 0x6c, 0xbb, 0xd9, 0x1c, 0x04, 0x7b, 0x0e, 0x61, 0xd2, 0x19, 0xc6, 0xe2, 0xae, 0xab, 0xdb,
+	0xc8, 0xed, 0xb6, 0x91, 0xab, 0xbb, 0xd5, 0xb4, 0x91, 0xbb, 0x4b, 0x3d, 0xab, 0xad, 0xf6, 0x28,
+	0xf1, 0x09, 0x30, 0xa7, 0xe8, 0xf3, 0x18, 0x79, 0x8a, 0xe9, 0xff, 0x3b, 0x05, 0xaa, 0xf4, 0xa1,
+	0x4e, 0x29, 0xd4, 0x7b, 0x99, 0xa8, 0x1a, 0xa1, 0x8f, 0x75, 0x0b, 0xce, 0xf7, 0x14, 0x7c, 0xc7,
+	0x6f, 0xd8, 0x62, 0x2c, 0xc2, 0xc2, 0x3b, 0xc1, 0x5b, 0x4f, 0xf6, 0xa9, 0x1f, 0x98, 0x6b, 0x4a,
+	0x02, 0xf8, 0x35, 0x5c, 0x18, 0x94, 0x25, 0xad, 0xeb, 0xa9, 0x48, 0x76, 0xeb, 0x6a, 0xa5, 0x6d,
+	0x5d, 0xad, 0xc2, 0x7b, 0x06, 0x48, 0xd7, 0xae, 0x07, 0xe8, 0xb2, 0x6e, 0xe7, 0x18, 0x18, 0xf6,
+	0x1e, 0x87, 0x11, 0xec, 0xd3, 0x93, 0xb3, 0x5f, 0xda, 0xad, 0x94, 0xbf, 0x5f, 0x83, 0x57, 0x15,
+	0x23, 0xfa, 0x04, 0x60, 0x5e, 0x3f, 0x71, 0xf4, 0x30, 0x9d, 0x66, 0x78, 0xb2, 0x38, 0x6b, 0x63,
+	0x66, 0x6b, 0x77, 0xbc, 0xf2, 0xf1, 0xc7, 0x9f, 0x2f, 0x53, 0x18, 0x2d, 0x11, 0x2b, 0x23, 0x5a,
+	0x46, 0x06, 0x46, 0x23, 0x3a, 0x06, 0x3d, 0x33, 0x02, 0x95, 0x33, 0x6c, 0x46, 0x4c, 0x20, 0x67,
+	0x73, 0x22, 0x8d, 0x01, 0x5c, 0x55, 0x80, 0x77, 0xd0, 0x72, 0x3a, 0x60, 0x3c, 0xa4, 0xd1, 0x09,
+	0x80, 0x33, 0xf6, 0xed, 0xa0, 0x8d, 0x6c, 0xbb, 0x81, 0x49, 0xe0, 0x94, 0x27, 0x91, 0x18, 0xc0,
+	0x47, 0x0a, 0x70, 0x1d, 0xb9, 0xe9, 0x80, 0xf1, 0xff, 0x0a, 0x72, 0x68, 0x27, 0xde, 0x51, 0xb7,
+	0x9e, 0xb3, 0x76, 0xb3, 0xed, 0x66, 0x33, 0x13, 0x77, 0x78, 0x70, 0x65, 0xe2, 0x8e, 0x98, 0x43,
+	0xe3, 0xd4, 0x33, 0xc6, 0x45, 0xdf, 0x00, 0xcc, 0xeb, 0x8e, 0x47, 0x64, 0xac, 0xd2, 0x24, 0xef,
+	0xd6, 0x59, 0x1f, 0x5f, 0x60, 0xd0, 0xb6, 0x14, 0x1a, 0x41, 0x6b, 0xff, 0x46, 0xab, 0xf9, 0x0d,
+	0x72, 0x18, 0x8f, 0xa4, 0x23, 0xf4, 0x15, 0xc0, 0x82, 0xde, 0xa9, 0x5b, 0x46, 0x32, 0x56, 0x4d,
+	0x26, 0xe0, 0x1c, 0x1a, 0x17, 0xf8, 0xbe, 0xe2, 0x5c, 0x46, 0xb7, 0x33, 0x39, 0x77, 0x9e, 0x9d,
+	0x9e, 0x97, 0xc0, 0xd9, 0x79, 0x09, 0xfc, 0x3e, 0x2f, 0x81, 0xcf, 0x17, 0xa5, 0xdc, 0xd9, 0x45,
+	0x29, 0xf7, 0xf3, 0xa2, 0x94, 0x7b, 0xb3, 0xea, 0xf9, 0xd1, 0x7e, 0xbb, 0xe6, 0xd6, 0x79, 0x6b,
+	0x68, 0x9b, 0x0f, 0x3d, 0xbd, 0xdd, 0x09, 0x99, 0xac, 0xe5, 0xd5, 0x6f, 0x89, 0xcd, 0xbf, 0x01,
+	0x00, 0x00, 0xff, 0xff, 0x66, 0x7d, 0xa2, 0xd1, 0x40, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -450,6 +646,10 @@ type QueryClient interface {
 	GasPrice(ctx context.Context, in *QueryGetGasPriceRequest, opts ...grpc.CallOption) (*QueryGetGasPriceResponse, error)
 	// Queries a list of GasPrice items.
 	GasPriceAll(ctx context.Context, in *QueryAllGasPriceRequest, opts ...grpc.CallOption) (*QueryAllGasPriceResponse, error)
+	// Queries a GasBid by index.
+	GasBid(ctx context.Context, in *QueryGetGasBidRequest, opts ...grpc.CallOption) (*QueryGetGasBidResponse, error)
+	// Queries a list of GasBid items.
+	GasBidAll(ctx context.Context, in *QueryAllGasBidRequest, opts ...grpc.CallOption) (*QueryAllGasBidResponse, error)
 }
 
 type queryClient struct {
@@ -496,6 +696,24 @@ func (c *queryClient) GasPriceAll(ctx context.Context, in *QueryAllGasPriceReque
 	return out, nil
 }
 
+func (c *queryClient) GasBid(ctx context.Context, in *QueryGetGasBidRequest, opts ...grpc.CallOption) (*QueryGetGasBidResponse, error) {
+	out := new(QueryGetGasBidResponse)
+	err := c.cc.Invoke(ctx, "/dreanity.saturn.treasury.Query/GasBid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) GasBidAll(ctx context.Context, in *QueryAllGasBidRequest, opts ...grpc.CallOption) (*QueryAllGasBidResponse, error) {
+	out := new(QueryAllGasBidResponse)
+	err := c.cc.Invoke(ctx, "/dreanity.saturn.treasury.Query/GasBidAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -506,6 +724,10 @@ type QueryServer interface {
 	GasPrice(context.Context, *QueryGetGasPriceRequest) (*QueryGetGasPriceResponse, error)
 	// Queries a list of GasPrice items.
 	GasPriceAll(context.Context, *QueryAllGasPriceRequest) (*QueryAllGasPriceResponse, error)
+	// Queries a GasBid by index.
+	GasBid(context.Context, *QueryGetGasBidRequest) (*QueryGetGasBidResponse, error)
+	// Queries a list of GasBid items.
+	GasBidAll(context.Context, *QueryAllGasBidRequest) (*QueryAllGasBidResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -523,6 +745,12 @@ func (*UnimplementedQueryServer) GasPrice(ctx context.Context, req *QueryGetGasP
 }
 func (*UnimplementedQueryServer) GasPriceAll(ctx context.Context, req *QueryAllGasPriceRequest) (*QueryAllGasPriceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GasPriceAll not implemented")
+}
+func (*UnimplementedQueryServer) GasBid(ctx context.Context, req *QueryGetGasBidRequest) (*QueryGetGasBidResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GasBid not implemented")
+}
+func (*UnimplementedQueryServer) GasBidAll(ctx context.Context, req *QueryAllGasBidRequest) (*QueryAllGasBidResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GasBidAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -601,6 +829,42 @@ func _Query_GasPriceAll_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GasBid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetGasBidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GasBid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dreanity.saturn.treasury.Query/GasBid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GasBid(ctx, req.(*QueryGetGasBidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_GasBidAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllGasBidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GasBidAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dreanity.saturn.treasury.Query/GasBidAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GasBidAll(ctx, req.(*QueryAllGasBidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "dreanity.saturn.treasury.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -620,6 +884,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GasPriceAll",
 			Handler:    _Query_GasPriceAll_Handler,
+		},
+		{
+			MethodName: "GasBid",
+			Handler:    _Query_GasBid_Handler,
+		},
+		{
+			MethodName: "GasBidAll",
+			Handler:    _Query_GasBidAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -885,6 +1157,153 @@ func (m *QueryAllGasPriceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetGasBidRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGasBidRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGasBidRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.FromChain) > 0 {
+		i -= len(m.FromChain)
+		copy(dAtA[i:], m.FromChain)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.FromChain)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetGasBidResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGasBidResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGasBidResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.GasBid.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGasBidRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGasBidRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGasBidRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGasBidResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGasBidResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGasBidResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.GasBid) > 0 {
+		for iNdEx := len(m.GasBid) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.GasBid[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -981,6 +1400,62 @@ func (m *QueryAllGasPriceResponse) Size() (n int) {
 	_ = l
 	if len(m.GasPrice) > 0 {
 		for _, e := range m.GasPrice {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetGasBidRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.FromChain)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetGasBidResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.GasBid.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllGasBidRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllGasBidResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.GasBid) > 0 {
+		for _, e := range m.GasBid {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1575,6 +2050,377 @@ func (m *QueryAllGasPriceResponse) Unmarshal(dAtA []byte) error {
 			}
 			m.GasPrice = append(m.GasPrice, GasPrice{})
 			if err := m.GasPrice[len(m.GasPrice)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGasBidRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGasBidRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGasBidRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FromChain", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FromChain = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGasBidResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGasBidResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGasBidResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GasBid", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.GasBid.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGasBidRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGasBidRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGasBidRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGasBidResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGasBidResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGasBidResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GasBid", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.GasBid = append(m.GasBid, GasBid{})
+			if err := m.GasBid[len(m.GasBid)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

@@ -33,6 +33,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Currency: "1",
 					},
 				},
+				GasBidList: []types.GasBid{
+					{
+						FromChain: "0",
+					},
+					{
+						FromChain: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -46,6 +54,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Currency: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated gasBid",
+			genState: &types.GenesisState{
+				GasBidList: []types.GasBid{
+					{
+						FromChain: "0",
+					},
+					{
+						FromChain: "0",
 					},
 				},
 			},

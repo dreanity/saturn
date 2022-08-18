@@ -15,6 +15,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	for _, elem := range genState.GasPriceList {
 		k.SetGasPrice(ctx, elem)
 	}
+	// Set all the gasBid
+	for _, elem := range genState.GasBidList {
+		k.SetGasBid(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -28,6 +32,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	treasurer := k.GetTreasurer(ctx)
 	genesis.Treasurer = treasurer
 	genesis.GasPriceList = k.GetAllGasPrice(ctx)
+	genesis.GasBidList = k.GetAllGasBid(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis
