@@ -66,26 +66,127 @@ func (m *GasPricesChanged) GetGasPrices() []*GasPrice {
 	return nil
 }
 
+type GasBidExecuted struct {
+	BidNumber    uint64 `protobuf:"varint,1,opt,name=bidNumber,proto3" json:"bidNumber,omitempty"`
+	Recepient    string `protobuf:"bytes,2,opt,name=recepient,proto3" json:"recepient,omitempty"`
+	MintedAmount string `protobuf:"bytes,3,opt,name=mintedAmount,proto3" json:"mintedAmount,omitempty"`
+	PaidAmount   string `protobuf:"bytes,4,opt,name=paidAmount,proto3" json:"paidAmount,omitempty"`
+	Currency     string `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
+	FromChain    string `protobuf:"bytes,6,opt,name=fromChain,proto3" json:"fromChain,omitempty"`
+	GasPrice     string `protobuf:"bytes,7,opt,name=gasPrice,proto3" json:"gasPrice,omitempty"`
+}
+
+func (m *GasBidExecuted) Reset()         { *m = GasBidExecuted{} }
+func (m *GasBidExecuted) String() string { return proto.CompactTextString(m) }
+func (*GasBidExecuted) ProtoMessage()    {}
+func (*GasBidExecuted) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6ee0673910aebc86, []int{1}
+}
+func (m *GasBidExecuted) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GasBidExecuted) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GasBidExecuted.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GasBidExecuted) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GasBidExecuted.Merge(m, src)
+}
+func (m *GasBidExecuted) XXX_Size() int {
+	return m.Size()
+}
+func (m *GasBidExecuted) XXX_DiscardUnknown() {
+	xxx_messageInfo_GasBidExecuted.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GasBidExecuted proto.InternalMessageInfo
+
+func (m *GasBidExecuted) GetBidNumber() uint64 {
+	if m != nil {
+		return m.BidNumber
+	}
+	return 0
+}
+
+func (m *GasBidExecuted) GetRecepient() string {
+	if m != nil {
+		return m.Recepient
+	}
+	return ""
+}
+
+func (m *GasBidExecuted) GetMintedAmount() string {
+	if m != nil {
+		return m.MintedAmount
+	}
+	return ""
+}
+
+func (m *GasBidExecuted) GetPaidAmount() string {
+	if m != nil {
+		return m.PaidAmount
+	}
+	return ""
+}
+
+func (m *GasBidExecuted) GetCurrency() string {
+	if m != nil {
+		return m.Currency
+	}
+	return ""
+}
+
+func (m *GasBidExecuted) GetFromChain() string {
+	if m != nil {
+		return m.FromChain
+	}
+	return ""
+}
+
+func (m *GasBidExecuted) GetGasPrice() string {
+	if m != nil {
+		return m.GasPrice
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*GasPricesChanged)(nil), "dreanity.saturn.treasury.GasPricesChanged")
+	proto.RegisterType((*GasBidExecuted)(nil), "dreanity.saturn.treasury.GasBidExecuted")
 }
 
 func init() { proto.RegisterFile("treasury/event.proto", fileDescriptor_6ee0673910aebc86) }
 
 var fileDescriptor_6ee0673910aebc86 = []byte{
-	// 184 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x29, 0x29, 0x4a, 0x4d,
-	0x2c, 0x2e, 0x2d, 0xaa, 0xd4, 0x4f, 0x2d, 0x4b, 0xcd, 0x2b, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9,
-	0x17, 0x92, 0x48, 0x29, 0x4a, 0x4d, 0xcc, 0xcb, 0x2c, 0xa9, 0xd4, 0x2b, 0x4e, 0x2c, 0x29, 0x2d,
-	0xca, 0xd3, 0x83, 0xa9, 0x92, 0x92, 0x80, 0xab, 0x4f, 0x4f, 0x2c, 0x8e, 0x2f, 0x28, 0xca, 0x4c,
-	0x4e, 0x85, 0xe8, 0x51, 0x0a, 0xe1, 0x12, 0x70, 0x4f, 0x2c, 0x0e, 0x00, 0x89, 0x14, 0x3b, 0x67,
-	0x24, 0xe6, 0xa5, 0xa7, 0xa6, 0x08, 0x39, 0x70, 0x71, 0xa6, 0xc3, 0xc4, 0x24, 0x18, 0x15, 0x98,
-	0x35, 0xb8, 0x8d, 0x94, 0xf4, 0x70, 0x99, 0xad, 0x07, 0xd3, 0x1e, 0x84, 0xd0, 0xe4, 0xe4, 0x7a,
-	0xe2, 0x91, 0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31, 0x4e, 0x78, 0x2c, 0xc7,
-	0x70, 0xe1, 0xb1, 0x1c, 0xc3, 0x8d, 0xc7, 0x72, 0x0c, 0x51, 0xda, 0xe9, 0x99, 0x25, 0x19, 0xa5,
-	0x49, 0x7a, 0xc9, 0xf9, 0xb9, 0xfa, 0x30, 0x23, 0xf5, 0x21, 0x46, 0xea, 0x57, 0xe8, 0xc3, 0x9d,
-	0x59, 0x52, 0x59, 0x90, 0x5a, 0x9c, 0xc4, 0x06, 0x76, 0xa3, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff,
-	0x2c, 0xc5, 0xc4, 0x3a, 0xef, 0x00, 0x00, 0x00,
+	// 314 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0xcf, 0x4a, 0x3b, 0x31,
+	0x10, 0xc7, 0x9b, 0x5f, 0xfb, 0xab, 0x36, 0x8a, 0xc8, 0xe2, 0x21, 0x14, 0x09, 0x65, 0x4f, 0x05,
+	0x21, 0x0b, 0xfa, 0x02, 0xda, 0x52, 0x7a, 0x13, 0x29, 0x9e, 0xbc, 0x48, 0x36, 0x19, 0xb7, 0x39,
+	0x6c, 0x76, 0xc9, 0x1f, 0xe9, 0xbe, 0x85, 0x8f, 0xe5, 0xb1, 0x47, 0x8f, 0xd2, 0x82, 0xcf, 0x21,
+	0xbb, 0x4b, 0xb6, 0x7a, 0xf0, 0x38, 0x9f, 0xf9, 0x7e, 0x32, 0x64, 0x06, 0x5f, 0x38, 0x03, 0xdc,
+	0x7a, 0x53, 0x25, 0xf0, 0x0a, 0xda, 0xb1, 0xd2, 0x14, 0xae, 0x88, 0x88, 0x34, 0xc0, 0xb5, 0x72,
+	0x15, 0xb3, 0xdc, 0x79, 0xa3, 0x59, 0x48, 0x8d, 0x49, 0x97, 0xcf, 0xb8, 0x7d, 0x2e, 0x8d, 0x12,
+	0xd0, 0x3a, 0xf1, 0x23, 0x3e, 0x5f, 0x72, 0xfb, 0x50, 0x13, 0x3b, 0x5f, 0x73, 0x9d, 0x81, 0x8c,
+	0x6e, 0xf1, 0x28, 0x0b, 0x8c, 0xa0, 0x49, 0x7f, 0x7a, 0x72, 0x1d, 0xb3, 0xbf, 0xde, 0x66, 0x41,
+	0x5f, 0x1d, 0xa4, 0xf8, 0x0b, 0xe1, 0xb3, 0x25, 0xb7, 0x33, 0x25, 0x17, 0x1b, 0x10, 0xde, 0x81,
+	0x8c, 0x2e, 0xf1, 0x28, 0x55, 0xf2, 0xde, 0xe7, 0x29, 0x18, 0x82, 0x26, 0x68, 0x3a, 0x58, 0x1d,
+	0x40, 0xdd, 0x35, 0x20, 0xa0, 0x54, 0xa0, 0x1d, 0xf9, 0x37, 0x41, 0xd3, 0xd1, 0xea, 0x00, 0xa2,
+	0x18, 0x9f, 0xe6, 0x4a, 0x3b, 0x90, 0x77, 0x79, 0xe1, 0xb5, 0x23, 0xfd, 0x26, 0xf0, 0x8b, 0x45,
+	0x14, 0xe3, 0x92, 0xab, 0x90, 0x18, 0x34, 0x89, 0x1f, 0x24, 0x1a, 0xe3, 0x63, 0xe1, 0x8d, 0x01,
+	0x2d, 0x2a, 0xf2, 0xbf, 0xe9, 0x76, 0x75, 0x3d, 0xfd, 0xc5, 0x14, 0xf9, 0x7c, 0xcd, 0x95, 0x26,
+	0xc3, 0x76, 0x7a, 0x07, 0x6a, 0x33, 0xfc, 0x8c, 0x1c, 0xb5, 0x66, 0xa8, 0x67, 0x8b, 0xf7, 0x1d,
+	0x45, 0xdb, 0x1d, 0x45, 0x9f, 0x3b, 0x8a, 0xde, 0xf6, 0xb4, 0xb7, 0xdd, 0xd3, 0xde, 0xc7, 0x9e,
+	0xf6, 0x9e, 0xae, 0x32, 0xe5, 0xd6, 0x3e, 0x65, 0xa2, 0xc8, 0x93, 0xb0, 0xbb, 0xa4, 0xdd, 0x5d,
+	0xb2, 0x49, 0xba, 0x7b, 0xb8, 0xaa, 0x04, 0x9b, 0x0e, 0x9b, 0x63, 0xdc, 0x7c, 0x07, 0x00, 0x00,
+	0xff, 0xff, 0x95, 0xf2, 0xe1, 0x37, 0xd8, 0x01, 0x00, 0x00,
 }
 
 func (m *GasPricesChanged) Marshal() (dAtA []byte, err error) {
@@ -125,6 +226,76 @@ func (m *GasPricesChanged) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *GasBidExecuted) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GasBidExecuted) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GasBidExecuted) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.GasPrice) > 0 {
+		i -= len(m.GasPrice)
+		copy(dAtA[i:], m.GasPrice)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.GasPrice)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if len(m.FromChain) > 0 {
+		i -= len(m.FromChain)
+		copy(dAtA[i:], m.FromChain)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.FromChain)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Currency) > 0 {
+		i -= len(m.Currency)
+		copy(dAtA[i:], m.Currency)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.Currency)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.PaidAmount) > 0 {
+		i -= len(m.PaidAmount)
+		copy(dAtA[i:], m.PaidAmount)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.PaidAmount)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.MintedAmount) > 0 {
+		i -= len(m.MintedAmount)
+		copy(dAtA[i:], m.MintedAmount)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.MintedAmount)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Recepient) > 0 {
+		i -= len(m.Recepient)
+		copy(dAtA[i:], m.Recepient)
+		i = encodeVarintEvent(dAtA, i, uint64(len(m.Recepient)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if m.BidNumber != 0 {
+		i = encodeVarintEvent(dAtA, i, uint64(m.BidNumber))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintEvent(dAtA []byte, offset int, v uint64) int {
 	offset -= sovEvent(v)
 	base := offset
@@ -147,6 +318,42 @@ func (m *GasPricesChanged) Size() (n int) {
 			l = e.Size()
 			n += 1 + l + sovEvent(uint64(l))
 		}
+	}
+	return n
+}
+
+func (m *GasBidExecuted) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.BidNumber != 0 {
+		n += 1 + sovEvent(uint64(m.BidNumber))
+	}
+	l = len(m.Recepient)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
+	}
+	l = len(m.MintedAmount)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
+	}
+	l = len(m.PaidAmount)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
+	}
+	l = len(m.Currency)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
+	}
+	l = len(m.FromChain)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
+	}
+	l = len(m.GasPrice)
+	if l > 0 {
+		n += 1 + l + sovEvent(uint64(l))
 	}
 	return n
 }
@@ -219,6 +426,267 @@ func (m *GasPricesChanged) Unmarshal(dAtA []byte) error {
 			if err := m.GasPrices[len(m.GasPrices)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipEvent(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GasBidExecuted) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowEvent
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GasBidExecuted: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GasBidExecuted: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BidNumber", wireType)
+			}
+			m.BidNumber = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BidNumber |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Recepient", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Recepient = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field MintedAmount", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.MintedAmount = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PaidAmount", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PaidAmount = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Currency", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Currency = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field FromChain", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.FromChain = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GasPrice", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowEvent
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthEvent
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthEvent
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.GasPrice = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex

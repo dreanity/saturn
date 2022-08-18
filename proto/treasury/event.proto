@@ -8,3 +8,13 @@ option go_package = "github.com/dreanity/saturn/x/treasury/types";
 message GasPricesChanged {
 	repeated GasPrice gasPrices = 1;
 }
+
+message GasBidExecuted {
+	uint64 bidNumber = 1;
+	string recepient = 2;
+	string mintedAmount = 3;
+	string paidAmount = 4;
+	string currency = 5;
+	string fromChain = 6;
+	string gasPrice = 7;
+}
