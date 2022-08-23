@@ -8,6 +8,6 @@ message ProvenRandomness {
   string randomness = 3; 
   string signature = 4; 
   string previousSignature = 5; 
-  
+  uint64  roundTime = 6;
 }
 

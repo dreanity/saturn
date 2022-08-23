@@ -18,11 +18,14 @@ func (k msgServer) ProveRandomness(goCtx context.Context, msg *types.MsgProveRan
 		return nil, types.ErrUnprovenRandomnessNotExists
 	}
 
+	roundTime := k.ComputeTimeForRandomnessRound(ctx, msg.Round)
+
 	provenRandomness := types.ProvenRandomness{
 		Round:             msg.Round,
 		Randomness:        msg.Randomness,
 		Signature:         msg.Signature,
 		PreviousSignature: msg.PreviousSignature,
+		RoundTime:         roundTime,
 	}
 
 	chainInfo := k.GetChainInfo(ctx)
@@ -39,6 +42,7 @@ func (k msgServer) ProveRandomness(goCtx context.Context, msg *types.MsgProveRan
 		Randomness:        provenRandomness.Randomness,
 		Signature:         provenRandomness.Signature,
 		PreviousSignature: provenRandomness.PreviousSignature,
+		RoundTime:         roundTime,
 	}
 
 	ctx.EventManager().EmitTypedEvent(&provenRandomnessCreated)

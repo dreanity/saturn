@@ -65,6 +65,10 @@ func (k Keeper) TrackGiveawayByHeight(ctx sdk.Context) {
 
 			if !found {
 				unprovenRandomness.Round = randomnessRound
+
+				roundTime := k.randomnessKeeper.ComputeTimeForRandomnessRound(ctx, randomnessRound)
+				unprovenRandomness.RoundTime = roundTime
+
 				k.randomnessKeeper.SetUnprovenRandomnessWithEvent(ctx, unprovenRandomness)
 			}
 		}

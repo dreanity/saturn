@@ -20,7 +20,13 @@ build:
 init:
   app:
     minimum-gas-prices: 1uhydrogen
+  config:
+    consensus:
+      timeout_commit: "10s"
 genesis:
+  consensus_params:
+    block:
+      time_iota_ms: "60000"
   app_state:
     staking:
       params:

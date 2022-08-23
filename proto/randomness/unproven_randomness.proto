@@ -5,6 +5,6 @@ option go_package = "github.com/dreanity/saturn/x/randomness/types";
 
 message UnprovenRandomness {
   uint64 round = 1; 
-  
+  uint64 roundTime = 2;
 }
 

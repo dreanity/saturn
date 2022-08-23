@@ -31396,6 +31396,9 @@ paths:
                       type: string
                     previousSignature:
                       type: string
+                    roundTime:
+                      type: string
+                      format: uint64
               pagination:
                 type: object
                 properties:
@@ -31522,6 +31525,9 @@ paths:
                     type: string
                   previousSignature:
                     type: string
+                  roundTime:
+                    type: string
+                    format: uint64
         default:
           description: An unexpected error response.
           schema:
@@ -31564,6 +31570,9 @@ paths:
                   type: object
                   properties:
                     round:
+                      type: string
+                      format: uint64
+                    roundTime:
                       type: string
                       format: uint64
               pagination:
@@ -31684,6 +31693,9 @@ paths:
                 type: object
                 properties:
                   round:
+                    type: string
+                    format: uint64
+                  roundTime:
                     type: string
                     format: uint64
         default:
@@ -54085,6 +54097,9 @@ definitions:
         type: string
       previousSignature:
         type: string
+      roundTime:
+        type: string
+        format: uint64
   saturn.randomness.QueryAllProvenRandomnessResponse:
     type: object
     properties:
@@ -54102,6 +54117,9 @@ definitions:
               type: string
             previousSignature:
               type: string
+            roundTime:
+              type: string
+              format: uint64
       pagination:
         type: object
         properties:
@@ -54136,6 +54154,9 @@ definitions:
           type: object
           properties:
             round:
+              type: string
+              format: uint64
+            roundTime:
               type: string
               format: uint64
       pagination:
@@ -54194,6 +54215,9 @@ definitions:
             type: string
           previousSignature:
             type: string
+          roundTime:
+            type: string
+            format: uint64
   saturn.randomness.QueryGetUnprovenRandomnessResponse:
     type: object
     properties:
@@ -54201,6 +54225,9 @@ definitions:
         type: object
         properties:
           round:
+            type: string
+            format: uint64
+          roundTime:
             type: string
             format: uint64
   saturn.randomness.QueryParamsResponse:
@@ -54214,6 +54241,9 @@ definitions:
     type: object
     properties:
       round:
+        type: string
+        format: uint64
+      roundTime:
         type: string
         format: uint64
   tendermint.spn.claim.ClaimRecord:

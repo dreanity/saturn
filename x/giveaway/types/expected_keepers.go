@@ -17,5 +17,6 @@ type RandomnessKeeper interface {
 	SetUnprovenRandomnessWithEvent(ctx sdk.Context, unprovenRandomness randomnessTypes.UnprovenRandomness)
 	GetProvenRandomness(ctx sdk.Context, round uint64) (val randomnessTypes.ProvenRandomness, found bool)
 	GetUnprovenRandomness(ctx sdk.Context, round uint64) (val randomnessTypes.UnprovenRandomness, found bool)
+	ComputeTimeForRandomnessRound(ctx sdk.Context, round uint64) uint64
 	// Methods imported from bank should be defined here
 }

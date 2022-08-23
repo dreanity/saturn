@@ -8,8 +8,10 @@ message ProvenRandomnessCreated {
   string randomness = 2; 
   string signature = 3; 
   string previousSignature = 4; 
+  uint64  roundTime = 6;
 }
 
 message UnprovenRandomnessCreated {
   uint64 round = 1;
+  uint64 roundTime = 2;
 }

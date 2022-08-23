@@ -62,3 +62,8 @@ func (k Keeper) GetAllProvenRandomness(ctx sdk.Context) (list []types.ProvenRand
 
 	return
 }
+
+func (k Keeper) ComputeTimeForRandomnessRound(ctx sdk.Context, round uint64) uint64 {
+	chainInfo := k.GetChainInfo(ctx)
+	return chainInfo.GenesisTime + ((round - 1) * chainInfo.Period)
+}
