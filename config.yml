@@ -26,7 +26,7 @@ init:
 genesis:
   consensus_params:
     block:
-      time_iota_ms: "60000"
+      time_iota_ms: "1000"
   app_state:
     staking:
       params:
@@ -57,10 +57,3 @@ genesis:
               exponent: 6
               aliases:
                 - Hydrogen
-    randomness: 
-      unprovenRandomnessList:
-        - round: 12
-        - round: 432
-        - round: 3
-        - round: 6
-        - round: 10000
