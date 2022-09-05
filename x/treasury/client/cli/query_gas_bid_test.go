@@ -29,7 +29,7 @@ func networkWithGasBidObjects(t *testing.T, n int) (*network.Network, []types.Ga
 
 	for i := 0; i < n; i++ {
 		gasBid := types.GasBid{
-			FromChain: strconv.Itoa(i),
+			Chain: strconv.Itoa(i),
 		}
 		nullify.Fill(&gasBid)
 		state.GasBidList = append(state.GasBidList, gasBid)
@@ -57,7 +57,7 @@ func TestShowGasBid(t *testing.T) {
 	}{
 		{
 			desc:        "found",
-			idFromChain: objs[0].FromChain,
+			idFromChain: objs[0].Chain,
 
 			args: common,
 			obj:  objs[0],

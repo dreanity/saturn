@@ -20853,7 +20853,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    fromChain:
+                    chain:
                       type: string
                     number:
                       type: string
@@ -20962,7 +20962,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/dreanity/saturn/treasury/gas_bid/{fromChain}':
+  '/dreanity/saturn/treasury/gas_bid/{chain}':
     get:
       summary: Queries a GasBid by index.
       operationId: DreanitySaturnTreasuryGasBid
@@ -20975,7 +20975,7 @@ paths:
               gasBid:
                 type: object
                 properties:
-                  fromChain:
+                  chain:
                     type: string
                   number:
                     type: string
@@ -20999,7 +20999,7 @@ paths:
                       type: string
                   additionalProperties: {}
       parameters:
-        - name: fromChain
+        - name: chain
           in: path
           required: true
           type: string
@@ -21020,10 +21020,15 @@ paths:
                 items:
                   type: object
                   properties:
-                    currency:
+                    chain:
+                      type: string
+                    tokenAddress:
+                      type: string
+                    tokenSymbol:
                       type: string
                     value:
                       type: string
+                      title: the amount of uhydrogen per token
               pagination:
                 type: object
                 properties:
@@ -21128,7 +21133,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/dreanity/saturn/treasury/gas_price/{currency}':
+  '/dreanity/saturn/treasury/gas_price/{chain}/{tokenAddress}':
     get:
       summary: Queries a GasPrice by index.
       operationId: DreanitySaturnTreasuryGasPrice
@@ -21141,10 +21146,15 @@ paths:
               gasPrice:
                 type: object
                 properties:
-                  currency:
+                  chain:
+                    type: string
+                  tokenAddress:
+                    type: string
+                  tokenSymbol:
                     type: string
                   value:
                     type: string
+                    title: the amount of uhydrogen per token
         default:
           description: An unexpected error response.
           schema:
@@ -21164,7 +21174,11 @@ paths:
                       type: string
                   additionalProperties: {}
       parameters:
-        - name: currency
+        - name: chain
+          in: path
+          required: true
+          type: string
+        - name: tokenAddress
           in: path
           required: true
           type: string
@@ -49513,7 +49527,7 @@ definitions:
   dreanity.saturn.treasury.GasBid:
     type: object
     properties:
-      fromChain:
+      chain:
         type: string
       number:
         type: string
@@ -49521,10 +49535,15 @@ definitions:
   dreanity.saturn.treasury.GasPrice:
     type: object
     properties:
-      currency:
+      chain:
+        type: string
+      tokenAddress:
+        type: string
+      tokenSymbol:
         type: string
       value:
         type: string
+        title: the amount of uhydrogen per token
   dreanity.saturn.treasury.MsgChangeGasPricesResponse:
     type: object
   dreanity.saturn.treasury.MsgExecuteGasBidResponse:
@@ -49540,7 +49559,7 @@ definitions:
         items:
           type: object
           properties:
-            fromChain:
+            chain:
               type: string
             number:
               type: string
@@ -49578,10 +49597,15 @@ definitions:
         items:
           type: object
           properties:
-            currency:
+            chain:
+              type: string
+            tokenAddress:
+              type: string
+            tokenSymbol:
               type: string
             value:
               type: string
+              title: the amount of uhydrogen per token
       pagination:
         type: object
         properties:
@@ -49613,7 +49637,7 @@ definitions:
       gasBid:
         type: object
         properties:
-          fromChain:
+          chain:
             type: string
           number:
             type: string
@@ -49624,10 +49648,15 @@ definitions:
       gasPrice:
         type: object
         properties:
-          currency:
+          chain:
+            type: string
+          tokenAddress:
+            type: string
+          tokenSymbol:
             type: string
           value:
             type: string
+            title: the amount of uhydrogen per token
   dreanity.saturn.treasury.QueryGetTreasurerResponse:
     type: object
     properties:

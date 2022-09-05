@@ -15,18 +15,18 @@ var _ = strconv.Itoa(0)
 
 func CmdExecuteGasBid() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "execute-gas-bid [currency] [paid-amount] [recipient] [bid-number] [from-chain]",
+		Use:   "execute-gas-bid [chain] [token-address] [paid-amount] [recipient] [bid-number]",
 		Short: "Broadcast message execute_gas_bid",
 		Args:  cobra.ExactArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			argCurrency := args[0]
-			argPaidAmount := args[1]
-			argRecipient := args[2]
-			argBidNumber, err := cast.ToUint64E(args[3])
+			argChain := args[0]
+			argTokenAddress := args[1]
+			argPaidAmount := args[2]
+			argRecipient := args[3]
+			argBidNumber, err := cast.ToUint64E(args[4])
 			if err != nil {
 				return err
 			}
-			argFromChain := args[4]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -35,11 +35,11 @@ func CmdExecuteGasBid() *cobra.Command {
 
 			msg := types.NewMsgExecuteGasBid(
 				clientCtx.GetFromAddress().String(),
-				argCurrency,
+				argTokenAddress,
 				argPaidAmount,
 				argRecipient,
 				argBidNumber,
-				argFromChain,
+				argChain,
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err

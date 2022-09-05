@@ -27,7 +27,7 @@ func (gs GenesisState) Validate() error {
 	gasPriceIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.GasPriceList {
-		index := string(GasPriceKey(elem.Currency))
+		index := string(GasPriceKey(elem.Chain, elem.TokenAddress))
 		if _, ok := gasPriceIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for gasPrice")
 		}
@@ -37,7 +37,7 @@ func (gs GenesisState) Validate() error {
 	gasBidIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.GasBidList {
-		index := string(GasBidKey(elem.FromChain))
+		index := string(GasBidKey(elem.Chain))
 		if _, ok := gasBidIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for gasBid")
 		}

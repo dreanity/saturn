@@ -18,7 +18,7 @@ var _ = strconv.IntSize
 func createNGasBid(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.GasBid {
 	items := make([]types.GasBid, n)
 	for i := range items {
-		items[i].FromChain = strconv.Itoa(i)
+		items[i].Chain = strconv.Itoa(i)
 
 		keeper.SetGasBid(ctx, items[i])
 	}
@@ -30,7 +30,7 @@ func TestGasBidGet(t *testing.T) {
 	items := createNGasBid(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetGasBid(ctx,
-			item.FromChain,
+			item.Chain,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -44,10 +44,10 @@ func TestGasBidRemove(t *testing.T) {
 	items := createNGasBid(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveGasBid(ctx,
-			item.FromChain,
+			item.Chain,
 		)
 		_, found := keeper.GetGasBid(ctx,
-			item.FromChain,
+			item.Chain,
 		)
 		require.False(t, found)
 	}

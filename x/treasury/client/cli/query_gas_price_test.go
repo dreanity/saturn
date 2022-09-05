@@ -29,7 +29,8 @@ func networkWithGasPriceObjects(t *testing.T, n int) (*network.Network, []types.
 
 	for i := 0; i < n; i++ {
 		gasPrice := types.GasPrice{
-			Currency: strconv.Itoa(i),
+			Chain:        strconv.Itoa(i),
+			TokenAddress: strconv.Itoa(i),
 		}
 		nullify.Fill(&gasPrice)
 		state.GasPriceList = append(state.GasPriceList, gasPrice)
@@ -48,23 +49,25 @@ func TestShowGasPrice(t *testing.T) {
 		fmt.Sprintf("--%s=json", tmcli.OutputFlag),
 	}
 	for _, tc := range []struct {
-		desc       string
-		idCurrency string
+		desc         string
+		chain        string
+		tokenAddress string
 
 		args []string
 		err  error
 		obj  types.GasPrice
 	}{
 		{
-			desc:       "found",
-			idCurrency: objs[0].Currency,
+			desc:         "found",
+			chain:        objs[0].Chain,
+			tokenAddress: objs[0].TokenAddress,
 
 			args: common,
 			obj:  objs[0],
 		},
 		{
-			desc:       "not found",
-			idCurrency: strconv.Itoa(100000),
+			desc:  "not found",
+			chain: strconv.Itoa(100000),
 
 			args: common,
 			err:  status.Error(codes.NotFound, "not found"),
@@ -72,7 +75,7 @@ func TestShowGasPrice(t *testing.T) {
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
 			args := []string{
-				tc.idCurrency,
+				tc.chain,
 			}
 			args = append(args, tc.args...)
 			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowGasPrice(), args)

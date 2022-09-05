@@ -31,21 +31,21 @@ func TestGasBidQuerySingle(t *testing.T) {
 		{
 			desc: "First",
 			request: &types.QueryGetGasBidRequest{
-				FromChain: msgs[0].FromChain,
+				Chain: msgs[0].Chain,
 			},
 			response: &types.QueryGetGasBidResponse{GasBid: msgs[0]},
 		},
 		{
 			desc: "Second",
 			request: &types.QueryGetGasBidRequest{
-				FromChain: msgs[1].FromChain,
+				Chain: msgs[1].Chain,
 			},
 			response: &types.QueryGetGasBidResponse{GasBid: msgs[1]},
 		},
 		{
 			desc: "KeyNotFound",
 			request: &types.QueryGetGasBidRequest{
-				FromChain: strconv.Itoa(100000),
+				Chain: strconv.Itoa(100000),
 			},
 			err: status.Error(codes.NotFound, "not found"),
 		},

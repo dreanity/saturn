@@ -27,8 +27,12 @@ func (k msgServer) ExecuteGasBid(goCtx context.Context, msg *types.MsgExecuteGas
 		gasMeter.RefundGas(gasConsumed, "")
 	}()
 
-	if len(strings.Trim(msg.Currency, " ")) == 0 {
-		return nil, types.ErrInvalidCurrency
+	if len(strings.Trim(msg.Chain, " ")) == 0 {
+		return nil, types.ErrInvalidChain
+	}
+
+	if len(strings.Trim(msg.TokenAddress, " ")) == 0 {
+		return nil, types.ErrInvalidTokenAddress
 	}
 
 	paid, ok := sdk.NewIntFromString(msg.PaidAmount)
@@ -41,15 +45,15 @@ func (k msgServer) ExecuteGasBid(goCtx context.Context, msg *types.MsgExecuteGas
 		return nil, types.ErrInvalidRecipient
 	}
 
-	gasBid, found := k.GetGasBid(ctx, msg.FromChain)
+	gasBid, found := k.GetGasBid(ctx, msg.Chain)
 	if !found && msg.BidNumber == 0 {
-		gasBid.FromChain = msg.FromChain
+		gasBid.Chain = msg.Chain
 		gasBid.Number = 0
 	} else if gasBid.Number+1 != msg.BidNumber {
 		return nil, types.ErrInvalidBidNumber
 	}
 
-	gasPrice, found := k.GetGasPrice(ctx, msg.Currency)
+	gasPrice, found := k.GetGasPrice(ctx, msg.Chain, msg.TokenAddress)
 	if !found {
 		return nil, types.ErrNotFoundGasPrice
 	}
@@ -79,8 +83,8 @@ func (k msgServer) ExecuteGasBid(goCtx context.Context, msg *types.MsgExecuteGas
 		Recepient:    msg.Recipient,
 		MintedAmount: amountIssued.String(),
 		PaidAmount:   msg.PaidAmount,
-		Currency:     msg.Currency,
-		FromChain:    msg.FromChain,
+		Chain:        msg.Chain,
+		TokenAddress: msg.TokenAddress,
 		GasPrice:     gasPrice.Value,
 	})
 

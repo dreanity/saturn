@@ -47,7 +47,7 @@ func (k Keeper) GasBid(c context.Context, req *types.QueryGetGasBidRequest) (*ty
 
 	val, found := k.GetGasBid(
 		ctx,
-		req.FromChain,
+		req.Chain,
 	)
 	if !found {
 		return nil, status.Error(codes.NotFound, "not found")

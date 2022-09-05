@@ -47,7 +47,8 @@ func (k Keeper) GasPrice(c context.Context, req *types.QueryGetGasPriceRequest) 
 
 	val, found := k.GetGasPrice(
 		ctx,
-		req.Currency,
+		req.Chain,
+		req.TokenAddress,
 	)
 	if !found {
 		return nil, status.Error(codes.NotFound, "not found")

@@ -11,11 +11,16 @@ const (
 
 // GasPriceKey returns the store key to retrieve a GasPrice from the index fields
 func GasPriceKey(
-	currency string,
+	chain string,
+	tokenAddress string,
 ) []byte {
 	var key []byte
 
-	currencyBytes := []byte(currency)
+	chainBytes := []byte(chain)
+	currencyBytes := []byte(chain)
+
+	key = append(key, chainBytes...)
+	key = append(key, []byte("/")...)
 	key = append(key, currencyBytes...)
 	key = append(key, []byte("/")...)
 

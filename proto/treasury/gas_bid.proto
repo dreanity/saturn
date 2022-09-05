@@ -4,7 +4,7 @@ package dreanity.saturn.treasury;
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
 
 message GasBid {
-  string fromChain = 1; 
+  string chain = 1; 
   uint64 number = 2; 
   
 }

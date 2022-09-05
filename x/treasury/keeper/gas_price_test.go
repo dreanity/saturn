@@ -18,7 +18,10 @@ var _ = strconv.IntSize
 func createNGasPrice(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.GasPrice {
 	items := make([]types.GasPrice, n)
 	for i := range items {
-		items[i].Currency = strconv.Itoa(i)
+		items[i].Chain = strconv.Itoa(i)
+		items[i].TokenAddress = strconv.Itoa(i)
+		items[i].TokenSymbol = "UNKNOWN"
+		items[i].Value = "1"
 
 		keeper.SetGasPrice(ctx, items[i])
 	}
@@ -30,7 +33,8 @@ func TestGasPriceGet(t *testing.T) {
 	items := createNGasPrice(keeper, ctx, 10)
 	for _, item := range items {
 		rst, found := keeper.GetGasPrice(ctx,
-			item.Currency,
+			item.Chain,
+			item.TokenAddress,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -44,10 +48,12 @@ func TestGasPriceRemove(t *testing.T) {
 	items := createNGasPrice(keeper, ctx, 10)
 	for _, item := range items {
 		keeper.RemoveGasPrice(ctx,
-			item.Currency,
+			item.Chain,
+			item.TokenAddress,
 		)
 		_, found := keeper.GetGasPrice(ctx,
-			item.Currency,
+			item.Chain,
+			item.TokenAddress,
 		)
 		require.False(t, found)
 	}

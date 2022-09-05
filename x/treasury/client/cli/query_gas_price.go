@@ -44,18 +44,20 @@ func CmdListGasPrice() *cobra.Command {
 
 func CmdShowGasPrice() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-gas-price [currency]",
+		Use:   "show-gas-price [chain] [token-address]",
 		Short: "shows a gas_price",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx := client.GetClientContextFromCmd(cmd)
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argCurrency := args[0]
+			argChain := args[0]
+			argTokenAddress := args[1]
 
 			params := &types.QueryGetGasPriceRequest{
-				Currency: argCurrency,
+				Chain:        argChain,
+				TokenAddress: argTokenAddress,
 			}
 
 			res, err := queryClient.GasPrice(context.Background(), params)

@@ -9,14 +9,14 @@ const TypeMsgExecuteGasBid = "execute_gas_bid"
 
 var _ sdk.Msg = &MsgExecuteGasBid{}
 
-func NewMsgExecuteGasBid(creator string, currency string, paidAmount string, recipient string, bidNumber uint64, fromChain string) *MsgExecuteGasBid {
+func NewMsgExecuteGasBid(creator string, tokenAddress string, paidAmount string, recipient string, bidNumber uint64, chain string) *MsgExecuteGasBid {
 	return &MsgExecuteGasBid{
-		Creator:    creator,
-		Currency:   currency,
-		PaidAmount: paidAmount,
-		Recipient:  recipient,
-		BidNumber:  bidNumber,
-		FromChain:  fromChain,
+		Creator:      creator,
+		TokenAddress: tokenAddress,
+		PaidAmount:   paidAmount,
+		Recipient:    recipient,
+		BidNumber:    bidNumber,
+		Chain:        chain,
 	}
 }
 

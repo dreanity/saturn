@@ -27,18 +27,24 @@ func TestGenesisState_Validate(t *testing.T) {
 				},
 				GasPriceList: []types.GasPrice{
 					{
-						Currency: "0",
+						Chain:        "0",
+						TokenAddress: "0",
+						TokenSymbol:  "UNKNOWN",
+						Value:        "1",
 					},
 					{
-						Currency: "1",
+						Chain:        "1",
+						TokenAddress: "0",
+						TokenSymbol:  "UNKNOWN",
+						Value:        "1",
 					},
 				},
 				GasBidList: []types.GasBid{
 					{
-						FromChain: "0",
+						Chain: "0",
 					},
 					{
-						FromChain: "1",
+						Chain: "1",
 					},
 				},
 				// this line is used by starport scaffolding # types/genesis/validField
@@ -50,10 +56,16 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				GasPriceList: []types.GasPrice{
 					{
-						Currency: "0",
+						Chain:        "0",
+						TokenAddress: "0",
+						TokenSymbol:  "UNKNOWN",
+						Value:        "1",
 					},
 					{
-						Currency: "0",
+						Chain:        "0",
+						TokenAddress: "0",
+						TokenSymbol:  "UNKNOWN",
+						Value:        "1",
 					},
 				},
 			},
@@ -64,10 +76,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				GasBidList: []types.GasBid{
 					{
-						FromChain: "0",
+						Chain: "0",
 					},
 					{
-						FromChain: "0",
+						Chain: "0",
 					},
 				},
 			},

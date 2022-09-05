@@ -8,7 +8,7 @@ option go_package = "github.com/dreanity/saturn/x/treasury/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc ChangeGasPrices(MsgChangeGasPrices) returns (MsgChangeGasPricesResponse);
+  rpc ChangeGasPrices(MsgChangeGasPrices) returns (MsgChangeGasPricesResponse);
   rpc ExecuteGasBid(MsgExecuteGasBid) returns (MsgExecuteGasBidResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
@@ -23,11 +23,11 @@ message MsgChangeGasPricesResponse {
 
 message MsgExecuteGasBid {
   string creator = 1;
-  string currency = 2;
-  string paidAmount = 3;
-  string recipient = 4;
-  uint64 bidNumber = 5;
-  string fromChain = 6;
+  string chain = 2;
+  string tokenAddress = 3;
+  string paidAmount = 4;
+  string recipient = 5;
+  uint64 bidNumber = 6;
 }
 
 message MsgExecuteGasBidResponse {

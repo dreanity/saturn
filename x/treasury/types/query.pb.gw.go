@@ -80,15 +80,26 @@ func request_Query_GasPrice_0(ctx context.Context, marshaler runtime.Marshaler, 
 		_   = err
 	)
 
-	val, ok = pathParams["currency"]
+	val, ok = pathParams["chain"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "currency")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "chain")
 	}
 
-	protoReq.Currency, err = runtime.String(val)
+	protoReq.Chain, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "currency", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "chain", err)
+	}
+
+	val, ok = pathParams["tokenAddress"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tokenAddress")
+	}
+
+	protoReq.TokenAddress, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tokenAddress", err)
 	}
 
 	msg, err := client.GasPrice(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -107,15 +118,26 @@ func local_request_Query_GasPrice_0(ctx context.Context, marshaler runtime.Marsh
 		_   = err
 	)
 
-	val, ok = pathParams["currency"]
+	val, ok = pathParams["chain"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "currency")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "chain")
 	}
 
-	protoReq.Currency, err = runtime.String(val)
+	protoReq.Chain, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "currency", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "chain", err)
+	}
+
+	val, ok = pathParams["tokenAddress"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "tokenAddress")
+	}
+
+	protoReq.TokenAddress, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "tokenAddress", err)
 	}
 
 	msg, err := server.GasPrice(ctx, &protoReq)
@@ -170,15 +192,15 @@ func request_Query_GasBid_0(ctx context.Context, marshaler runtime.Marshaler, cl
 		_   = err
 	)
 
-	val, ok = pathParams["fromChain"]
+	val, ok = pathParams["chain"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "fromChain")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "chain")
 	}
 
-	protoReq.FromChain, err = runtime.String(val)
+	protoReq.Chain, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "fromChain", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "chain", err)
 	}
 
 	msg, err := client.GasBid(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -197,15 +219,15 @@ func local_request_Query_GasBid_0(ctx context.Context, marshaler runtime.Marshal
 		_   = err
 	)
 
-	val, ok = pathParams["fromChain"]
+	val, ok = pathParams["chain"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "fromChain")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "chain")
 	}
 
-	protoReq.FromChain, err = runtime.String(val)
+	protoReq.Chain, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "fromChain", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "chain", err)
 	}
 
 	msg, err := server.GasBid(ctx, &protoReq)
@@ -562,11 +584,11 @@ var (
 
 	pattern_Query_Treasurer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"dreanity", "saturn", "treasury", "treasurer"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_GasPrice_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"dreanity", "saturn", "treasury", "gas_price", "currency"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_GasPrice_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"dreanity", "saturn", "treasury", "gas_price", "chain", "tokenAddress"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_GasPriceAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"dreanity", "saturn", "treasury", "gas_price"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_GasBid_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"dreanity", "saturn", "treasury", "gas_bid", "fromChain"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_GasBid_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"dreanity", "saturn", "treasury", "gas_bid", "chain"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_GasBidAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"dreanity", "saturn", "treasury", "gas_bid"}, "", runtime.AssumeColonVerbOpt(true)))
 )

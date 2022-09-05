@@ -52,10 +52,10 @@ func CmdShowGasBid() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			argFromChain := args[0]
+			argChain := args[0]
 
 			params := &types.QueryGetGasBidRequest{
-				FromChain: argFromChain,
+				Chain: argChain,
 			}
 
 			res, err := queryClient.GasBid(context.Background(), params)

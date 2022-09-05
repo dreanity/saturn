@@ -23,8 +23,11 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type GasPrice struct {
-	Currency string `protobuf:"bytes,1,opt,name=currency,proto3" json:"currency,omitempty"`
-	Value    string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Chain        string `protobuf:"bytes,1,opt,name=chain,proto3" json:"chain,omitempty"`
+	TokenAddress string `protobuf:"bytes,2,opt,name=tokenAddress,proto3" json:"tokenAddress,omitempty"`
+	TokenSymbol  string `protobuf:"bytes,3,opt,name=tokenSymbol,proto3" json:"tokenSymbol,omitempty"`
+	// the amount of uhydrogen per token
+	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (m *GasPrice) Reset()         { *m = GasPrice{} }
@@ -60,9 +63,23 @@ func (m *GasPrice) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GasPrice proto.InternalMessageInfo
 
-func (m *GasPrice) GetCurrency() string {
+func (m *GasPrice) GetChain() string {
 	if m != nil {
-		return m.Currency
+		return m.Chain
+	}
+	return ""
+}
+
+func (m *GasPrice) GetTokenAddress() string {
+	if m != nil {
+		return m.TokenAddress
+	}
+	return ""
+}
+
+func (m *GasPrice) GetTokenSymbol() string {
+	if m != nil {
+		return m.TokenSymbol
 	}
 	return ""
 }
@@ -81,19 +98,21 @@ func init() {
 func init() { proto.RegisterFile("treasury/gas_price.proto", fileDescriptor_1d3094db5d93f7c6) }
 
 var fileDescriptor_1d3094db5d93f7c6 = []byte{
-	// 177 bytes of a gzipped FileDescriptorProto
+	// 212 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x28, 0x29, 0x4a, 0x4d,
 	0x2c, 0x2e, 0x2d, 0xaa, 0xd4, 0x4f, 0x4f, 0x2c, 0x8e, 0x2f, 0x28, 0xca, 0x4c, 0x4e, 0xd5, 0x2b,
 	0x28, 0xca, 0x2f, 0xc9, 0x17, 0x92, 0x48, 0x29, 0x4a, 0x4d, 0xcc, 0xcb, 0x2c, 0xa9, 0xd4, 0x2b,
-	0x4e, 0x2c, 0x29, 0x2d, 0xca, 0xd3, 0x83, 0xa9, 0x54, 0xb2, 0xe1, 0xe2, 0x70, 0x4f, 0x2c, 0x0e,
-	0x00, 0xa9, 0x15, 0x92, 0xe2, 0xe2, 0x48, 0x2e, 0x2d, 0x2a, 0x4a, 0xcd, 0x4b, 0xae, 0x94, 0x60,
-	0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x82, 0xf3, 0x85, 0x44, 0xb8, 0x58, 0xcb, 0x12, 0x73, 0x4a, 0x53,
-	0x25, 0x98, 0xc0, 0x12, 0x10, 0x8e, 0x93, 0xeb, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31,
-	0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb,
-	0x31, 0x44, 0x69, 0xa7, 0x67, 0x96, 0x64, 0x94, 0x26, 0xe9, 0x25, 0xe7, 0xe7, 0xea, 0xc3, 0x2c,
-	0xd7, 0x87, 0x58, 0xae, 0x5f, 0xa1, 0x0f, 0x77, 0x68, 0x49, 0x65, 0x41, 0x6a, 0x71, 0x12, 0x1b,
-	0xd8, 0x95, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x12, 0xc4, 0xde, 0x7b, 0xc1, 0x00, 0x00,
-	0x00,
+	0x4e, 0x2c, 0x29, 0x2d, 0xca, 0xd3, 0x83, 0xa9, 0x54, 0xaa, 0xe1, 0xe2, 0x70, 0x4f, 0x2c, 0x0e,
+	0x00, 0xa9, 0x15, 0x12, 0xe1, 0x62, 0x4d, 0xce, 0x48, 0xcc, 0xcc, 0x93, 0x60, 0x54, 0x60, 0xd4,
+	0xe0, 0x0c, 0x82, 0x70, 0x84, 0x94, 0xb8, 0x78, 0x4a, 0xf2, 0xb3, 0x53, 0xf3, 0x1c, 0x53, 0x52,
+	0x8a, 0x52, 0x8b, 0x8b, 0x25, 0x98, 0xc0, 0x92, 0x28, 0x62, 0x42, 0x0a, 0x5c, 0xdc, 0x60, 0x7e,
+	0x70, 0x65, 0x6e, 0x52, 0x7e, 0x8e, 0x04, 0x33, 0x58, 0x09, 0xb2, 0x10, 0xc8, 0xec, 0xb2, 0xc4,
+	0x9c, 0xd2, 0x54, 0x09, 0x16, 0x88, 0xd9, 0x60, 0x8e, 0x93, 0xeb, 0x89, 0x47, 0x72, 0x8c, 0x17,
+	0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85, 0xc7, 0x72, 0x0c,
+	0x37, 0x1e, 0xcb, 0x31, 0x44, 0x69, 0xa7, 0x67, 0x96, 0x64, 0x94, 0x26, 0xe9, 0x25, 0xe7, 0xe7,
+	0xea, 0xc3, 0x1c, 0xaf, 0x0f, 0x71, 0xbc, 0x7e, 0x85, 0x3e, 0xdc, 0xa3, 0x25, 0x95, 0x05, 0xa9,
+	0xc5, 0x49, 0x6c, 0x60, 0x5f, 0x1a, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xb4, 0x76, 0xc9, 0x57,
+	0x01, 0x01, 0x00, 0x00,
 }
 
 func (m *GasPrice) Marshal() (dAtA []byte, err error) {
@@ -121,12 +140,26 @@ func (m *GasPrice) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.Value)
 		i = encodeVarintGasPrice(dAtA, i, uint64(len(m.Value)))
 		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.TokenSymbol) > 0 {
+		i -= len(m.TokenSymbol)
+		copy(dAtA[i:], m.TokenSymbol)
+		i = encodeVarintGasPrice(dAtA, i, uint64(len(m.TokenSymbol)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.TokenAddress) > 0 {
+		i -= len(m.TokenAddress)
+		copy(dAtA[i:], m.TokenAddress)
+		i = encodeVarintGasPrice(dAtA, i, uint64(len(m.TokenAddress)))
+		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.Currency) > 0 {
-		i -= len(m.Currency)
-		copy(dAtA[i:], m.Currency)
-		i = encodeVarintGasPrice(dAtA, i, uint64(len(m.Currency)))
+	if len(m.Chain) > 0 {
+		i -= len(m.Chain)
+		copy(dAtA[i:], m.Chain)
+		i = encodeVarintGasPrice(dAtA, i, uint64(len(m.Chain)))
 		i--
 		dAtA[i] = 0xa
 	}
@@ -150,7 +183,15 @@ func (m *GasPrice) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = len(m.Currency)
+	l = len(m.Chain)
+	if l > 0 {
+		n += 1 + l + sovGasPrice(uint64(l))
+	}
+	l = len(m.TokenAddress)
+	if l > 0 {
+		n += 1 + l + sovGasPrice(uint64(l))
+	}
+	l = len(m.TokenSymbol)
 	if l > 0 {
 		n += 1 + l + sovGasPrice(uint64(l))
 	}
@@ -198,7 +239,7 @@ func (m *GasPrice) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Currency", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Chain", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -226,9 +267,73 @@ func (m *GasPrice) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Currency = string(dAtA[iNdEx:postIndex])
+			m.Chain = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TokenAddress", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGasPrice
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthGasPrice
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthGasPrice
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.TokenAddress = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TokenSymbol", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGasPrice
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthGasPrice
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthGasPrice
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.TokenSymbol = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
 			}

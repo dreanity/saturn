@@ -4,8 +4,11 @@ package dreanity.saturn.treasury;
 option go_package = "github.com/dreanity/saturn/x/treasury/types";
 
 message GasPrice {
-  string currency = 1; 
-  string value = 2; 
+  string chain = 1;
+  string tokenAddress = 2; 
+  string tokenSymbol = 3; 
+  // the amount of uhydrogen per token
+  string value = 4; 
   
 }
 

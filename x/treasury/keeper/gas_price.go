@@ -11,20 +11,23 @@ func (k Keeper) SetGasPrice(ctx sdk.Context, gasPrice types.GasPrice) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GasPriceKeyPrefix))
 	b := k.cdc.MustMarshal(&gasPrice)
 	store.Set(types.GasPriceKey(
-		gasPrice.Currency,
+		gasPrice.Chain,
+		gasPrice.TokenAddress,
 	), b)
 }
 
 // GetGasPrice returns a gasPrice from its index
 func (k Keeper) GetGasPrice(
 	ctx sdk.Context,
-	currency string,
+	chain string,
+	tokenAddress string,
 
 ) (val types.GasPrice, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GasPriceKeyPrefix))
 
 	b := store.Get(types.GasPriceKey(
-		currency,
+		chain,
+		tokenAddress,
 	))
 	if b == nil {
 		return val, false
@@ -37,12 +40,14 @@ func (k Keeper) GetGasPrice(
 // RemoveGasPrice removes a gasPrice from the store
 func (k Keeper) RemoveGasPrice(
 	ctx sdk.Context,
-	currency string,
+	chain string,
+	tokenAddress string,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GasPriceKeyPrefix))
 	store.Delete(types.GasPriceKey(
-		currency,
+		chain,
+		tokenAddress,
 	))
 }
 

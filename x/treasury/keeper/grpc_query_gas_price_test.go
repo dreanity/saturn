@@ -31,21 +31,24 @@ func TestGasPriceQuerySingle(t *testing.T) {
 		{
 			desc: "First",
 			request: &types.QueryGetGasPriceRequest{
-				Currency: msgs[0].Currency,
+				Chain:        msgs[0].Chain,
+				TokenAddress: msgs[0].TokenAddress,
 			},
 			response: &types.QueryGetGasPriceResponse{GasPrice: msgs[0]},
 		},
 		{
 			desc: "Second",
 			request: &types.QueryGetGasPriceRequest{
-				Currency: msgs[1].Currency,
+				Chain:        msgs[1].Chain,
+				TokenAddress: msgs[1].TokenAddress,
 			},
 			response: &types.QueryGetGasPriceResponse{GasPrice: msgs[1]},
 		},
 		{
 			desc: "KeyNotFound",
 			request: &types.QueryGetGasPriceRequest{
-				Currency: strconv.Itoa(100000),
+				Chain:        strconv.Itoa(100000),
+				TokenAddress: strconv.Itoa(100000),
 			},
 			err: status.Error(codes.NotFound, "not found"),
 		},

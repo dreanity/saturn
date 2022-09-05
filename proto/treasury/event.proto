@@ -14,7 +14,7 @@ message GasBidExecuted {
 	string recepient = 2;
 	string mintedAmount = 3;
 	string paidAmount = 4;
-	string currency = 5;
-	string fromChain = 6;
+	string tokenAddress = 5;
+	string chain = 6;
 	string gasPrice = 7;
 }

@@ -11,7 +11,7 @@ func (k Keeper) SetGasBid(ctx sdk.Context, gasBid types.GasBid) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.GasBidKeyPrefix))
 	b := k.cdc.MustMarshal(&gasBid)
 	store.Set(types.GasBidKey(
-		gasBid.FromChain,
+		gasBid.Chain,
 	), b)
 }
 

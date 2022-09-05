@@ -20,7 +20,12 @@ func (k msgServer) ChangeGasPrices(goCtx context.Context, msg *types.MsgChangeGa
 
 	isValid := true
 	for _, gasPrice := range msg.GasPrices {
-		if len(strings.Trim(gasPrice.Currency, " ")) == 0 {
+		if len(strings.Trim(gasPrice.Chain, " ")) == 0 {
+			isValid = false
+			break
+		}
+
+		if len(strings.Trim(gasPrice.TokenAddress, " ")) == 0 {
 			isValid = false
 			break
 		}
@@ -39,9 +44,11 @@ func (k msgServer) ChangeGasPrices(goCtx context.Context, msg *types.MsgChangeGa
 	}
 
 	for _, gasPrice := range msg.GasPrices {
-		currentGasPrice, _ := k.GetGasPrice(ctx, gasPrice.Currency)
+		currentGasPrice, _ := k.GetGasPrice(ctx, gasPrice.Chain, gasPrice.TokenAddress)
 
-		currentGasPrice.Currency = gasPrice.Currency
+		currentGasPrice.Chain = gasPrice.Chain
+		currentGasPrice.TokenAddress = gasPrice.TokenAddress
+		currentGasPrice.TokenSymbol = gasPrice.TokenSymbol
 		currentGasPrice.Value = gasPrice.Value
 		k.SetGasPrice(ctx, currentGasPrice)
 	}
