@@ -21028,7 +21028,7 @@ paths:
                       type: string
                     value:
                       type: string
-                      title: the amount of uhydrogen per token
+                      title: the amount of hydrogen per token
               pagination:
                 type: object
                 properties:
@@ -21154,7 +21154,7 @@ paths:
                     type: string
                   value:
                     type: string
-                    title: the amount of uhydrogen per token
+                    title: the amount of hydrogen per token
         default:
           description: An unexpected error response.
           schema:
@@ -49543,7 +49543,7 @@ definitions:
         type: string
       value:
         type: string
-        title: the amount of uhydrogen per token
+        title: the amount of hydrogen per token
   dreanity.saturn.treasury.MsgChangeGasPricesResponse:
     type: object
   dreanity.saturn.treasury.MsgExecuteGasBidResponse:
@@ -49605,7 +49605,7 @@ definitions:
               type: string
             value:
               type: string
-              title: the amount of uhydrogen per token
+              title: the amount of hydrogen per token
       pagination:
         type: object
         properties:
@@ -49656,7 +49656,7 @@ definitions:
             type: string
           value:
             type: string
-            title: the amount of uhydrogen per token
+            title: the amount of hydrogen per token
   dreanity.saturn.treasury.QueryGetTreasurerResponse:
     type: object
     properties:

@@ -26,7 +26,7 @@ type GasPrice struct {
 	Chain        string `protobuf:"bytes,1,opt,name=chain,proto3" json:"chain,omitempty"`
 	TokenAddress string `protobuf:"bytes,2,opt,name=tokenAddress,proto3" json:"tokenAddress,omitempty"`
 	TokenSymbol  string `protobuf:"bytes,3,opt,name=tokenSymbol,proto3" json:"tokenSymbol,omitempty"`
-	// the amount of uhydrogen per token
+	// the amount of hydrogen per token
 	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
 }
 

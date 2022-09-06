@@ -28,6 +28,7 @@ message MsgExecuteGasBid {
   string paidAmount = 4;
   string recipient = 5;
   uint64 bidNumber = 6;
+  uint32 scale = 7;
 }
 
 message MsgExecuteGasBidResponse {

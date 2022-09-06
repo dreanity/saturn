@@ -4,6 +4,9 @@ accounts:
   - name: bob
     address: "saturn1wvvyvp4y7uq3sdsaz2vwslh8kk8z08jsvp0je9"
     coins: ["100000000uhydrogen"]
+  - name: treasurer
+    coins: ["200000000uhydrogen"]
+    mnemonic: "weather tide nominee wool thunder guide twice absent pave foster dizzy cook upper people burden draw old trick gauge unfair tell resemble loyal like"
 validator:
   name: alice
   staked: "100000000uhydrogen"

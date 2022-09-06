@@ -9,8 +9,7 @@ import (
 )
 
 var (
-	tenScaledBy18 = sdk.NewDec(10).Power(18)
-	tenScaledBy6  = sdk.NewDec(10).Power(6)
+	tenScaledBy6 = sdk.NewDec(10).Power(6)
 )
 
 func (k msgServer) ExecuteGasBid(goCtx context.Context, msg *types.MsgExecuteGasBid) (*types.MsgExecuteGasBidResponse, error) {
@@ -60,13 +59,13 @@ func (k msgServer) ExecuteGasBid(goCtx context.Context, msg *types.MsgExecuteGas
 
 	gasPriceValue, _ := sdk.NewDecFromStr(gasPrice.Value)
 
-	paidDec := sdk.NewDecFromInt(paid).Quo(tenScaledBy18)
+	paidDec := sdk.NewDecFromInt(paid).Quo(sdk.NewDec(10).Power(uint64(msg.Scale)))
+
 	gasPriceDec := gasPriceValue.Quo(tenScaledBy6)
-	amountIssued := paidDec.Mul(gasPriceDec).Mul(tenScaledBy6).Ceil().TruncateInt()
+	amountIssued := paidDec.Mul(gasPriceDec).Mul(tenScaledBy6).TruncateInt()
 
 	amountIssuedCoin := sdk.NewCoin("uhydrogen", amountIssued)
 	amountIssuedCoins := sdk.NewCoins(amountIssuedCoin)
-
 	if err := k.bankKeeper.MintCoins(ctx, types.ModuleName, amountIssuedCoins); err != nil {
 		return nil, err
 	}

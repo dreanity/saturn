@@ -7,7 +7,7 @@ message GasPrice {
   string chain = 1;
   string tokenAddress = 2; 
   string tokenSymbol = 3; 
-  // the amount of uhydrogen per token
+  // the amount of hydrogen per token
   string value = 4; 
   
 }
