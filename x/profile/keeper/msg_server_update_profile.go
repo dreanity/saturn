@@ -9,6 +9,7 @@ import (
 
 func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProfile) (*types.MsgUpdateProfileResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
+	emgr := ctx.EventManager()
 
 	profile, hasProfile := k.GetProfile(ctx, msg.Creator)
 	if !hasProfile {
@@ -25,6 +26,12 @@ func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProf
 	}
 
 	k.SetProfile(ctx, profile)
+	emgr.EmitTypedEvent(&types.ProfileUpdated{
+		Address:   msg.Creator,
+		AvatarUrl: msg.AvatarUrl,
+		BannerUrl: msg.BannerUrl,
+		Name:      msg.Name,
+	})
 
 	return &types.MsgUpdateProfileResponse{}, nil
 }
