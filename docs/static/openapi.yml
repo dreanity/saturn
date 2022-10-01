@@ -49733,6 +49733,8 @@ definitions:
       count:
         type: integer
         format: int64
+  dreanity.saturn.profile.MsgUpdateProfileResponse:
+    type: object
   dreanity.saturn.profile.Params:
     type: object
     description: Params defines the parameters for the module.
