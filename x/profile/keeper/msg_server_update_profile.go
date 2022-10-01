@@ -10,8 +10,21 @@ import (
 func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProfile) (*types.MsgUpdateProfileResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// TODO: Handling the message
-	_ = ctx
+	profile, hasProfile := k.GetProfile(ctx, msg.Creator)
+	if !hasProfile {
+		profile = types.Profile{
+			Address:   msg.Creator,
+			AvatarUrl: msg.AvatarUrl,
+			BannerUrl: msg.BannerUrl,
+			Name:      msg.Name,
+		}
+	} else {
+		profile.AvatarUrl = msg.AvatarUrl
+		profile.BannerUrl = msg.BannerUrl
+		profile.Name = msg.Name
+	}
+
+	k.SetProfile(ctx, profile)
 
 	return &types.MsgUpdateProfileResponse{}, nil
 }
