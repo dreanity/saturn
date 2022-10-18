@@ -1,0 +1,24 @@
+syntax = "proto3";
+package dreanity.saturn.profile;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/dreanity/saturn/x/profile/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc UpdateProfile(MsgUpdateProfile) returns (MsgUpdateProfileResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgUpdateProfile {
+  string creator = 1;
+  string name = 2;
+  string avatarUrl = 3;
+  string bannerUrl = 4;
+}
+
+message MsgUpdateProfileResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message
