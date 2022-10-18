@@ -15,13 +15,14 @@ enum GiveawayStatus {
 
 message Giveaway {
   uint32 index = 1; 
-  int64 duration = 2; 
-  int64 createdAt = 3;
-  string name = 4;
-  repeated Prize prizes = 5 [(gogoproto.nullable) = false]; 
-  int64 completionHeight = 6;
+  string creator = 2;
+  int64 duration = 3; 
+  int64 createdAt = 4;
+  string name = 5;
+  repeated Prize prizes = 6 [(gogoproto.nullable) = false]; 
+  int64 completionHeight = 7;
 
-  GiveawayStatus status = 7;
+  GiveawayStatus status = 8;
   
-  repeated uint32 winningTicketNumbers = 8;
+  repeated uint32 winningTicketNumbers = 9;
 }

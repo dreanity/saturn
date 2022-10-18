@@ -101,6 +101,7 @@ type AppModule struct {
 	keeper           keeper.Keeper
 	gentimeKeeper    types.GentimeKeeper
 	randomnessKeeper types.RandomnessKeeper
+	profileKeeper    types.ProfileKeeper
 }
 
 func NewAppModule(
@@ -108,12 +109,14 @@ func NewAppModule(
 	keeper keeper.Keeper,
 	gentimeKeeper types.GentimeKeeper,
 	randomnessKeeper types.RandomnessKeeper,
+	profileKeeper types.ProfileKeeper,
 ) AppModule {
 	return AppModule{
 		AppModuleBasic:   NewAppModuleBasic(cdc),
 		keeper:           keeper,
 		gentimeKeeper:    gentimeKeeper,
 		randomnessKeeper: randomnessKeeper,
+		profileKeeper:    profileKeeper,
 	}
 }
 

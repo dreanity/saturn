@@ -1,6 +1,8 @@
 package keeper
 
 import (
+	"fmt"
+
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/dreanity/saturn/x/profile/types"
@@ -21,8 +23,10 @@ func (k Keeper) GetProfile(
 	address string,
 
 ) (val types.Profile, found bool) {
+	logger := ctx.Logger()
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.ProfileKeyPrefix))
 
+	logger.Error(fmt.Sprintf("Address: %s", address))
 	b := store.Get(types.ProfileKey(
 		address,
 	))

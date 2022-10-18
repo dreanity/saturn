@@ -3,6 +3,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	genTimeTypes "github.com/dreanity/saturn/x/gentime/types"
+	profileTypes "github.com/dreanity/saturn/x/profile/types"
 	randomnessTypes "github.com/dreanity/saturn/x/randomness/types"
 )
 
@@ -19,4 +20,8 @@ type RandomnessKeeper interface {
 	GetUnprovenRandomness(ctx sdk.Context, round uint64) (val randomnessTypes.UnprovenRandomness, found bool)
 	ComputeTimeForRandomnessRound(ctx sdk.Context, round uint64) uint64
 	// Methods imported from bank should be defined here
+}
+
+type ProfileKeeper interface {
+	GetProfile(ctx sdk.Context, address string) (val profileTypes.Profile, found bool)
 }

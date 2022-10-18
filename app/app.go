@@ -444,6 +444,14 @@ func New(
 	)
 	gentimeModule := gentimemodule.NewAppModule(appCodec, app.GentimeKeeper, app.AccountKeeper, app.BankKeeper)
 
+	app.ProfileKeeper = *profilemodulekeeper.NewKeeper(
+		appCodec,
+		keys[profilemoduletypes.StoreKey],
+		keys[profilemoduletypes.MemStoreKey],
+		app.GetSubspace(profilemoduletypes.ModuleName),
+	)
+	profileModule := profilemodule.NewAppModule(appCodec, app.ProfileKeeper, app.AccountKeeper, app.BankKeeper)
+
 	app.GiveawayKeeper = *giveawaymodulekeeper.NewKeeper(
 		appCodec,
 		keys[giveawaymoduletypes.StoreKey],
@@ -451,8 +459,9 @@ func New(
 		app.GetSubspace(giveawaymoduletypes.ModuleName),
 		app.GentimeKeeper,
 		app.RandomnessKeeper,
+		app.ProfileKeeper,
 	)
-	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.GentimeKeeper, app.RandomnessKeeper)
+	giveawayModule := giveawaymodule.NewAppModule(appCodec, app.GiveawayKeeper, app.GentimeKeeper, app.RandomnessKeeper, app.ProfileKeeper)
 
 	app.TreasuryKeeper = *treasurymodulekeeper.NewKeeper(
 		appCodec,
@@ -463,14 +472,6 @@ func New(
 		app.BankKeeper,
 	)
 	treasuryModule := treasurymodule.NewAppModule(appCodec, app.TreasuryKeeper, app.AccountKeeper, app.BankKeeper)
-
-	app.ProfileKeeper = *profilemodulekeeper.NewKeeper(
-		appCodec,
-		keys[profilemoduletypes.StoreKey],
-		keys[profilemoduletypes.MemStoreKey],
-		app.GetSubspace(profilemoduletypes.ModuleName),
-	)
-	profileModule := profilemodule.NewAppModule(appCodec, app.ProfileKeeper, app.AccountKeeper, app.BankKeeper)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 

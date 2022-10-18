@@ -19,6 +19,7 @@ type (
 		paramstore       paramtypes.Subspace
 		gentimeKeeper    types.GentimeKeeper
 		randomnessKeeper types.RandomnessKeeper
+		profileKeeper    types.ProfileKeeper
 	}
 )
 
@@ -29,6 +30,7 @@ func NewKeeper(
 	ps paramtypes.Subspace,
 	gentimeKeeper types.GentimeKeeper,
 	randomnessKeeper types.RandomnessKeeper,
+	profileKeeper types.ProfileKeeper,
 ) *Keeper {
 	// set KeyTable if it has not already been set
 	if !ps.HasKeyTable() {
@@ -43,6 +45,7 @@ func NewKeeper(
 		paramstore:       ps,
 		gentimeKeeper:    gentimeKeeper,
 		randomnessKeeper: randomnessKeeper,
+		profileKeeper:    profileKeeper,
 	}
 }
 

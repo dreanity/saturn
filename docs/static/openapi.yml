@@ -19847,6 +19847,8 @@ paths:
                     index:
                       type: integer
                       format: int64
+                    creator:
+                      type: string
                     duration:
                       type: string
                       format: int64
@@ -20003,6 +20005,8 @@ paths:
                   index:
                     type: integer
                     format: int64
+                  creator:
+                    type: string
                   duration:
                     type: string
                     format: int64
@@ -20460,8 +20464,8 @@ paths:
             type: object
             properties:
               params:
-                description: params holds all the parameters of this module.
                 type: object
+                description: Params defines the parameters for the module.
             description: >-
               QueryParamsResponse is response type for the Query/Params RPC
               method.
@@ -20849,8 +20853,8 @@ paths:
             type: object
             properties:
               params:
-                description: params holds all the parameters of this module.
                 type: object
+                description: Params defines the parameters for the module.
             description: >-
               QueryParamsResponse is response type for the Query/Params RPC
               method.
@@ -49269,6 +49273,8 @@ definitions:
       index:
         type: integer
         format: int64
+      creator:
+        type: string
       duration:
         type: string
         format: int64
@@ -49451,6 +49457,8 @@ definitions:
             index:
               type: integer
               format: int64
+            creator:
+              type: string
             duration:
               type: string
               format: int64
@@ -49640,6 +49648,8 @@ definitions:
           index:
             type: integer
             format: int64
+          creator:
+            type: string
           duration:
             type: string
             format: int64
@@ -49708,8 +49718,8 @@ definitions:
     type: object
     properties:
       params:
-        description: params holds all the parameters of this module.
         type: object
+        description: Params defines the parameters for the module.
     description: QueryParamsResponse is response type for the Query/Params RPC method.
   dreanity.saturn.giveaway.Ticket:
     type: object
@@ -49808,8 +49818,8 @@ definitions:
     type: object
     properties:
       params:
-        description: params holds all the parameters of this module.
         type: object
+        description: Params defines the parameters for the module.
     description: QueryParamsResponse is response type for the Query/Params RPC method.
   dreanity.saturn.treasury.GasBid:
     type: object

@@ -11,7 +11,11 @@ import (
 func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiveaway) (*types.MsgCreateGiveawayResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	_ = ctx
+	_, found := k.profileKeeper.GetProfile(ctx, msg.Creator)
+
+	if !found {
+		return nil, types.ErrNotFoundCreatorProfile
+	}
 
 	if msg.Duration < 0 { // TODO: Поправить время на 3600
 		return nil, types.ErrDurationToLow
@@ -56,12 +60,13 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	complitionHeight := height.Add(numberOfBlocksToComplete).TruncateInt().Int64()
 
 	giveaway := types.Giveaway{
-		CompletionHeight:     complitionHeight,
-		CreatedAt:            ctx.BlockTime().UTC().Unix(),
-		Duration:             msg.Duration,
 		Index:                giveawayCount.Value,
+		Creator:              msg.Creator,
+		Duration:             msg.Duration,
+		CreatedAt:            ctx.BlockTime().UTC().Unix(),
 		Name:                 msg.Name,
 		Prizes:               msg.Prizes,
+		CompletionHeight:     complitionHeight,
 		Status:               types.GiveawayStatus_TICKETS_REGISTRATION,
 		WinningTicketNumbers: []uint32{},
 	}
@@ -85,12 +90,13 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	k.SetTicketCount(ctx, ticketCount)
 
 	ctx.EventManager().EmitTypedEvent(&types.GiveawayCreated{
-		CompletionHeight:     giveaway.CompletionHeight,
-		CreatedAt:            giveaway.CreatedAt,
-		Duration:             giveaway.Duration,
 		Index:                giveaway.Index,
+		Creator:              giveaway.Creator,
+		Duration:             giveaway.Duration,
+		CreatedAt:            giveaway.CreatedAt,
 		Name:                 giveaway.Name,
 		Prizes:               giveaway.Prizes,
+		CompletionHeight:     giveaway.CompletionHeight,
 		Status:               giveaway.Status,
 		WinningTicketNumbers: giveaway.WinningTicketNumbers,
 	})

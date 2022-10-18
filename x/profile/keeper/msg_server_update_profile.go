@@ -11,6 +11,10 @@ func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProf
 	ctx := sdk.UnwrapSDKContext(goCtx)
 	emgr := ctx.EventManager()
 
+	if len(msg.Name) == 0 {
+		return nil, types.ErrNameIsShort
+	}
+
 	profile, hasProfile := k.GetProfile(ctx, msg.Creator)
 	if !hasProfile {
 		profile = types.Profile{
