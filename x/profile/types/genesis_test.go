@@ -30,6 +30,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						Address: "1",
 					},
 				},
+				NameRegistryList: []types.NameRegistry{
+					{
+						Name: "0",
+					},
+					{
+						Name: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -43,6 +51,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						Address: "0",
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated nameRegistry",
+			genState: &types.GenesisState{
+				NameRegistryList: []types.NameRegistry{
+					{
+						Name: "0",
+					},
+					{
+						Name: "0",
 					},
 				},
 			},

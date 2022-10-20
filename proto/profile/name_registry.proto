@@ -1,0 +1,11 @@
+syntax = "proto3";
+package dreanity.saturn.profile;
+
+option go_package = "github.com/dreanity/saturn/x/profile/types";
+
+message NameRegistry {
+  string name = 1; 
+  string address = 2; 
+  
+}
+

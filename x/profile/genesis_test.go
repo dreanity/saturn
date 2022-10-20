@@ -22,6 +22,14 @@ func TestGenesis(t *testing.T) {
 				Address: "1",
 			},
 		},
+		NameRegistryList: []types.NameRegistry{
+			{
+				Name: "0",
+			},
+			{
+				Name: "1",
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -34,5 +42,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.ElementsMatch(t, genesisState.ProfileList, got.ProfileList)
+	require.ElementsMatch(t, genesisState.NameRegistryList, got.NameRegistryList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

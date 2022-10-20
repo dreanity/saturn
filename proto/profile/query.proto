@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "profile/params.proto";
 import "profile/profile.proto";
+import "profile/name_registry.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/profile/types";
@@ -24,6 +25,16 @@ service Query {
 	// Queries a list of Profile items.
 	rpc ProfileAll(QueryAllProfileRequest) returns (QueryAllProfileResponse) {
 		option (google.api.http).get = "/dreanity/saturn/profile/profile";
+	}
+
+// Queries a NameRegistry by index.
+	rpc NameRegistry(QueryGetNameRegistryRequest) returns (QueryGetNameRegistryResponse) {
+		option (google.api.http).get = "/dreanity/saturn/profile/name_registry/{name}";
+	}
+
+	// Queries a list of NameRegistry items.
+	rpc NameRegistryAll(QueryAllNameRegistryRequest) returns (QueryAllNameRegistryResponse) {
+		option (google.api.http).get = "/dreanity/saturn/profile/name_registry";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -53,6 +64,24 @@ message QueryAllProfileRequest {
 
 message QueryAllProfileResponse {
 	repeated Profile profile = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetNameRegistryRequest {
+	  string name = 1;
+
+}
+
+message QueryGetNameRegistryResponse {
+	NameRegistry nameRegistry = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllNameRegistryRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllNameRegistryResponse {
+	repeated NameRegistry nameRegistry = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
