@@ -8,6 +8,7 @@ import (
 
 // x/profile module sentinel errors
 var (
-	ErrSample      = sdkerrors.Register(ModuleName, 1100, "sample error")
-	ErrNameIsShort = sdkerrors.Register(ModuleName, 1101, "length of name must be greater than 0")
+	ErrSample          = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrNameIsShort     = sdkerrors.Register(ModuleName, 1101, "length of name must be greater than 0")
+	ErrNameAlreadyUsed = sdkerrors.Register(ModuleName, 1102, "name already used")
 )

@@ -16,7 +16,18 @@ func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProf
 	}
 
 	profile, hasProfile := k.GetProfile(ctx, msg.Creator)
+	nameData, hasNameData := k.GetNameRegistry(ctx, msg.Name)
+
 	if !hasProfile {
+		if hasNameData {
+			return nil, types.ErrNameAlreadyUsed
+		}
+
+		nameData = types.NameRegistry{
+			Name:    msg.Name,
+			Address: msg.Creator,
+		}
+
 		profile = types.Profile{
 			Address:   msg.Creator,
 			AvatarUrl: msg.AvatarUrl,
@@ -24,11 +35,22 @@ func (k msgServer) UpdateProfile(goCtx context.Context, msg *types.MsgUpdateProf
 			Name:      msg.Name,
 		}
 	} else {
+		if hasNameData && nameData.Address != msg.Creator {
+			return nil, types.ErrNameAlreadyUsed
+		}
+
+		if !hasNameData {
+			k.RemoveNameRegistry(ctx, profile.Name)
+		}
+
+		nameData.Name = msg.Name
+		nameData.Address = msg.Creator
 		profile.AvatarUrl = msg.AvatarUrl
 		profile.BannerUrl = msg.BannerUrl
 		profile.Name = msg.Name
 	}
 
+	k.SetNameRegistry(ctx, nameData)
 	k.SetProfile(ctx, profile)
 	emgr.EmitTypedEvent(&types.ProfileUpdated{
 		Address:   msg.Creator,
