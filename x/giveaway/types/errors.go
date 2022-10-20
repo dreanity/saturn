@@ -19,4 +19,5 @@ var (
 	ErrInvalidParticipantName            = sdkerrors.Register(ModuleName, 1109, "participantName must not be empty")
 	ErrTicketRegistrationClosed          = sdkerrors.Register(ModuleName, 1110, "ticket registration closed")
 	ErrNotFoundCreatorProfile            = sdkerrors.Register(ModuleName, 1111, "not found creator profile")
+	ErrYouAreNotTheCreator               = sdkerrors.Register(ModuleName, 1112, "you are not the creator to issue the ticket")
 )
