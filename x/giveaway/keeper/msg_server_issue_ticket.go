@@ -49,10 +49,11 @@ func (k msgServer) IssueTicket(goCtx context.Context, msg *types.MsgIssueTicket)
 	k.SetTicketCount(ctx, ticketCount)
 
 	ctx.EventManager().EmitTypedEvent(&types.TicketCreated{
-		GiveawayId:      ticket.GiveawayId,
 		Index:           ticket.Index,
+		GiveawayId:      ticket.GiveawayId,
 		ParticipantId:   ticket.ParticipantId,
 		ParticipantName: ticket.ParticipantName,
+		TicketCount:     ticketCount.Count,
 	})
 
 	return &types.MsgIssueTicketResponse{}, nil

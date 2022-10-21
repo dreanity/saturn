@@ -38,4 +38,5 @@ message TicketCreated {
   	uint32 giveawayId = 2; 
   	string participantId = 3; 
   	string participantName = 4;
+	uint32 ticketCount = 5;
 }
