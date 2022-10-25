@@ -65,6 +65,14 @@ func TestGenesisState_Validate(t *testing.T) {
 						GiveawayId: 1,
 					},
 				},
+				GiveawaysCountByOrganizerList: []types.GiveawaysCountByOrganizer{
+					{
+						Address: "0",
+					},
+					{
+						Address: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -134,6 +142,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 					{
 						GiveawayId: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated giveawaysCountByOrganizer",
+			genState: &types.GenesisState{
+				GiveawaysCountByOrganizerList: []types.GiveawaysCountByOrganizer{
+					{
+						Address: "0",
+					},
+					{
+						Address: "0",
 					},
 				},
 			},

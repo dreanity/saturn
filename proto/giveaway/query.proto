@@ -11,6 +11,7 @@ import "giveaway/giveaway_by_height.proto";
 import "giveaway/giveaway_by_randomness.proto";
 import "giveaway/ticket.proto";
 import "giveaway/ticket_count.proto";
+import "giveaway/giveaways_count_by_organizer.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -73,6 +74,16 @@ service Query {
 	// Queries a list of TicketCount items.
 	rpc TicketCountAll(QueryAllTicketCountRequest) returns (QueryAllTicketCountResponse) {
 		option (google.api.http).get = "/dreanity/saturn/giveaway/ticket_count";
+	}
+
+// Queries a GiveawaysCountByOrganizer by index.
+	rpc GiveawaysCountByOrganizer(QueryGetGiveawaysCountByOrganizerRequest) returns (QueryGetGiveawaysCountByOrganizerResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaways_count_by_organizer/{address}";
+	}
+
+	// Queries a list of GiveawaysCountByOrganizer items.
+	rpc GiveawaysCountByOrganizerAll(QueryAllGiveawaysCountByOrganizerRequest) returns (QueryAllGiveawaysCountByOrganizerResponse) {
+		option (google.api.http).get = "/dreanity/saturn/giveaway/giveaways_count_by_organizer";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -179,6 +190,24 @@ message QueryAllTicketCountRequest {
 
 message QueryAllTicketCountResponse {
 	repeated TicketCount ticketCount = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetGiveawaysCountByOrganizerRequest {
+	  string address = 1;
+
+}
+
+message QueryGetGiveawaysCountByOrganizerResponse {
+	GiveawaysCountByOrganizer giveawaysCountByOrganizer = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGiveawaysCountByOrganizerRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGiveawaysCountByOrganizerResponse {
+	repeated GiveawaysCountByOrganizer giveawaysCountByOrganizer = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

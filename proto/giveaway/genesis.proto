@@ -9,6 +9,7 @@ import "giveaway/giveaway_by_height.proto";
 import "giveaway/giveaway_by_randomness.proto";
 import "giveaway/ticket.proto";
 import "giveaway/ticket_count.proto";
+import "giveaway/giveaways_count_by_organizer.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/dreanity/saturn/x/giveaway/types";
@@ -22,5 +23,6 @@ message GenesisState {
   repeated GiveawayByRandomness giveawayByRandomnessList = 5 [(gogoproto.nullable) = false];
   repeated Ticket ticketList = 6 [(gogoproto.nullable) = false];
   repeated TicketCount ticketCountList = 7 [(gogoproto.nullable) = false];
+  repeated GiveawaysCountByOrganizer giveawaysCountByOrganizerList = 8 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
