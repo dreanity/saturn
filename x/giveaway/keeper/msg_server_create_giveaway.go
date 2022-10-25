@@ -82,6 +82,7 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 		WinningTicketNumbers: []uint32{},
 	}
 
+	k.SetGiveawaysCountByOrganizer(ctx, giveawaysCountByOrganizer)
 	k.SetGiveawayCount(ctx, giveawayCount)
 	k.SetGiveaway(ctx, giveaway)
 
@@ -100,7 +101,7 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	}
 	k.SetTicketCount(ctx, ticketCount)
 
-	ctx.EventManager().EmitTypedEvent(&types.GiveawayCreated{
+	ctx.EventManager().EmitTypedEvents(&types.GiveawayCreated{
 		Index:                giveaway.Index,
 		Creator:              giveaway.Creator,
 		Duration:             giveaway.Duration,
@@ -110,6 +111,9 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 		CompletionHeight:     giveaway.CompletionHeight,
 		Status:               giveaway.Status,
 		WinningTicketNumbers: giveaway.WinningTicketNumbers,
+	}, &types.GiveawaysCountByOrganizerIncement{
+		Address: giveawaysCountByOrganizer.Address,
+		Count:   giveawaysCountByOrganizer.Count,
 	})
 
 	return &types.MsgCreateGiveawayResponse{}, nil
