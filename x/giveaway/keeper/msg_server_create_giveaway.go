@@ -46,17 +46,6 @@ func (k msgServer) CreateGiveaway(goCtx context.Context, msg *types.MsgCreateGiv
 	giveawayCount := k.GetGiveawayCount(ctx)
 	giveawayCount.Value += 1
 
-	giveawaysCountByOrganizer, foundGiveawaysCount := k.GetGiveawaysCountByOrganizer(ctx, msg.Creator)
-
-	if !foundGiveawaysCount {
-		giveawaysCountByOrganizer = types.GiveawaysCountByOrganizer{
-			Address: msg.Creator,
-			Count:   0,
-		}
-	}
-
-	giveawaysCountByOrganizer.Count += 1
-
 	genTime := k.gentimeKeeper.GetTime(ctx)
 	height := sdk.NewDecFromBigInt(big.NewInt(ctx.BlockHeight()))
 	blockTime := ctx.BlockTime()
