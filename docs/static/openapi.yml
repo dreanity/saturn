@@ -20471,8 +20471,8 @@ paths:
                     address:
                       type: string
                     count:
-                      type: string
-                      format: uint64
+                      type: integer
+                      format: int64
               pagination:
                 type: object
                 properties:
@@ -20593,8 +20593,8 @@ paths:
                   address:
                     type: string
                   count:
-                    type: string
-                    format: uint64
+                    type: integer
+                    format: int64
         default:
           description: An unexpected error response.
           schema:
@@ -49685,8 +49685,8 @@ definitions:
       address:
         type: string
       count:
-        type: string
-        format: uint64
+        type: integer
+        format: int64
   dreanity.saturn.giveaway.MsgCreateGiveawayResponse:
     type: object
   dreanity.saturn.giveaway.MsgIssueTicketResponse:
@@ -49871,8 +49871,8 @@ definitions:
             address:
               type: string
             count:
-              type: string
-              format: uint64
+              type: integer
+              format: int64
       pagination:
         type: object
         properties:
@@ -50073,8 +50073,8 @@ definitions:
           address:
             type: string
           count:
-            type: string
-            format: uint64
+            type: integer
+            format: int64
   dreanity.saturn.giveaway.QueryGetTicketCountResponse:
     type: object
     properties:
