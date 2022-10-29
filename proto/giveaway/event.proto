@@ -43,5 +43,5 @@ message TicketCreated {
 
 message GiveawaysCountByOrganizerIncement {
 	string address = 1; 
-  	uint32 count = 2; 
+  	uint64 count = 2; 
 }
