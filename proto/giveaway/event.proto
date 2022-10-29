@@ -40,8 +40,3 @@ message TicketCreated {
   	string participantName = 4;
 	uint32 ticketCount = 5;
 }
-
-message GiveawaysCountByOrganizerIncement {
-	string address = 1; 
-  	uint64 count = 2; 
-}
